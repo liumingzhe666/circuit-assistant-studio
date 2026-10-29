@@ -1,0 +1,146 @@
+* Project-authored generic educational models. NOT manufacturer-qualified.
+* Finite gain/bandwidth/slew for OPAMP; generic BJT/MOS/diode parameters.
+* No thermal, package, lifetime, SOA, insulation or certification coverage.
+.model DIODE D(IS=2e-9 N=1.8 RS=0.2 CJO=10p TT=20n)
+.model SCHOTTKY D(IS=20u N=1.1 RS=0.05 CJO=20p)
+.model PHOTO D(IS=1e-14 N=1 RS=10 CJO=10p)
+.model Z5V1 D(IS=1e-12 N=1 RS=2 BV=5.1 IBV=1m)
+.model Z3V3 D(IS=1e-12 N=1 RS=2 BV=3.3 IBV=1m)
+.model Z15 D(IS=1e-12 N=1 RS=0.2 BV=15 IBV=1m)
+.model LED_R D(IS=1e-20 N=1.7 RS=5)
+.model LED_G D(IS=1e-28 N=1.7 RS=5)
+.model LED_B D(IS=1e-30 N=1.7 RS=5)
+.model DCLAMP D(IS=1e-6 N=0.1 RS=0.1)
+.model DIDEAL D(IS=1e-6 N=0.02 RS=0.02)
+.model NPN NPN(IS=1e-14 BF=200 VAF=100 CJE=8p CJC=3p TF=0.5n)
+.model PNP PNP(IS=1e-14 BF=150 VAF=80 CJE=8p CJC=3p TF=0.7n)
+.model NMOS NMOS(LEVEL=1 VTO=1 KP=0.8 LAMBDA=0.01 RD=0.03 RS=0.03 CGSO=1n CGDO=0.3n)
+.model PMOS PMOS(LEVEL=1 VTO=-1 KP=0.8 LAMBDA=0.01 RD=0.03 RS=0.03 CGSO=1n CGDO=0.3n)
+.model SWMOD SW(RON=0.03 ROFF=1e12 VT=2.5 VH=0.05)
+.model RELAYNO SW(RON=0.1 ROFF=1e10 VT=0.03 VH=0.005)
+.model RELAYNC SW(RON=0.1 ROFF=1e10 VT=-0.03 VH=0.005)
+
+.subckt OPAMP P N OUT VP VN
+BGM 0 STATE I={min(max(0.001*v(P,N),-80u),80u)}
+RGAIN STATE 0 100meg
+CDOM STATE 0 159p
+DP STATE VP DCLAMP
+DN VN STATE DCLAMP
+BBUF DRIVE 0 V={min(max(v(STATE),v(VN)+0.05),v(VP)-0.05)}
+ROUT DRIVE OUT 1
+.ends OPAMP
+
+.subckt BUFFER P OUT VP VN
+XAMP P OUT OUT VP VN OPAMP
+.ends BUFFER
+
+.subckt CMP P N OUT VP VN
+BAMP DRIVE VN V={(v(VP,VN)/2)*(1+tanh(10000*v(P,N)))}
+ROUT DRIVE OUT 100
+CP OUT VN 10p
+.ends CMP
+
+.subckt CMP_OD P N OUT VP VN
+BCTL G VN V={v(VP,VN)*(1-tanh(10000*v(P,N)))/2}
+MN OUT G VN VN NMOS
+.ends CMP_OD
+
+.subckt AND A B Y VP VN
+BLOG D VN V={v(VP,VN)*((tanh(20*(v(A,VN)-v(VP,VN)/2))+1)/2)*((tanh(20*(v(B,VN)-v(VP,VN)/2))+1)/2)}
+RDEL D Y 100
+CDEL Y VN 20p
+.ends AND
+
+.subckt NOR A B Y VP VN
+BLOG D VN V={v(VP,VN)*(1-((tanh(20*(v(A,VN)-v(VP,VN)/2))+1)/2))*(1-((tanh(20*(v(B,VN)-v(VP,VN)/2))+1)/2))}
+RDEL D Y 100
+CDEL Y VN 20p
+.ends NOR
+
+.subckt NAND A B Y VP VN
+BLOG D VN V={v(VP,VN)*(1-((tanh(20*(v(A,VN)-v(VP,VN)/2))+1)/2)*((tanh(20*(v(B,VN)-v(VP,VN)/2))+1)/2))}
+RDEL D Y 100
+CDEL Y VN 20p
+.ends NAND
+
+.subckt XOR A B Y VP VN
+BLOG D VN V={v(VP,VN)*(1-tanh(20*(v(A,VN)-v(VP,VN)/2))*tanh(20*(v(B,VN)-v(VP,VN)/2)))/2}
+RDEL D Y 100
+CDEL Y VN 20p
+.ends XOR
+
+.subckt SRLATCH S R Q QB VP VN
+XQ R QB Q VP VN NOR
+XQB S Q QB VP VN NOR
+.ends SRLATCH
+
+.subckt DFF D CLK RST Q QB VP VN
+XCLK CLK CLK NCLK VP VN NAND
+XDATA D D ND VP VN NAND
+XMS D NCLK MS VP VN NAND
+XMR ND NCLK MR VP VN NAND
+XM1 MS MQB MQ VP VN NAND
+XM2 MR MQ MQB VP VN NAND
+XSS MQ CLK SS VP VN NAND
+XSR MQB CLK SR VP VN NAND
+XRST RST RST NRST VP VN NAND
+XRESET SR NRST SRR VP VN AND
+XS1 SS QB Q VP VN NAND
+XS2 SRR Q QB VP VN NAND
+.ends DFF
+
+.subckt INA P N OUT VP VN
+BST DRIVE 0 V={min(max(100*v(P,N),v(VN)+0.05),v(VP)-0.05)}
+ROUT DRIVE OUT 10
+.ends INA
+
+.subckt CSA P N OUT VP VN
+BST DRIVE 0 V={min(max(50*v(P,N),v(VN)+0.001),v(VP)-0.05)}
+ROUT DRIVE OUT 10
+.ends CSA
+
+.subckt ISOAMP P N OUT VP VN
+BST DRIVE 0 V={min(max(50*v(P,N),v(VN)+0.001),v(VP)-0.05)}
+ROUT DRIVE OUT 10
+.ends ISOAMP
+
+.subckt LDO IN FB OUT REF
+BG G 0 V={v(IN)-min(max(1000*(v(REF)-v(FB)),0),8)}
+MP OUT G IN IN PMOS
+.ends LDO
+
+.subckt NEGREG IN FB OUT REF
+BG G 0 V={v(IN)+min(max(1000*(v(FB)-v(REF)),0),8)}
+MN OUT G IN IN NMOS
+.ends NEGREG
+
+.subckt IDEALD IN OUT
+D1 IN OUT DIDEAL
+.ends IDEALD
+
+.subckt SWITCH A B CP CN
+S1 A B CP CN SWMOD
+.ends SWITCH
+
+.subckt RELAY COIL_A COIL_B COM NO NC
+RC COIL_A L 71
+LC L VS 0.1
+VSENSE VS COIL_B 0
+BA ACT 0 V={i(VSENSE)}
+BAN ACTN 0 V={-i(VSENSE)}
+SNO COM NO ACT 0 RELAYNO
+SNC COM NC ACTN 0 RELAYNC
+.ends RELAY
+
+.subckt OPTO A K C E
+DLED A VS LED_R
+VSENSE VS K 0
+BPHOTO C E I={max(i(VSENSE),0)*0.8*tanh(max(v(C,E),0)/0.05)}
+RLEAK C E 1e10
+CP C E 10p
+.ends OPTO
+
+.subckt EFUSE IN OUT LIMIT FAULT
+BPASS IN OUT I={max(0,min(v(IN,OUT)/0.1,v(LIMIT)))}
+BFAULT FAULT 0 V={5*(1+tanh(10*(v(IN,OUT)-1)))/2}
+.ends EFUSE

@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "tasks": [
+    { "id": "T001", "title": "电路助手问题修复与 Agent 工作台", "path": "T001_agent_workspace", "status": "completed" },
+    { "id": "T002", "title": "0.8.7 Agent 恢复与发布闭环", "path": "T002_release_087", "status": "completed" }
+  ]
+}

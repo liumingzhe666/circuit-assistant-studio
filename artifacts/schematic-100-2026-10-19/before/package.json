@@ -1,0 +1,55 @@
+{
+  "name": "circuit-assistant",
+  "version": "0.9.1",
+  "description": "离线优先的电路设计、识图、解题与优化桌面工作室",
+  "main": "src/main/main.cjs",
+  "type": "module",
+  "author": "电路助手项目",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "test": "node --test tests/*.test.mjs",
+    "test:ui": "electron . --agent-smoke --evidence-dir=artifacts/ui-smoke-0.9.1",
+    "test:packaged": "node scripts/verify-release.mjs",
+    "verify": "npm test && npm run test:ui",
+    "verify:release": "npm run dist && npm run test:packaged",
+    "knowledge:seed-public": "node scripts/seed-public-web-knowledge.cjs",
+    "knowledge:audit": "node scripts/audit-knowledge.mjs",
+    "icons": "node scripts/generate-icons.cjs",
+    "screenshot": "electron . --screenshot=artifacts/circuit-assistant.png",
+    "dist": "npm test && npm run icons && electron-builder --win portable --x64 --config.electronDist=node_modules/electron/dist",
+    "eval:agent": "node scripts/run-agent-eval.mjs"
+  },
+  "devDependencies": {
+    "electron": "43.3.0",
+    "electron-builder": "26.15.3",
+    "sharp": "0.35.3"
+  },
+  "build": {
+    "appId": "cn.circuitassistant.desktop",
+    "productName": "电路助手 Studio",
+    "asar": true,
+    "directories": {
+      "output": "release-0.9.1"
+    },
+    "files": [
+      "src/**/*",
+      "knowledge/**/*",
+      "database/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "assets/app-icon.ico",
+      "signExecutable": false,
+      "artifactName": "电路助手-${version}-${arch}.${ext}",
+      "target": [
+        "portable"
+      ]
+    }
+  },
+  "dependencies": {
+    "pdf-parse": "^2.4.5"
+  }
+}

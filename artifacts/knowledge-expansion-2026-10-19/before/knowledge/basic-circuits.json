@@ -1,0 +1,252 @@
+[
+  {
+    "id": "fund-ohm-power",
+    "title": "欧姆定律与功率核算",
+    "category": "电路基础",
+    "tags": ["欧姆定律", "功率", "电阻", "基础"],
+    "summary": "线性电阻满足 V=IR；直流功率可用 P=VI、P=I²R 或 P=V²/R。选型时还要校核脉冲能力、温升、容差与降额。",
+    "content": "自动设计不能只计算标称阻值。电阻额定功率应留出环境温度、封装散热和瞬态条件的裕量；串并联网络还需要校核每个器件的电压和功率分配。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "fund-kcl-kvl",
+    "title": "KCL、KVL 与节点/回路分析",
+    "category": "电路基础",
+    "tags": ["KCL", "KVL", "节点", "回路"],
+    "summary": "KCL 描述节点电流代数和为零，KVL 描述闭合回路电压代数和为零，是网络连通性检查和手工计算的基础。",
+    "content": "节点分析通常以参考地为基准建立未知节点电压；回路分析适用于平面网络。生成原理图后仍应通过 ERC 和仿真验证连接与方向。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "power-buck",
+    "title": "Buck 降压转换器基础",
+    "category": "电源",
+    "tags": ["buck", "降压", "开关电源", "电感"],
+    "summary": "Buck 将较高直流电压降到较低电压。理想连续导通状态下 D≈Vout/Vin；器件选择需校核开关峰值电流、纹波、环路和热性能。",
+    "content": "关键 PCB 环路是输入旁路电容、高边/低边开关和功率地构成的高 di/dt 回路。输入电容应紧贴功率引脚，SW 节点应短小并远离反馈取样。",
+    "source": { "title": "TI — Power Topology Considerations for Electric Circuits", "url": "https://www.ti.com/document-viewer/lit/html/SLVAFJ5" },
+    "verified": true
+  },
+  {
+    "id": "power-boost",
+    "title": "Boost 升压转换器基础",
+    "category": "电源",
+    "tags": ["boost", "升压", "开关电源", "电感"],
+    "summary": "Boost 将较低直流电压升到较高电压，理想占空比 D≈1−Vin/Vout。输入最低电压往往对应最大的开关、电感与输入电流压力。",
+    "content": "需要核算电感饱和电流、二极管/同步管应力、输出电容纹波以及右半平面零点对环路带宽的约束。",
+    "source": { "title": "TI — Power Topology Considerations for Electric Circuits", "url": "https://www.ti.com/document-viewer/lit/html/SLVAFJ5" },
+    "verified": true
+  },
+  {
+    "id": "power-ldo",
+    "title": "LDO 稳定性与热设计",
+    "category": "电源",
+    "tags": ["ldo", "线性稳压", "热设计", "dropout"],
+    "summary": "LDO 简洁且噪声低，但损耗约为 (Vin−Vout)×I。必须核对 dropout、输出电容及 ESR 稳定区、静态电流和结温。",
+    "content": "在压差或电流较大时，线性方案可能因结温过高而不可用；应计算 θJA 条件下的温升，不能只看封装的室温额定功率。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "analog-opamp",
+    "title": "运算放大器闭环基础",
+    "category": "模拟",
+    "tags": ["运放", "opamp", "放大", "反馈"],
+    "summary": "理想运放有高开环增益、高输入阻抗和低输出阻抗；实际设计必须核对输入共模、输出摆幅、GBW、压摆率、噪声与稳定性。",
+    "content": "同相放大器 Av=1+Rf/Rg，反相放大器 Av=−Rf/Rin。电阻比例给出理想增益，但器件有限增益带宽、输入偏置和容性负载会引入误差或振荡风险。",
+    "source": { "title": "Analog Devices — Op Amp Basics", "url": "https://www.analog.com/media/en/training-seminars/design-handbooks/op-amp-applications/section1.pdf" },
+    "verified": true
+  },
+  {
+    "id": "analog-opamp-stability",
+    "title": "运放稳定性与相位裕度",
+    "category": "模拟",
+    "tags": ["运放", "稳定性", "相位裕度", "容性负载"],
+    "summary": "负反馈并不自动保证稳定。噪声增益、开环增益交越斜率、容性负载和反馈网络极点都会影响相位裕度。",
+    "content": "设计需要检查闭环增益与 GBW 的关系，并在仿真或测量中观察增益/相位、过冲与振铃。隔离电阻或补偿电容只能在建立小信号模型后确定。",
+    "source": { "title": "Analog Devices — Op-Amp Stability Basics", "url": "https://www.analog.com/en/resources/media-center/videos/6343541063112.html" },
+    "verified": true
+  },
+  {
+    "id": "passive-rc-filter",
+    "title": "一阶 RC 滤波器",
+    "category": "模拟",
+    "tags": ["滤波", "rc", "低通", "高通"],
+    "summary": "一阶 RC 截止频率 fc=1/(2πRC)。实际传递函数会受到信号源阻抗和负载阻抗影响。",
+    "content": "ADC 前的 RC 网络还必须兼顾抗混叠、采样电容充电和驱动器稳定性；仅按截止频率选 R/C 可能造成建立时间不足。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "digital-decoupling",
+    "title": "数字电路退耦与回流",
+    "category": "数字",
+    "tags": ["退耦", "mcu", "接地", "回流"],
+    "summary": "每个电源引脚的高频去耦要与器件和参考地形成最小回路；完整地平面通常比随意切割地更容易控制回流。",
+    "content": "电容值不是唯一因素，安装电感和环路面积决定高频效果。高速信号跨越参考平面缝隙会迫使回流绕行并增加 EMI。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "driver-flyback",
+    "title": "MOSFET 低边驱动与感性负载保护",
+    "category": "驱动",
+    "tags": ["mosfet", "继电器", "电机", "续流"],
+    "summary": "低边 N-MOSFET 适合开关直流负载。感性负载关断时必须提供续流或钳位路径，MOSFET 需在实际栅压下校核 RDS(on)。",
+    "content": "选型还需覆盖堵转/启动电流、SOA、雪崩能量、栅极电荷与开关频率；功率地回流不应穿过敏感逻辑地。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "timer-555",
+    "title": "555 无稳态振荡器",
+    "category": "时序",
+    "tags": ["555", "振荡", "方波", "定时"],
+    "summary": "经典无稳态连接中，电容在 1/3VCC 与 2/3VCC 之间充放电，频率近似 f=1.44/((RA+2RB)C)。",
+    "content": "电阻电容容差直接影响频率。若要求精确 50% 占空比、低漂移或高频，应考虑分离充放电路径、晶体振荡器或 MCU 定时器。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "pcb-schematic-chain",
+    "title": "从原理图到 PCB 的工程链路",
+    "category": "PCB",
+    "tags": ["kicad", "原理图", "erc", "bom", "pcb"],
+    "summary": "原理图不只是图形；它承载符号、网络、引脚和封装关系，可用于 ERC、BOM、SPICE 网表以及向 PCB 编辑器传递连接。",
+    "content": "任何自动生成结果在进入 PCB 前都必须绑定真实器件符号、引脚编号和封装，运行 ERC，核对电源标志、未连接引脚、网络类与设计规则。",
+    "source": { "title": "KiCad — Schematic Editor Documentation", "url": "https://docs.kicad.org/7.0/en/eeschema/eeschema.html" },
+    "verified": true
+  },
+  {
+    "id": "pcb-power-layout",
+    "title": "开关电源 PCB 热环路",
+    "category": "PCB",
+    "tags": ["pcb", "开关电源", "热环路", "emi"],
+    "summary": "高 di/dt 回路面积直接影响寄生电感、振铃与 EMI。先识别热环路，再安排器件与铜皮，比画完再补救更有效。",
+    "content": "SW 节点应尽量小；输入陶瓷电容、开关器件和功率地应紧凑。反馈取样要避开开关节点，并从稳定输出点 Kelvin 引出。",
+    "source": { "title": "TI — Buck converter topology and ringing discussion", "url": "https://www.ti.com/document-viewer/lit/html/ssztcb7" },
+    "verified": true
+  },
+  {
+    "id": "safety-boundary",
+    "title": "高压、锂电与大电流的自动化边界",
+    "category": "安全",
+    "tags": ["安全", "高压", "锂电", "大电流"],
+    "summary": "自动生成的概念电路不能替代安规、认证、失效分析、热测试和合格工程师签核。涉及市电和储能系统时必须阻断直接投板。",
+    "content": "需要结合目标市场标准确定基本/加强绝缘、爬电间距、电气间隙、保险与浪涌等级；锂电系统还需验证充电、均衡、温度、短路和单点失效保护。",
+    "source": { "title": "电路助手安全策略", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "fund-diode-types",
+    "title": "普通二极管、肖特基与齐纳的选型差异",
+    "category": "电路基础",
+    "tags": ["二极管", "肖特基", "齐纳", "整流", "钳位"],
+    "summary": "普通硅二极管压降约 0.6–0.7 V、恢复较慢；肖特基压降低（0.2–0.45 V）但反向漏电大、耐压有限；齐纳（稳压管）反向击穿区工作，用于基准与钳位。",
+    "content": "选型不只看压降：肖特基要核对反向耐压裕量、反向漏电随温度的上升和结温；普通二极管用于工频整流或需要低漏电的场合；TVS/齐纳要按脉冲功率和钳位电压选择。续流应用优先选快恢复或肖特基，并核对其正向浪涌能力。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "fund-capacitor-types",
+    "title": "电容类型、直流偏压与有效容值",
+    "category": "电路基础",
+    "tags": ["电容", "mlcc", "直流偏压", "电解电容", "esr"],
+    "summary": "MLCC 的 II 类介质（X5R/X7R）容值随直流偏压、温度和时间显著下降；电解电容有极性、ESR 较大且有寿命与纹波电流限制。",
+    "content": "按标称容值计算纹波或时间常数之前，必须查电容的 DC bias 曲线和温度系数：12V 偏压下的 10 µF X5R 可能只剩 3–4 µF。定时和精密滤波优先用 C0G/NP0 或薄膜电容；大储能用电解或固态电容并核对其纹波电流额定值与寿命模型。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "fund-pullup-pulldown",
+    "title": "上拉、下拉与默认电平",
+    "category": "电路基础",
+    "tags": ["上拉", "下拉", "gpio", "默认电平", "i2c"],
+    "summary": "上拉/下拉电阻决定引脚在悬空、复位或线缆断开时的默认电平，是安全默认状态和总线空闲电平的基础。",
+    "content": "阻值取舍：太小增加静态电流和驱动负担，太大电平建立时间变长且易受漏电流影响。I2C 上拉按总线电容和目标速率计算；使能/驱动输入的下拉要保证 MCU 复位期间负载默认关断；不要依赖未定义的内部弱上拉承担安全功能。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "fund-decoupling-placement",
+    "title": "去耦电容的选型与摆放",
+    "category": "电路基础",
+    "tags": ["去耦", "退耦", "100nf", "摆放", "回流"],
+    "summary": "去耦的有效性取决于安装电感和回路面积，而不只是容值：容量并联组合 + 就近摆放 + 短回流路径才构成有效的电源分配网络。",
+    "content": "常见做法：每个电源引脚 100 nF X7R 就近放置，再加 1–10 µF 本地储能；大电容不必靠近，小电容必须贴着引脚与地过孔。评估高频效果时看回路面积和过孔数量；只把电容堆在板边或共用长走线等于没有去耦。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "fund-voltage-sampling",
+    "title": "分压采样与源阻抗",
+    "category": "电路基础",
+    "tags": ["分压", "采样", "adc", "源阻抗", "精度"],
+    "summary": "分压网络把高电压缩到 ADC 量程内；阻值过小消耗功率、过大抬高源阻抗，与 ADC 输入阻抗和采样电容共同决定精度。",
+    "content": "设计时先定分压比与最大功率损耗，再核对：ADC 输入漏电流在分压等效阻抗上的误差、采样电容充电建立时间、带宽外的噪声。必要时用缓冲器隔离，或在分压点加小电容兼顾高频抑制与建立时间。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "fund-esd-interface",
+    "title": "接口 ESD 与浪涌防护入门",
+    "category": "电路基础",
+    "tags": ["esd", "静电", "接口", "tvs", "浪涌"],
+    "summary": "板外接口（连接器、按键、线缆）是静电与浪涌的主要入口；防护器件应靠近入口放置，且钳位电压必须低于被保护芯片的耐受值。",
+    "content": "防护链路常见为：串联阻抗或 PTC 限流 → TVS/ESD 管钳位 → 端口滤波。要点：TVS 的工作电压高于最高正常信号、寄生电容不破坏高速信号、地回流短而宽；防护器件离入口远一级，被保护线路就多一段暴露耦合。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "fund-crystal-oscillator",
+    "title": "晶振电路与负载电容",
+    "category": "电路基础",
+    "tags": ["晶振", "负载电容", "时钟", "振荡"],
+    "summary": "无源晶振需要与芯片内部反相器和负载电容配合振荡；负载电容失配会造成频率偏差甚至停振。",
+    "content": "负载电容 CL 决定外接电容取值（近似 CL = (C1×C2)/(C1+C2) + Cstray）。布局上晶振、电阻和电容紧靠芯片，晶振下方避免高速走线穿过；有源晶振还要核对供电去耦与输出使能脚处理。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "fund-reset-monitor",
+    "title": "MCU 复位、监控与默认状态",
+    "category": "电路基础",
+    "tags": ["复位", "监控", "看门狗", "欠压", "默认状态"],
+    "summary": "可靠的系统不仅要能上电复位，还要在欠压、程序跑飞时保持可控行为：复位芯片或内置 BOR/POR、看门狗和关键输出的默认电平共同构成安全网。",
+    "content": "设计要点：复位脚的极性、滤波与上拉按芯片数据手册处理；欠压检测阈值要覆盖 RAM 保持电压与外设安全电压；电机、继电器等危险输出配置默认关断下拉；调试复位线预留测试点，避免与功能复位冲突。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "fund-relay-buzzer-drive",
+    "title": "继电器与蜂鸣器驱动",
+    "category": "电路基础",
+    "tags": ["继电器", "蜂鸣器", "驱动", "续流", "隔离"],
+    "summary": "继电器线圈是感性负载，关断需要续流二极管；蜂鸣器分有源（自带振荡）与无源（需方波驱动），驱动电流差异决定是否加三极管。",
+    "content": "继电器驱动需核对线圈吸合/保持电流与驱动管饱和压降；续流二极管与线圈并联、靠近放置；触点侧按负载电流、寿命与保护（RC/压敏）单独设计。有源蜂鸣器直给直流即可但注意电流；无源蜂鸣器由 PWM 提供频率，改频率即改音调。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "fund-ground-return",
+    "title": "参考地与回流路径",
+    "category": "电路基础",
+    "tags": ["接地", "回流", "地平面", "参考地"],
+    "summary": "电流永远沿回路流动：每个信号都要想清楚它的返回电流走哪里。地既是参考也是回流路径，地上的压降会直接变成误差和干扰。",
+    "content": "基本原则：功率大电流与敏感小信号共用同一参考，但让大电流回流不穿过敏感区域；完整地平面优于切缝；单点接地只在低频、低复杂度时有效。评估时画出最坏电流路径，而不是凭直觉连地。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  },
+  {
+    "id": "fund-led-limiting",
+    "title": "LED 限流电阻与恒流驱动",
+    "category": "电路基础",
+    "tags": ["led", "限流", "恒流", "正向压降"],
+    "summary": "LED 是压控指数器件：串联电阻按 (Vs−Vf)/I 估算限流；压差小、电流大或要求亮度一致时应改恒流源。",
+    "content": "注意 Vf 有批次、温度和颜色差异：电阻法要在最坏 Vf（最低 Vf）下核对最大电流不超过额定值。指示灯用途几十微安到 20 mA 都常见；照明级 LED 的热设计与结温控制更重要，直接恒流并核算散热。",
+    "source": { "title": "电路助手基础知识整理", "url": "" },
+    "verified": true
+  }
+]

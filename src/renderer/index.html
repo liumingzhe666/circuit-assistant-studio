@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self'; script-src 'self'; connect-src 'none'; font-src 'self';">
+  <title>电路助手 Studio · 0.9.1</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Local SVG icon set keeps controls crisp and consistent across platforms. -->
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-studio" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 2v4M12 2v4M16 2v4M8 18v4M12 18v4M16 18v4M2 8h4M2 12h4M2 16h4M18 8h4M18 12h4M18 16h4"/></symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24"><path d="M4 13h5l2-5 3 8 2-4h4"/><circle cx="6" cy="13" r="1.5"/><circle cx="18" cy="12" r="1.5"/></symbol>
+    <symbol id="icon-scan" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/><circle cx="12" cy="12" r="4"/><path d="M12 6v2M12 16v2M6 12h2M16 12h2"/></symbol>
+    <symbol id="icon-function" viewBox="0 0 24 24"><path d="M5 5h3c2 0 2 2 1 4l-2 6c-1 3 0 4 2 4h3M4 13h8M15 8h5M15 16h5"/></symbol>
+    <symbol id="icon-sliders" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="10" cy="18" r="2"/></symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21z"/><path d="M4 5.5v15M8 7h8M8 11h8"/></symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24"><path d="M12 3l1.3 1.9 2.3-.1.8 2.1 2.2.8-.1 2.3L21 11.3l-1.4 1.8 1.4 1.8-1.4 1.3.1 2.3-2.2.8-.8 2.1-2.3-.1L12 23l-1.3-1.9-2.3.1-.8-2.1-2.2-.8.1-2.3L3 14.9l1.4-1.8L3 11.3l1.4-1.3-.1-2.3 2.2-.8.8-2.1 2.3.1z"/><circle cx="12" cy="13" r="3"/></symbol>
+    <symbol id="icon-undo" viewBox="0 0 24 24"><path d="M9 7 4 12l5 5"/><path d="M5 12h8a6 6 0 0 1 6 6v1"/></symbol>
+    <symbol id="icon-redo" viewBox="0 0 24 24"><path d="m15 7 5 5-5 5"/><path d="M19 12h-8a6 6 0 0 0-6 6v1"/></symbol>
+    <symbol id="icon-components" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.4"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="icon-cursor" viewBox="0 0 24 24"><path d="m5 3 5.6 16 2.5-6 6-2.5z"/><path d="m13 13 4.5 4.5"/></symbol>
+    <symbol id="icon-wire" viewBox="0 0 24 24"><circle cx="4" cy="17" r="2"/><circle cx="20" cy="7" r="2"/><path d="M6 17h4l4-10h4"/></symbol>
+    <symbol id="icon-pan" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><path d="m9 6 3-3 3 3M9 18l3 3 3-3M6 9l-3 3 3 3M18 9l3 3-3 3"/></symbol>
+    <symbol id="icon-rotate" viewBox="0 0 24 24"><path d="M19 8A7.5 7.5 0 1 0 20 14"/><path d="M19 3v5h-5"/></symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 3h4l1 4H9zM7 7l1 14h8l1-14M10 11v6M14 11v6"/></symbol>
+    <symbol id="icon-fit" viewBox="0 0 24 24"><path d="M8 3H4v4M16 3h4v4M8 21H4v-4M16 21h4v-4"/><path d="M9 12h6M12 9v6"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="icon-chevron-left" viewBox="0 0 24 24"><path d="m14 5-7 7 7 7"/></symbol>
+    <symbol id="icon-chevron-right" viewBox="0 0 24 24"><path d="m10 5 7 7-7 7"/></symbol>
+    <symbol id="icon-upload" viewBox="0 0 24 24"><path d="M12 15V3M8 7l4-4 4 4M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></symbol>
+    <symbol id="icon-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/><path d="m4 17 5-5 3 3 2-2 6 5"/></symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="icon-file-plus" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5M12 12v6M9 15h6"/></symbol>
+    <symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v12M7 11l5 5 5-5M5 20h14"/></symbol>
+    <symbol id="icon-save" viewBox="0 0 24 24"><path d="M5 4h12l2 2v14H5z"/><path d="M8 4v6h8V4M8 20v-6h8v6"/></symbol>
+    <symbol id="icon-send" viewBox="0 0 24 24"><path d="m4 5 16 7-16 7 3-7z"/><path d="M7 12h13"/></symbol>
+    <symbol id="icon-package" viewBox="0 0 24 24"><path d="m4 7 8-4 8 4-8 4zM4 7v10l8 4 8-4V7M12 11v10"/></symbol>
+    <symbol id="icon-folder" viewBox="0 0 24 24"><path d="M3 6a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="icon-lightbulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M8.5 14.5A6 6 0 1 1 15.7 14c-.8.8-1.4 1.7-1.7 2.8H10c-.3-.9-.8-1.7-1.5-2.3z"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="icon-alert" viewBox="0 0 24 24"><path d="M12 4 21 20H3z"/><path d="M12 9v5M12 17v.5"/></symbol>
+    <symbol id="icon-external" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-8 8"/><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"/></symbol>
+  </svg>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="../../assets/app-icon.svg" alt="" class="brand-mark">
+        <div><strong>电路助手</strong><span>Circuit Copilot</span></div>
+      </div>
+
+      <nav class="main-nav" aria-label="主导航">
+        <span class="nav-section-label">工作空间</span>
+        <button class="nav-item" data-page="agent" title="Agent 工作台"><svg class="ui-icon nav-icon" aria-hidden="true"><use href="#icon-spark"></use></svg><span>Agent 工作台</span></button>
+        <span class="nav-section-label">设计</span>
+        <button class="nav-item active" data-page="studio"><svg class="ui-icon nav-icon" aria-hidden="true"><use href="#icon-studio"></use></svg><span>电路工作室</span></button>
+        <button class="nav-item" data-page="designer"><svg class="ui-icon nav-icon" aria-hidden="true"><use href="#icon-spark"></use></svg><span>智能生成</span></button>
+        <span class="nav-section-label">分析</span>
+        <button class="nav-item" data-page="vision"><svg class="ui-icon nav-icon" aria-hidden="true"><use href="#icon-scan"></use></svg><span>电路识图</span></button>
+        <button class="nav-item" data-page="solver"><svg class="ui-icon nav-icon" aria-hidden="true"><use href="#icon-function"></use></svg><span>题目助手</span></button>
+        <button class="nav-item" data-page="optimizer"><svg class="ui-icon nav-icon" aria-hidden="true"><use href="#icon-sliders"></use></svg><span>电路优化</span></button>
+        <span class="nav-section-label">资源</span>
+        <button class="nav-item" data-page="knowledge"><svg class="ui-icon nav-icon" aria-hidden="true"><use href="#icon-book"></use></svg><span>知识中枢</span></button>
+        <button class="nav-item" data-page="settings"><svg class="ui-icon nav-icon" aria-hidden="true"><use href="#icon-settings"></use></svg><span>AI 与设置</span></button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-row"><i class="status-light" id="provider-light"></i><span id="provider-label">本地规则核心</span></div>
+        <small id="provider-detail">完全离线 · 数据不出本机</small>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div class="topbar-copy">
+          <div class="breadcrumb">本地工作空间 / <span id="page-breadcrumb">电路工作室</span></div>
+          <h1 id="page-title">原理图编辑与连接</h1>
+        </div>
+        <div class="top-actions">
+          <button class="agent-top-link" id="open-agent"><svg class="ui-icon" aria-hidden="true"><use href="#icon-spark"></use></svg>Agent <span id="agent-top-status">就绪</span></button>
+          <span class="version-badge">Studio 0.9.1</span>
+          <span class="offline-badge"><i></i>离线优先</span>
+          <button class="icon-button" id="open-settings" title="AI 设置" aria-label="打开 AI 设置"><svg class="ui-icon" aria-hidden="true"><use href="#icon-settings"></use></svg></button>
+        </div>
+      </header>
+
+      <section class="page agent-page" id="page-agent" aria-label="Agent 工作台">
+        <div class="agent-overview" aria-label="当前工作上下文">
+          <div><span class="agent-stat-label">执行核心</span><b id="agent-engine">本地确定性工具</b><small id="agent-model-status">模型状态待检测</small></div>
+          <div><span class="agent-stat-label">知识上下文</span><b id="agent-knowledge-count">—</b><small>内置条目与本地资料来源</small></div>
+          <div><span class="agent-stat-label">工作室</span><b id="agent-project-count">0 个元件</b><small id="agent-project-name">未命名电路</small></div>
+          <div><span class="agent-stat-label">本机记录</span><b id="agent-run-count">0 次运行</b><small id="agent-history-note">最近 8 次自动保存</small></div>
+        </div>
+        <div class="agent-work-grid">
+          <section class="panel agent-composer">
+            <div class="agent-section-heading"><div><span class="agent-eyebrow">01 / TASK</span><h3>今天想设计什么？</h3></div><span class="engine-chip">你确认 · 工具执行</span></div>
+            <label class="sr-only" for="agent-prompt">电路设计需求</label>
+            <textarea id="agent-prompt" maxlength="1200" placeholder="例如：设计一个 5V 供电的红色 LED 指示灯电路，电流 5mA，需要开关控制。" spellcheck="false"></textarea>
+            <div class="agent-presets"><button data-agent-prompt="设计一个 5V 供电的红色 LED 指示灯电路，电流 5mA，需要开关控制。">LED 指示灯</button><button data-agent-prompt="设计一个 12V 输入、5V 2A 输出的 Buck 降压电源，要求低纹波。">Buck 电源</button><button data-agent-prompt="设计一个增益 11 倍、5V 单电源供电的同相运放电路。">运放放大</button></div>
+            <div class="agent-composer-footer"><span id="agent-input-count">0 / 1200 · Ctrl + Enter 运行</span><button class="primary-button compact button-with-icon" id="agent-run"><span>生成并审查</span><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></button></div>
+            <div class="agent-scope-note"><svg class="ui-icon" aria-hidden="true"><use href="#icon-alert"></use></svg><p>将生成新方案，不自动覆盖工作室。模型调用遵循已保存的设置；电路仍需数据手册、仿真与样机验证。</p></div>
+          </section>
+          <section class="panel agent-run-panel" aria-labelledby="agent-execution-title">
+            <div class="agent-section-heading"><div><span class="agent-eyebrow">02 / EXECUTION</span><h3 id="agent-execution-title">执行轨迹</h3></div><span class="agent-run-badge" id="agent-run-status" role="status" aria-live="polite">等待任务</span></div>
+            <ol class="agent-stage-list" id="agent-stages"><li class="agent-idle"><span class="agent-idle-icon">↗</span><h4>从一条清晰需求开始</h4><p>这里记录实际工具调用与结果，不展示虚构的思考过程或进度。</p></li></ol>
+            <div id="agent-outcome" class="agent-outcome hidden"></div>
+            <button class="secondary-button hidden" id="agent-view-result">查看本次结果 →</button>
+          </section>
+        </div>
+        <div class="agent-bottom-grid">
+          <section class="panel agent-toolbox"><div class="agent-section-heading"><div><span class="agent-eyebrow">TOOLS</span><h3>连接你的工程工具</h3></div></div><div class="agent-tool-grid">
+            <button id="agent-review-project"><svg class="ui-icon" aria-hidden="true"><use href="#icon-check"></use></svg><b>审查当前画布</b><small>连接 · 保护 · 可靠性</small><span>运行 →</span></button>
+            <button data-agent-go="solver"><svg class="ui-icon" aria-hidden="true"><use href="#icon-function"></use></svg><b>公式求解</b><small>确定性计算，可复核步骤</small><span>打开 →</span></button>
+            <button data-agent-go="knowledge"><svg class="ui-icon" aria-hidden="true"><use href="#icon-book"></use></svg><b>知识中枢</b><small>检索本地资料与来源</small><span>打开 →</span></button>
+          </div></section>
+          <section class="panel agent-history-panel"><div class="agent-section-heading"><div><span class="agent-eyebrow">HISTORY</span><h3>最近运行</h3></div><div class="agent-history-actions"><button class="text-button" id="agent-clear-history" title="清空本机运行记录" disabled><svg class="ui-icon" aria-hidden="true"><use href="#icon-trash"></use></svg><span>清空</span></button><button class="text-button" id="agent-export-history" disabled><svg class="ui-icon" aria-hidden="true"><use href="#icon-download"></use></svg><span>导出</span></button></div></div><div id="agent-history" aria-label="最近运行记录"><p class="empty-copy">还没有运行记录。开始一个任务后会显示结果摘要。</p></div></section>
+        </div>
+      </section>
+
+      <section class="page active studio-page" id="page-studio">
+        <div class="studio-commandbar panel">
+          <div class="project-identity">
+            <span class="project-mark">SCH</span>
+            <label><span>当前项目</span><input id="project-name" value="未命名电路" maxlength="80"></label>
+            <i id="project-save-state">尚未保存</i>
+          </div>
+          <div class="studio-actions">
+            <div class="action-cluster">
+              <button class="secondary-button button-with-icon" id="new-project"><svg class="ui-icon" aria-hidden="true"><use href="#icon-file-plus"></use></svg><span>新建</span></button>
+              <button class="secondary-button icon-command" id="undo-editor" title="撤销 Ctrl+Z" aria-label="撤销"><svg class="ui-icon" aria-hidden="true"><use href="#icon-undo"></use></svg></button>
+              <button class="secondary-button icon-command" id="redo-editor" title="重做 Ctrl+Y" aria-label="重做"><svg class="ui-icon" aria-hidden="true"><use href="#icon-redo"></use></svg></button>
+            </div>
+            <div class="action-cluster">
+              <button class="secondary-button button-with-icon" id="export-project-svg"><svg class="ui-icon" aria-hidden="true"><use href="#icon-download"></use></svg><span>导出图纸</span></button>
+              <button class="secondary-button button-with-icon" id="export-project"><svg class="ui-icon" aria-hidden="true"><use href="#icon-package"></use></svg><span>导出项目</span></button>
+            </div>
+            <button class="primary-button compact button-with-icon" id="save-project"><svg class="ui-icon" aria-hidden="true"><use href="#icon-save"></use></svg><span>保存项目</span></button>
+          </div>
+        </div>
+
+        <div class="studio-layout" id="studio-layout">
+          <aside class="inventory-panel panel" id="inventory-panel">
+            <div class="dock-heading"><div><span class="dock-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-components"></use></svg></span><span><b>元件物品栏</b><small>拖到画布开始构图</small></span></div><button class="dock-toggle" data-dock="inventory" title="收起物品栏"><svg class="ui-icon" aria-hidden="true"><use href="#icon-chevron-left"></use></svg></button></div>
+            <label class="inventory-search"><svg class="ui-icon" aria-hidden="true"><use href="#icon-search"></use></svg><input id="component-search" placeholder="搜索元件或市场型号"></label>
+            <div class="inventory-tabs"><button class="active" data-inventory-tab="components">元件</button><button data-inventory-tab="market">市场元件</button><button data-inventory-tab="projects">项目</button></div>
+            <div class="inventory-content active" id="inventory-components"></div>
+            <div class="inventory-content" id="inventory-market"></div>
+            <div class="inventory-content" id="inventory-projects"></div>
+            <div class="inventory-footer"><span>提示</span><p>“元件”页签放基础符号，“市场元件”页签可搜索常用真实型号（STM32、AMS1117、TB6612 等）。左键拖动元件；空格 + 左键、鼠标中键或“平移”工具可移动无限画布。连线靠近绿色端点会自动吸附。Delete 删除，R 旋转。</p></div>
+          </aside>
+
+          <section class="drawing-panel panel">
+            <div class="drawing-toolbar">
+              <div class="tool-group" role="toolbar" aria-label="绘图工具">
+                <button class="canvas-tool active" data-tool="select" title="选择/移动 V"><svg class="ui-icon" aria-hidden="true"><use href="#icon-cursor"></use></svg><span>选择</span></button>
+                <button class="canvas-tool" data-tool="wire" title="连线 W · 靠近绿色端点会自动吸附，Esc 取消"><svg class="ui-icon" aria-hidden="true"><use href="#icon-wire"></use></svg><span>连线</span></button>
+                <button class="canvas-tool" data-tool="pan" title="平移 H · 空格 + 左键拖拽 · 鼠标中键"><svg class="ui-icon" aria-hidden="true"><use href="#icon-pan"></use></svg><span>平移</span></button>
+              </div>
+              <div class="tool-group compact-tools">
+                <button id="rotate-component" title="旋转选中元件"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rotate"></use></svg></button>
+                <button id="delete-component" title="删除选中对象"><svg class="ui-icon" aria-hidden="true"><use href="#icon-trash"></use></svg></button>
+                <span class="toolbar-divider"></span>
+                <button id="studio-zoom-out" title="缩小画布" aria-label="缩小画布"><svg class="ui-icon" aria-hidden="true"><path d="M6 12h12"/></svg></button><span id="studio-zoom-label">100%</span><button id="studio-zoom-in" title="放大画布" aria-label="放大画布"><svg class="ui-icon" aria-hidden="true"><use href="#icon-plus"></use></svg></button>
+                <button id="fit-canvas" title="显示全部内容"><svg class="ui-icon" aria-hidden="true"><use href="#icon-fit"></use></svg></button>
+              </div>
+            </div>
+            <div class="drawing-stage" id="drawing-stage">
+              <div class="wire-mode-hint" id="wire-mode-hint" role="status" aria-live="polite">
+                <div class="wire-hint-title"><i id="wire-hint-step">操作提示</i><b id="wire-hint-title">怎样连线</b></div>
+                <span id="wire-hint-text">点“连线” → 点第一个元件的绿色标记点 → 沿虚线移动 → 点另一个元件的标记点。</span>
+                <small id="wire-hint-shortcuts">W 连线 · V 选择 · Esc 取消</small>
+              </div>
+              <svg id="editor-canvas" class="tool-select" viewBox="0 0 1000 680" role="application" aria-label="可平移缩放的无限电路绘图画布">
+                <defs>
+                  <pattern id="small-grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#2a4052" stroke-opacity=".22" stroke-width=".5"/></pattern>
+                  <pattern id="large-grid" width="50" height="50" patternUnits="userSpaceOnUse"><rect width="50" height="50" fill="url(#small-grid)"/><path d="M50 0H0V50" fill="none" stroke="#456276" stroke-opacity=".22" stroke-width=".8"/></pattern>
+                </defs>
+                <rect id="editor-canvas-background" width="1000" height="680" fill="#091725"/>
+                <rect id="editor-grid-background" width="1000" height="680" fill="url(#large-grid)"/>
+                <g id="editor-wire-layer"></g>
+                <g id="editor-crossing-layer"></g>
+                <g id="editor-component-layer"></g>
+                <g id="editor-overlay-layer"></g>
+              </svg>
+              <div class="canvas-empty" id="canvas-empty"><span><svg class="ui-icon" aria-hidden="true"><use href="#icon-plus"></use></svg></span><h3>从物品栏拖入第一个元件</h3><p>也可以先用“智能生成”创建方案，再发送到工作室继续编辑。</p></div>
+              <div class="canvas-statusbar"><span id="canvas-coordinates">X 0 · Y 0</span><span id="canvas-count">0 个元件 · 0 条连线</span><span id="grid-status">无限网格 · 滚轮移动视角</span></div>
+            </div>
+          </section>
+
+          <aside class="properties-panel panel" id="properties-panel">
+            <div class="dock-heading"><div><span class="dock-icon blue"><svg class="ui-icon" aria-hidden="true"><use href="#icon-sliders"></use></svg></span><span><b>属性与检查</b><small>器件、网络和工程建议</small></span></div><button class="dock-toggle" data-dock="properties" title="收起属性栏"><svg class="ui-icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg></button></div>
+            <div class="property-tabs"><button class="active" data-property-tab="properties">属性</button><button data-property-tab="check">检查</button></div>
+            <div class="property-content active" id="property-editor">
+              <div class="no-selection"><span><svg class="ui-icon" aria-hidden="true"><use href="#icon-cursor"></use></svg></span><h3>未选择对象</h3><p>点击画布中的元件以编辑位号、参数和说明。</p></div>
+            </div>
+            <div class="property-content" id="project-checks"></div>
+          </aside>
+
+          <button class="dock-restore inventory hidden" id="restore-inventory" title="展开元件物品栏"><svg class="ui-icon" aria-hidden="true"><use href="#icon-components"></use></svg></button>
+          <button class="dock-restore properties hidden" id="restore-properties" title="展开属性栏"><svg class="ui-icon" aria-hidden="true"><use href="#icon-sliders"></use></svg></button>
+        </div>
+      </section>
+
+      <section class="page" id="page-designer">
+        <div class="designer-grid">
+          <section class="request-panel panel">
+            <div class="panel-heading">
+              <div><span class="step-index">01</span><div><h2>描述你的电路需求</h2><p>即使需求简短，也会先生成一套器件和连接齐全的安全参考首版。</p></div></div>
+              <span class="engine-chip" id="designer-engine">专家知识增强</span>
+            </div>
+            <textarea id="requirement-input" spellcheck="false" placeholder="例如：生成一个能点亮指示灯的电路；未指定参数时，系统会选择低压、安全且容易验证的第一版。"></textarea>
+            <div class="input-meta"><span id="requirement-hint">系统会明确默认假设；输入电压、电流、颜色和控制方式可在生成后继续修改</span><span id="character-count">0 / 1200</span></div>
+            <div class="quick-examples" aria-label="需求示例">
+              <button data-example="设计一个 12V 输入、5V 2A 输出的同步 Buck 降压电源，用于单片机供电，要求低纹波。">12V → 5V / 2A</button>
+              <button data-example="设计一个增益 11 倍的单电源同相运放电路，输入信号 0 到 200mV。">运放放大 11 倍</button>
+              <button data-example="用 555 产生 1kHz 方波，5V 供电。">555 / 1 kHz</button>
+              <button data-example="用 3.3V 单片机控制 12V 1A 继电器，需要断电保护。">继电器低边驱动</button>
+              <button data-example="生成一个能够驱动双电机小车的电路，6V 电机，3.3V 单片机 PWM 控制，需要正反转和堵转保护。">双电机小车</button>
+              <button data-example="生成一个能点亮指示灯的完整低压电路。">点亮指示灯</button>
+            </div>
+            <button class="primary-button" id="generate-button"><span>生成可实现第一版</span><b><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></b></button>
+          </section>
+
+          <section class="flow-panel panel">
+            <div class="flow-heading"><div><span class="step-index muted">QA</span><div><h2>工程生成流程</h2><p>知识检索、参数化计算与审查分离，保留每一步依据。</p></div></div></div>
+            <div class="agent-flow">
+              <div class="flow-node active"><i>1</i><div><b>意图解析</b><span>提取电压、电流、频率</span></div></div>
+              <div class="flow-line"></div>
+              <div class="flow-node"><i>2</i><div><b>参考方案选择</b><span>补齐器件、数值与网络</span></div></div>
+              <div class="flow-line"></div>
+              <div class="flow-node"><i>3</i><div><b>工程校验</b><span>阻断矛盾与安全风险</span></div></div>
+            </div>
+            <div class="boundary-note"><span><svg class="ui-icon" aria-hidden="true"><use href="#icon-alert"></use></svg></span><p><b>工程边界</b>首版应能按图搭建和验证，但正式投板仍不能绕过数据手册、ERC/DRC、仿真与样机测试。</p></div>
+          </section>
+        </div>
+
+        <section class="result-shell hidden" id="result-shell">
+          <div class="result-toolbar">
+            <div><span class="step-index">02</span><div><h2 id="result-title">电路方案</h2><p id="result-subtitle">等待生成</p></div></div>
+            <div class="toolbar-actions">
+              <button class="secondary-button accent-outline button-with-icon" id="send-to-studio"><svg class="ui-icon" aria-hidden="true"><use href="#icon-send"></use></svg><span>发送到工作室</span></button>
+              <button class="secondary-button button-with-icon" id="export-svg"><svg class="ui-icon" aria-hidden="true"><use href="#icon-download"></use></svg><span>导出 SVG</span></button>
+              <button class="secondary-button button-with-icon" id="export-bom"><svg class="ui-icon" aria-hidden="true"><use href="#icon-download"></use></svg><span>导出 BOM</span></button>
+              <button class="secondary-button button-with-icon" id="export-bundle"><svg class="ui-icon" aria-hidden="true"><use href="#icon-package"></use></svg><span>PCB 交接包</span></button>
+            </div>
+          </div>
+          <div class="result-grid">
+            <div class="schematic-card">
+              <div class="canvas-toolbar"><span><i class="green-dot"></i>排版智能体优化稿</span><div><button id="zoom-out" title="缩小"><svg class="ui-icon" aria-hidden="true"><path d="M6 12h12"/></svg></button><span id="zoom-label">100%</span><button id="zoom-in" title="放大"><svg class="ui-icon" aria-hidden="true"><use href="#icon-plus"></use></svg></button></div></div>
+              <div class="schematic-viewport" id="schematic-viewport"><div id="schematic-mount"></div></div>
+              <div class="canvas-footer"><span id="schematic-topology">拓扑</span><span id="schematic-summary">参考设计 · 上电前复核</span></div>
+            </div>
+            <aside class="inspector-card">
+              <div class="tabbar" role="tablist">
+                <button class="active" data-inspector="overview">方案</button>
+                <button data-inspector="bom">BOM</button>
+                <button data-inspector="audit">工程校验</button>
+              </div>
+              <div class="inspector-content active" id="inspector-overview"></div>
+              <div class="inspector-content" id="inspector-bom"></div>
+              <div class="inspector-content" id="inspector-audit"></div>
+            </aside>
+          </div>
+          <div class="revision-panel panel">
+            <div class="revision-heading"><span class="step-index"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rotate"></use></svg></span><div><h3>继续修改当前方案</h3><p>修改会继承上一版的拓扑和参数，并重新计算元件值、更新 BOM 与工程校验。</p></div><i id="revision-version">第一版 v1</i></div>
+            <div class="revision-controls"><input id="revision-input" maxlength="500" placeholder="例如：改为 12V 供电，换成白色 LED；或去掉开关"><button class="primary-button compact" id="apply-revision">应用修改</button></div>
+            <div class="revision-examples"><button data-revision="改为 12V 供电">改为 12V</button><button data-revision="换成白色 LED">白色 LED</button><button data-revision="电流改为 5mA">5 mA</button><button data-revision="去掉开关">去掉开关</button></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="page" id="page-vision">
+        <div class="vision-grid">
+          <section class="panel upload-panel">
+            <div class="panel-heading"><div><span class="step-index">01</span><div><h2>导入电路图片</h2><p>支持原理图、手绘草图和清晰 PCB 截图。</p></div></div></div>
+            <label class="drop-zone" id="drop-zone">
+              <input id="image-input" type="file" accept="image/png,image/jpeg,image/webp,image/bmp">
+              <div class="drop-empty" id="drop-empty"><div class="upload-symbol"><svg class="ui-icon" aria-hidden="true"><use href="#icon-upload"></use></svg></div><h3>拖入图片，或点击选择</h3><p>PNG / JPG / WEBP / BMP · 最大 18 MB</p></div>
+              <img id="image-preview" alt="待分析电路预览">
+            </label>
+            <div class="file-strip hidden" id="file-strip"><div><span class="file-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-image"></use></svg></span><span><b id="file-name"></b><small id="file-meta"></small></span></div><button id="clear-image" title="移除图片"><svg class="ui-icon" aria-hidden="true"><use href="#icon-x"></use></svg></button></div>
+            <button class="primary-button" id="analyze-button" disabled><span>识别电路功能</span><b><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></b></button>
+          </section>
+
+          <section class="panel recognition-panel">
+            <div class="panel-heading"><div><span class="step-index">02</span><div><h2>识别结论</h2><p id="vision-mode-hint">本地视觉启发式 + 工程复核</p></div></div><span class="confidence-badge" id="vision-confidence">待分析</span></div>
+            <div class="vision-placeholder" id="vision-placeholder"><div class="scan-graphic"><span></span><i></i></div><h3>等待电路图片</h3><p>接入本地视觉模型后，可分析器件、网络和功能模块；无模型时给出保守的结构候选。</p></div>
+            <div class="vision-results hidden" id="vision-results"></div>
+          </section>
+        </div>
+        <div class="vision-note panel"><span class="note-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-spark"></use></svg></span><div><h3>怎样获得真正的离线视觉识别？</h3><p>在“AI 与设置”中选择 Ollama，并安装支持图像输入的本地模型。图片只发送到 127.0.0.1；未连接模型时，应用不会把低置信度像素特征伪装成准确电路理解。</p></div><button class="text-button" data-go="settings">配置本地模型 <svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></button></div>
+      </section>
+
+      <section class="page" id="page-solver">
+        <div class="solver-layout">
+          <section class="panel solver-input-card">
+            <div class="panel-heading"><div><span class="step-index">Q</span><div><h2>输入电路题目</h2><p>本地公式求解器负责数值，AI 只负责辅助理解与讲解。</p></div></div><span class="engine-chip">可验证解题</span></div>
+            <textarea id="problem-input" spellcheck="false" placeholder="例如：R1=2kΩ、R2=3kΩ 串联，求等效电阻。"></textarea>
+            <div class="solver-examples">
+              <button data-problem="R1=2kΩ、R2=3kΩ 串联，求等效电阻。">串联电阻</button>
+              <button data-problem="R1=1kΩ、R2=2kΩ 并联，求等效电阻。">并联电阻</button>
+              <button data-problem="Vin=12V，R1=10kΩ，R2=5kΩ 构成分压，求 Vout。">电阻分压</button>
+              <button data-problem="RC 低通电路中 R=10kΩ，C=100nF，求截止频率。">RC 截止频率</button>
+              <button data-problem="同相运放中 R1=10kΩ，R2=100kΩ，求闭环增益。">运放增益</button>
+            </div>
+            <div class="solve-options"><label><input type="checkbox" id="show-detailed-steps" checked><span>显示详细步骤</span></label><span>支持工程单位：M / k / m / µ / n / p</span></div>
+            <button class="primary-button" id="solve-button"><span>分析并解答</span><b><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></b></button>
+          </section>
+
+          <section class="panel solver-result-card">
+            <div class="panel-heading"><div><span class="step-index muted">A</span><div><h2>求解过程</h2><p id="solver-source">等待题目</p></div></div><span class="confidence-badge" id="solver-confidence">—</span></div>
+            <div class="solver-placeholder" id="solver-placeholder"><span>ƒ(x)</span><h3>答案必须能够回到公式</h3><p>系统会列出已知量、公式、代入步骤、答案和适用条件。</p></div>
+            <div class="solver-result hidden" id="solver-result"></div>
+          </section>
+        </div>
+        <section class="panel learning-match-card"><div><span class="note-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-book"></use></svg></span><div><h3>相关知识召回</h3><p>解题后，系统会自动匹配基础或进阶知识，便于复习公式的适用边界。</p></div></div><div id="solver-knowledge-matches"><span class="muted-copy">尚未求解</span></div></section>
+      </section>
+
+      <section class="page" id="page-optimizer">
+        <div class="optimizer-grid">
+          <section class="panel optimizer-control">
+            <div class="panel-heading"><div><span class="step-index">OP</span><div><h2>选择优化目标</h2><p>从当前工作室项目或最近生成方案中建立检查清单。</p></div></div></div>
+            <div class="optimization-source"><span>分析对象</span><div><label class="selected"><input type="radio" name="opt-source" value="project" checked><b>工作室项目</b><small id="opt-project-meta">0 个元件</small></label><label><input type="radio" name="opt-source" value="plan"><b>智能生成方案</b><small id="opt-plan-meta">尚未生成</small></label></div></div>
+            <div class="goal-grid">
+              <label><input type="checkbox" value="low-noise"><span><svg class="ui-icon" aria-hidden="true"><use href="#icon-wire"></use></svg></span><b>低噪声</b><small>回流、滤波、敏感节点</small></label>
+              <label><input type="checkbox" value="low-power"><span><svg class="ui-icon" aria-hidden="true"><use href="#icon-lightbulb"></use></svg></span><b>低功耗</b><small>静态与动态损耗</small></label>
+              <label><input type="checkbox" value="low-cost"><span><svg class="ui-icon" aria-hidden="true"><use href="#icon-components"></use></svg></span><b>低成本</b><small>BOM 与装配复杂度</small></label>
+              <label><input type="checkbox" value="small-size"><span><svg class="ui-icon" aria-hidden="true"><use href="#icon-fit"></use></svg></span><b>小尺寸</b><small>关键回路与封装</small></label>
+              <label><input type="checkbox" value="reliability"><span><svg class="ui-icon" aria-hidden="true"><use href="#icon-check"></use></svg></span><b>高可靠</b><small>保护、降额、热设计</small></label>
+            </div>
+            <button class="primary-button" id="optimize-button"><span>运行优化审查</span><b><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></b></button>
+          </section>
+          <section class="panel optimizer-result">
+            <div class="panel-heading"><div><span class="step-index muted">QA</span><div><h2>优化报告</h2><p>按优先级排列，并显示收益与代价。</p></div></div><span class="confidence-badge" id="optimizer-grade">待分析</span></div>
+            <div class="optimizer-placeholder" id="optimizer-placeholder"><span><svg class="ui-icon" aria-hidden="true"><use href="#icon-sliders"></use></svg></span><h3>优化不是简单替换器件</h3><p>先确定目标，再检查连接、保护、退耦、布局、热和制造性。</p></div>
+            <div class="optimizer-report hidden" id="optimizer-report"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="page" id="page-knowledge">
+        <div class="knowledge-hero panel">
+          <div><span class="step-index">KB</span><div><h2>本地知识中枢</h2><p>工程生成只引用可追溯知识；导入资料默认标记为“待验证”。</p></div></div>
+          <div class="knowledge-actions"><button class="secondary-button button-with-icon" id="import-knowledge-folder"><svg class="ui-icon" aria-hidden="true"><use href="#icon-folder"></use></svg><span>导入资料文件夹</span></button><button class="primary-button compact button-with-icon" id="import-knowledge"><svg class="ui-icon" aria-hidden="true"><use href="#icon-upload"></use></svg><span>选择资料文件</span></button></div>
+        </div>
+        <div class="curriculum-strip panel">
+          <div class="curriculum-step complete"><span>1</span><div><b>基础电路</b><small>定律、无源、供电、运放与 PCB 基础</small></div><i>已收录</i></div>
+          <div class="curriculum-line complete"></div>
+          <div class="curriculum-step active"><span>2</span><div><b>进阶设计</b><small>瞬态、稳定性、EMI、仿真与高速布局</small></div><i id="advanced-count">专题</i></div>
+          <div class="curriculum-line"></div>
+          <div class="curriculum-step"><span>3</span><div><b>专项工程</b><small>结合具体芯片、标准与实验数据</small></div><i>待项目驱动</i></div>
+        </div>
+        <div class="knowledge-stats">
+          <div class="stat-card"><span>知识片段</span><b id="stat-entries">—</b><small>内置条目 + SQL 文本块</small></div>
+          <div class="stat-card"><span>覆盖领域</span><b id="stat-categories">—</b><small>电源 / 模拟 / 数字 / PCB</small></div>
+          <div class="stat-card"><span>已验证来源</span><b id="stat-verified">—</b><small>厂商资料与工程规则</small></div>
+          <div class="stat-card accent"><span>知识范围</span><b>进阶</b><small>可追溯资料持续扩展</small></div>
+        </div>
+        <section class="panel library-panel">
+          <div class="library-toolbar"><div><h2>本地电路知识库</h2><p>SQLite 全文检索 + 多路召回；仅导入你合法持有的资料，不会联网抓取或上传原文。</p></div><label class="search-box"><svg class="ui-icon" aria-hidden="true"><use href="#icon-search"></use></svg><input id="knowledge-search" type="search" placeholder="搜索版图、Buck、运放、退耦…"></label></div>
+          <div class="retrieval-controls">
+            <div class="retrieval-strength" id="retrieval-strength" role="group" aria-label="RAG 检索强度">
+              <span class="retrieval-label">检索强度</span>
+              <button data-strength="standard" title="单路召回，速度快">标准</button>
+              <button data-strength="deep" title="原始查询 + 同义扩展 + 主题路由，RRF 融合（推荐）">深度</button>
+              <button data-strength="exhaustive" title="最大候选池与返回条数，适合深入研究">穷尽</button>
+            </div>
+            <p class="retrieval-hint">多路召回：原始查询 + 领域同义扩展 + 主题专项路由 → RRF 融合排序 → 逐源限流</p>
+          </div>
+          <div class="retrieval-trace hidden" id="retrieval-trace" aria-label="检索过程追踪"></div>
+          <div class="knowledge-filter-stack"><div class="level-row" id="knowledge-levels"><button class="active" data-level="全部">全部层级</button><button data-level="基础">基础</button><button data-level="进阶">进阶</button><button data-level="用户资料">我的资料</button></div><div class="filter-row" id="knowledge-filters"></div></div>
+          <div class="knowledge-list" id="knowledge-list"></div>
+        </section>
+      </section>
+
+      <section class="page" id="page-settings">
+        <div class="settings-layout">
+          <section class="panel settings-card">
+            <div class="panel-heading"><div><span class="step-index">AI</span><div><h2>选择推理核心</h2><p>所有生成结果最终都会经过确定性的工程规则校验。</p></div></div></div>
+            <div class="provider-options">
+              <label class="provider-option selected"><input type="radio" name="provider" value="local-rules" checked><span class="provider-logo rules"><svg class="ui-icon" aria-hidden="true"><use href="#icon-studio"></use></svg></span><span><b>电路助手本地核心</b><small>无需模型，规则生成与基础识图，完全离线</small></span><i>内置</i></label>
+              <label class="provider-option"><input type="radio" name="provider" value="ollama"><span class="provider-logo ollama">O</span><span><b>Ollama 本地模型</b><small>离线文本/视觉推理，模型由你在本机安装</small></span><i>推荐增强</i></label>
+              <label class="provider-option"><input type="radio" name="provider" value="openai-compatible"><span class="provider-logo cloud"><svg class="ui-icon" aria-hidden="true"><use href="#icon-spark"></use></svg></span><span><b>OpenAI 兼容接口</b><small>预留远程或企业私有模型接入</small></span><i>可选</i></label>
+            </div>
+          </section>
+
+          <section class="panel settings-card provider-settings" id="ollama-settings">
+            <div class="settings-title"><div><h2>Ollama 本地连接</h2><p>默认只访问本机环回地址，不依赖局域网。</p></div><span class="connection-status" id="settings-connection">未检测</span></div>
+            <div class="field-grid"><label><span>服务地址</span><input id="ollama-url" value="http://127.0.0.1:11434"></label><label><span>模型名称</span><input id="ollama-model" value="gemma3:4b" placeholder="例如 gemma3:4b"></label></div>
+            <p class="field-help">图片识别需要模型本身支持视觉输入。模型文件不会由本软件静默下载。</p>
+          </section>
+
+          <section class="panel settings-card provider-settings hidden" id="remote-settings">
+            <div class="settings-title"><div><h2>OpenAI 兼容接口</h2><p>接口需实现 /v1/chat/completions；HTTPS 或本机 HTTP。</p></div></div>
+            <div class="field-grid"><label><span>Base URL</span><input id="remote-url" value="https://api.example.com/v1"></label><label><span>模型名称</span><input id="remote-model" placeholder="vision-capable-model"></label><label class="wide"><span>API Key</span><input id="remote-key" type="password" autocomplete="off" placeholder="保存在系统加密存储中"></label></div>
+          </section>
+
+          <section class="panel settings-card retrieval-settings" id="retrieval-settings">
+            <div class="settings-title"><div><h2>知识检索与上下文</h2><p>RAG 多路召回强度、注入模型的知识规模与推理参数。</p></div><span class="connection-status" id="retrieval-status">深度检索</span></div>
+            <div class="field-grid">
+              <label><span>检索强度（智能体 RAG）</span><select id="retrieval-strength-select"><option value="standard">标准 · 原始 + 同义扩展</option><option value="deep">深度 · 加主题专项路由</option><option value="exhaustive">穷尽 · 最大候选池</option></select></label>
+              <label><span>注入模型的知识条数</span><select id="knowledge-max-entries"><option value="6">6 条</option><option value="8">8 条</option><option value="12">12 条</option><option value="16">16 条</option><option value="20">20 条</option></select></label>
+              <label><span>推理温度（0–1）</span><input id="ai-temperature" type="number" min="0" max="1" step="0.05" value="0.15"></label>
+              <label><span>Ollama 上下文窗口</span><input id="ollama-num-ctx" type="number" min="2048" max="32768" step="1024" value="8192"></label>
+            </div>
+            <label class="privacy-toggle"><input type="checkbox" id="allow-remote-knowledge"><span>允许把本地知识片段发送到远程（非本机）模型接口。<b>默认关闭</b>：知识片段只会发送到本机环回地址（127.0.0.1）。</span></label>
+            <p class="field-help">多路召回同时检索原始查询、领域同义词与主题专项路由，用 RRF 融合排序后逐源限流；注入条数越多上下文越长，使用本地模型时建议同步调大上下文窗口。</p>
+          </section>
+
+          <section class="panel settings-card architecture-card">
+            <div><span class="step-index muted">QA</span><div><h2>电路助手处理流程</h2><p>可解释内核常驻，通用大模型只是可选增强器。</p></div></div>
+            <div class="architecture-flow"><span>用户需求/图片</span><i><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></i><span>知识检索</span><i><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></i><span class="highlight">电路专业核心</span><i><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></i><span>工程校验</span><i><svg class="ui-icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></i><span>可审查结果</span></div>
+          </section>
+          <div class="settings-actions"><button class="secondary-button button-with-icon" id="test-provider"><svg class="ui-icon" aria-hidden="true"><use href="#icon-scan"></use></svg><span>测试连接</span></button><button class="primary-button compact button-with-icon" id="save-settings"><svg class="ui-icon" aria-hidden="true"><use href="#icon-save"></use></svg><span>保存设置</span></button></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="wire-crossing-dialog" id="wire-crossing-dialog" aria-labelledby="wire-crossing-title">
+    <form method="dialog">
+      <span class="crossing-eyebrow" id="wire-crossing-progress">导线交点</span>
+      <h2 id="wire-crossing-title">这两条线是否需要电气连接？</h2>
+      <p id="wire-crossing-detail">检测到新导线与已有导线相交。请选择该交点的电气含义。</p>
+      <div class="crossing-choices">
+        <button class="crossing-choice connected" type="button" data-crossing-choice="connected"><i><svg class="ui-icon" aria-hidden="true"><use href="#icon-check"></use></svg></i><span><b>连接起来</b><small>添加实心结点，两条线属于同一电气网络</small></span></button>
+        <button class="crossing-choice separate" type="button" data-crossing-choice="separate"><i><svg class="ui-icon" aria-hidden="true"><use href="#icon-wire"></use></svg></i><span><b>不连接</b><small>仅从此处跨过，保留为两个独立网络</small></span></button>
+      </div>
+      <small class="crossing-safe-default">按 Esc 将按“不连接”处理，避免意外短接。</small>
+    </form>
+  </dialog>
+
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+  <canvas id="analysis-canvas" hidden></canvas>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

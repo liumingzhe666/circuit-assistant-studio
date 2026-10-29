@@ -1,0 +1,780 @@
+[
+  {
+    "title": "《集成电路版图设计项目化教程（第2版）》公开知识地图",
+    "url": "https://yd.51zhy.cn/ebook/web/newBook/queryNewBookById?id=112935076",
+    "publisher": "电子工业出版社",
+    "authors": "居水荣、刘锡锋",
+    "isbn": "978-7-121-37857-7",
+    "accessedAt": "2026-08-08",
+    "rightsStatus": "unknown",
+    "rightsNote": "电子工业出版社关联数字平台公开书目页的事实与自撰摘要；书籍正文版权归权利人所有，未复制付费正文。",
+    "metadata": {
+      "kind": "book-catalog",
+      "edition": "第2版",
+      "published": "2020-03-01"
+    },
+    "content": "# 版图教材公开知识地图\n公开书目显示，本书以集成电路版图设计工作任务为主线，内容可归纳为三个学习层级。第一层是版图基础：设计分类、方法与工具，UNIX/Linux 与虚拟机环境，集成电路设计软件基本操作，以及电阻、电容、二极管、三极管和 MOS 器件等常用元器件版图。第二层是 CMOS 单元设计与验证：反相器、基本与复合逻辑门、D 触发器、标准单元基础，以及 DRC、提取和 LVS 等物理验证。第三层是数模混合项目：项目准备、模拟电路全定制版图、数字标准单元、基于标准单元的布局布线、数据保存与交付处理。\n工程使用边界：这条记录是课程知识地图，不包含具体工艺节点的最小线宽、间距或电压额定值。实际绘制必须绑定目标 PDK，并以该版本 PDK 的 DRC/LVS/PEX 规则为准。"
+  },
+  {
+    "title": "《电路与电子技术（第2版）》公开目录知识地图",
+    "url": "https://m.dushu.com/book/14122187/",
+    "publisher": "电子工业出版社",
+    "authors": "卢飒",
+    "isbn": "978-7-121-45516-2",
+    "accessedAt": "2026-08-08",
+    "rightsStatus": "unknown",
+    "rightsNote": "公开书目与目录页的事实及自撰结构化摘要；未保存教材正文、例题或习题。",
+    "metadata": {
+      "kind": "book-catalog",
+      "edition": "第2版",
+      "published": "2023-07-01"
+    },
+    "content": "# 电路与电子技术公开知识地图\n公开目录把课程组织为三部分。电路分析基础覆盖电压、电流、功率、KCL/KVL、无源与有源元件、等效变换、支路电流法、节点电压法、叠加定理、戴维南/诺顿等效、一阶动态电路、正弦稳态相量法、交流功率、谐振与三相电路。模拟电子技术覆盖 PN 结、二极管与晶体管模型、基本放大电路、静态工作点、反馈、集成运放、滤波器、比较器、波形发生器，以及整流、滤波和稳压电源。数字电子技术覆盖逻辑代数、TTL/CMOS 门、卡诺图、组合逻辑、触发器、计数器、寄存器、555 定时器和 ADC/DAC。\n工程使用边界：目录只能用于确认所需知识领域。生成具体电路时仍需依据器件数据手册、确定性计算和实测条件，不能从目录推断元件额定值。"
+  },
+  {
+    "title": "SkyWater SKY130 开放 PDK：版图规则与验证范围",
+    "url": "https://skywater-pdk.readthedocs.io/en/main/rules.html",
+    "publisher": "SkyWater PDK Authors",
+    "authors": "SkyWater PDK Authors",
+    "accessedAt": "2026-08-08",
+    "rightsStatus": "licensed",
+    "rightsNote": "SkyWater 开放 PDK 以 Apache License 2.0 发布；此处保存归纳摘要并保留来源与许可说明。",
+    "metadata": {
+      "kind": "open-pdk",
+      "license": "Apache-2.0",
+      "process": "SKY130"
+    },
+    "content": "# SKY130 版图规则结构\nSKY130 公开规则把物理设计约束组织为掩膜与工艺叠层、最小关键尺寸、阱和扩散区、多晶硅、局部互连、金属与通孔、焊盘与重布线层、高压器件、天线规则、寄生参数提取，以及器件和 LVS 映射。版图工作流必须区分 DRC、LVS 与 PEX：DRC 检查几何是否满足制造规则；LVS 检查提取网表与原理图是否一致；PEX 提取互连电阻与电容供后仿真。\n工程使用边界：规则数值是工艺与版本专属数据。不能把 SKY130 的尺寸直接用于其他工艺；使用前要固定 PDK 版本并检查已知问题。"
+  },
+  {
+    "title": "SkyWater SKY130：天线效应检查的工程含义",
+    "url": "https://skywater-pdk.readthedocs.io/en/main/rules/antenna.html",
+    "publisher": "SkyWater PDK Authors",
+    "authors": "SkyWater PDK Authors",
+    "accessedAt": "2026-08-08",
+    "rightsStatus": "licensed",
+    "rightsNote": "Apache License 2.0 开放 PDK 文档的归纳摘要。",
+    "metadata": {
+      "kind": "open-pdk",
+      "license": "Apache-2.0",
+      "process": "SKY130"
+    },
+    "content": "# 天线规则\n等离子刻蚀期间，尚未形成完整放电路径的互连可能在 MOS 栅上积累电荷。公开 SKY130 文档以互连暴露面积或侧壁面积相对于所连接栅面积的比值表达天线约束，并区分通孔接触面积与导线周长相关的检查。版图完成不能只看普通间距 DRC，还应运行目标 PDK 的天线检查。常见修复方向包括调整布线层切换位置、缩短受影响阶段的互连，或按 PDK 允许的方法增加天线二极管。\n工程使用边界：具体比值、允许层和修复器件必须读取当前 PDK 规则，不能使用通用固定数值。"
+  },
+  {
+    "title": "GlobalFoundries GF180MCU 开放 PDK：基础版图约束",
+    "url": "https://mithro-gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_03.html",
+    "publisher": "GlobalFoundries PDK Authors",
+    "authors": "GlobalFoundries PDK Authors",
+    "accessedAt": "2026-08-08",
+    "rightsStatus": "licensed",
+    "rightsNote": "页面标明 Apache License；此处保存归纳摘要和少量规则事实。",
+    "metadata": {
+      "kind": "open-pdk",
+      "license": "Apache-2.0",
+      "process": "GF180MCU"
+    },
+    "content": "# GF180MCU 基础版图约束\n公开设计手册说明：布局规则使用微米；绘制尺寸按成品硅尺寸解释；几何缺口不能小于允许的最小间距；统一在 0.005 微米网格上布局可减少离网格和数据库分割时的吸附问题；多晶硅和金属走线只允许 90 度或 45 度转角；未特别说明的尺寸按最小值理解。\n工程使用边界：这些是 GF180MCU 工艺专属基础规则。项目还必须完成 DFM、天线、模拟器件、保护环、填充、可靠性和流片清单等对应章节检查。"
+  },
+  {
+    "title": "KiCad PCB Editor：DRC 与制造文件前检查",
+    "url": "https://docs.kicad.org/master/ca/pcbnew/pcbnew.html",
+    "publisher": "KiCad Documentation Contributors",
+    "authors": "KiCad Documentation Contributors",
+    "accessedAt": "2026-08-08",
+    "rightsStatus": "licensed",
+    "rightsNote": "KiCad 官方公开文档的归纳摘要；保留作者与原始链接。",
+    "metadata": {
+      "kind": "eda-documentation",
+      "tool": "KiCad"
+    },
+    "content": "# KiCad DRC 验证闭环\nPCB 设计开始前应在 Board Setup 中配置叠层、层用途、网络类别、线宽、间距和过孔等约束。DRC 用于检查板级规则、未连接项以及 PCB 与原理图之间的差异；输出制造文件前必须重新运行。检查前应更新覆铜区，否则覆铜未刷新可能造成错误结论。自定义规则可针对网络、网络类、区域或封装施加更具体的约束，规则文件应随项目一起备份。\n工程使用边界：EDA 默认约束不能替代板厂能力、安规间距、器件数据手册或项目专项规则。忽略某条 DRC 必须记录原因并经人工复核。"
+  },
+  {
+    "title": "TI Precision Labs：模拟与嵌入式设计公开学习路径",
+    "url": "https://www.ti.com/video/series/precision-labs.html",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-08-08",
+    "rightsStatus": "unknown",
+    "rightsNote": "TI 公开培训索引的自撰摘要；原视频和下载资料版权归 Texas Instruments。",
+    "metadata": {
+      "kind": "vendor-training"
+    },
+    "content": "# TI Precision Labs 知识范围\n公开培训路径覆盖运算放大器、比较器、电流检测和仪表放大器，ADC/DAC，时钟与锁相环，隔离与隔离栅极驱动，MCU 定时器和通信，电机驱动，接口与信号调理，以及传感器。适合在生成电路前用于定位需要查阅的专项资料。\n工程使用边界：培训索引不是具体器件的选型依据。确定方案时应继续打开对应器件数据手册和应用笔记，核对输入共模范围、输出摆幅、GBW、压摆率、稳定性、额定电压、电流、热与布局要求。"
+  },
+  {
+    "title": "TI：同步 Buck 转换器布局的关键回路",
+    "url": "https://www.ti.com/document-viewer/lit/html/SSZTAL0/GUID-CF03725F-911C-4A96-9391-0E639F290409",
+    "publisher": "Texas Instruments",
+    "authors": "George Lakkas",
+    "accessedAt": "2026-08-08",
+    "rightsStatus": "unknown",
+    "rightsNote": "TI 公开技术文章的自撰工程摘要；文章版权归 Texas Instruments。",
+    "metadata": {
+      "kind": "vendor-article",
+      "topic": "buck-layout"
+    },
+    "content": "# 同步 Buck PCB 布局\n开关电源布局与原理计算同等重要。布局规划应围绕高 di/dt 功率回路展开，优先缩小输入旁路电容、开关器件和地之间的回路面积；旁路电容应靠近相关电源引脚。反馈与补偿网络属于敏感小信号区域，应远离开关节点和大电流路径，并采用安静参考地。功率器件、寄生电感、地回路和散热路径需要一起评估。\n工程使用边界：实际摆放、层叠和走线必须优先遵循所选转换器数据手册与评估板布局；不能把文章中的示意拓扑当作任意芯片的引脚连接。"
+  },
+  {
+    "title": "Analog Devices：运算放大器稳定性公开学习框架",
+    "url": "https://www.analog.com/en/resources/media-center/videos/series/op-amp-stability-video-series.html",
+    "publisher": "Analog Devices",
+    "authors": "Analog Devices",
+    "accessedAt": "2026-08-08",
+    "rightsStatus": "unknown",
+    "rightsNote": "Analog Devices 公开培训页的自撰摘要；原视频版权归 Analog Devices。",
+    "metadata": {
+      "kind": "vendor-training",
+      "topic": "op-amp-stability"
+    },
+    "content": "# 运放稳定性检查框架\n公开课程把稳定性问题分成环路增益、Bode 图、去补偿运放、容性负载和寄生电容五类。生成运放电路不能只按闭环增益计算电阻比，还应检查噪声增益、单位增益稳定条件、增益带宽、相位裕度、负载电容、反馈网络寄生和输出隔离。\n工程使用边界：没有具体运放开环增益/相位曲线、负载和布局寄生时，稳定性状态应标记为 unknown，并通过数据手册建议、SPICE 模型和实测阶跃响应复核。"
+  },
+  {
+    "title": "Analog Devices：高速 ADC 去耦与接地的器件级示例",
+    "url": "https://ez.analog.com/data_converters/high-speed_adcs/w/documents/39087/ad6644-decoupling-grounding-recommendations",
+    "publisher": "Analog Devices",
+    "authors": "Analog Devices EngineerZone",
+    "accessedAt": "2026-08-08",
+    "rightsStatus": "unknown",
+    "rightsNote": "公开技术问答的自撰摘要；具体建议仅适用于页面所述 AD6644 场景。",
+    "metadata": {
+      "kind": "vendor-support",
+      "topic": "adc-decoupling",
+      "device": "AD6644"
+    },
+    "content": "# 高速 ADC 去耦与回流示例\nAD6644 的公开技术答复建议每个电源引脚用 100 nF 电容直接去耦到相邻地引脚，并尽量缩短走线；器件附近的地引脚应低阻连接，再通过低阻抗地平面回到系统电源，同时控制高速数字回流，避免它穿过敏感模拟区域。\n工程使用边界：100 nF 与接地组织是 AD6644 的器件级示例，不能自动套用到其他 ADC。其他型号必须按其数据手册确认去耦容量、地引脚角色、裸露焊盘、分区和回流要求。"
+  },
+  {
+    "title": "ELK Layered：面向电路图的分层自动排版",
+    "url": "https://eclipse.dev/elk/reference/algorithms/org-eclipse-elk-layered.html",
+    "publisher": "Eclipse Layout Kernel",
+    "authors": "Eclipse Foundation / ELK Contributors",
+    "accessedAt": "2026-08-09",
+    "rightsStatus": "unknown",
+    "rightsNote": "ELK 官方公开文档的自撰工程摘要；网页及软件授权以 Eclipse 项目声明为准。",
+    "metadata": {
+      "kind": "official-documentation",
+      "topic": "schematic-auto-layout",
+      "policyVersion": "2026.08.09-1"
+    },
+    "content": "# 分层原理图排版\nELK Layered 把节点组织到连续层中，让大多数连接朝同一方向，并通过层内重排减少交叉；其正交路由能够尊重端口约束，官方明确把电路原理图列为适用场景。排版智能体据此采用左到右主信号流、输入和输出固定侧边、电源在上、地在下，并依次执行分层、交叉最小化、节点放置和正交布线。\n工程使用边界：自动布局只能改变显示位置和线段折点，不能改变网表、电气端口或 BOM。"
+  },
+  {
+    "title": "ELK Libavoid：固定器件后的正交避障布线",
+    "url": "https://eclipse.dev/elk/reference/algorithms/org-eclipse-elk-alg-libavoid.html",
+    "publisher": "Eclipse Layout Kernel",
+    "authors": "Eclipse Foundation / ELK Contributors",
+    "accessedAt": "2026-08-09",
+    "rightsStatus": "unknown",
+    "rightsNote": "ELK 官方公开文档的自撰工程摘要；网页及软件授权以 Eclipse 项目声明为准。",
+    "metadata": {
+      "kind": "official-documentation",
+      "topic": "orthogonal-obstacle-routing",
+      "policyVersion": "2026.08.09-1"
+    },
+    "content": "# 正交避障重布线\nLibavoid 用于在不移动节点的前提下重排连线，并支持避开图形障碍的正交路由。对用户已经手工固定的器件，排版智能体应保留位置，只重新寻找不穿过符号和标签边界的水平/垂直路径；成本优先惩罚交叉、线穿器件、短狗腿和多余折点。\n工程使用边界：局部重布线后仍需逐网络比较连通性；没有通过连通性回归的候选不能应用。"
+  },
+  {
+    "title": "KiCad 原理图编辑器：网格、网络标签与字段精简",
+    "url": "https://docs.kicad.org/10.0/cn/eeschema/eeschema.pdf",
+    "publisher": "KiCad Documentation",
+    "authors": "KiCad Developers and Documentation Contributors",
+    "accessedAt": "2026-08-09",
+    "rightsStatus": "unknown",
+    "rightsNote": "KiCad 官方公开手册的自撰工程摘要；原手册版权与许可按 KiCad 官方声明执行。",
+    "metadata": {
+      "kind": "official-manual",
+      "topic": "schematic-readability",
+      "policyVersion": "2026.08.09-1"
+    },
+    "content": "# 原理图可读性规则\nKiCad 官方手册区分导线连接与同名网络标签连接，并支持符号字段自动放置和字段可见性控制。排版智能体据此使用网格化正交线；只有跨功能区或需要消除长线时才使用成对网络标签；结点圆点只表示真实电气汇合，不再把普通折点画成结点。简洁模式在数据层保留 refdes 与 value，但隐藏重复功能词、封装和不帮助读图的内部标识。\n工程使用边界：隐藏字段不等于删除工程数据；工程审阅、BOM 和 EDA 导出仍应保留唯一参考标号。"
+  },
+  {
+    "title": "MIT 6.002：电路与电子技术课程知识地图",
+    "url": "https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/download/",
+    "publisher": "MIT OpenCourseWare",
+    "authors": "Anant Agarwal 等",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "MIT OpenCourseWare 公开课程页面的自撰摘要；未复制课程讲义或视频正文。",
+    "metadata": {
+      "kind": "university-course",
+      "topic": "circuits-and-electronics",
+      "authorityTier": "A+",
+      "comparison": "与教材目录和厂商博客相比，MIT 课程讲义提供可复核的本科教学结构；涉及具体器件额定值时仍以对应数据手册为准。",
+      "selectionRationale": "基础概念优先采用大学课程材料，器件和工艺专属结论不从课程地图外推。"
+    },
+    "content": "# 电路与电子技术课程地图\nMIT 6.002 的公开课程资源按建模、基本电路分析、叠加与戴维南/诺顿等效、数字抽象、数字门、非线性分析、小信号增量分析、受控源与放大器、MOSFET 大信号放大器组织。这个顺序把线性网络、数字逻辑和晶体管模型连接起来，适合建立学习路径和检索主题。\n对比与取舍：教材目录可以确认章节覆盖面，但 MIT 课程资源同时给出讲义、实验、测验和视频入口，作为基础理论的优先来源；任何芯片引脚、绝对最大额定值、时序或布局数字必须降级为待查数据手册结论。"
+  },
+  {
+    "title": "MIT 6.071J：基尔霍夫定律与非理想电路",
+    "url": "https://ocw.mit.edu/courses/6-071j-introduction-to-electronics-signals-and-measurement-spring-2006/resources/03_kirchhoff1/",
+    "publisher": "MIT OpenCourseWare",
+    "authors": "David Cory、Ian Hutchinson、Manos Chaniotakis",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "MIT OpenCourseWare 公开讲义页面的自撰摘要；未复制 PDF 正文。",
+    "metadata": {
+      "kind": "university-lecture-note",
+      "topic": "kcl-kvl-dc-analysis",
+      "authorityTier": "A+",
+      "comparison": "与简化的欧姆定律条目相比，该讲义明确纳入理想/非理想源和非理想电阻，适合做边界条件复核。"
+    },
+    "content": "# KCL/KVL 与直流建模\n公开讲义覆盖直流电路、I/V 曲线、理想电压源和电流源、理想电阻、功率、基尔霍夫定律、电压分压，以及非理想电压源、非理想电流源和非理想电阻。分析时应先声明参考方向和参考地，再用 KCL/KVL 建立方程，最后检查功率守恒和端口约束。\n对比与取舍：只背公式的初级摘要容易把电源当作理想元件；MIT 讲义对非理想源的提醒更适合工程审查。实际电源的内阻、限流、输出阻抗和测量仪器负载仍需以器件数据手册或实测为准。"
+  },
+  {
+    "title": "MIT 6.002：叠加、戴维南与诺顿等效",
+    "url": "https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/resources/6002_l3/",
+    "publisher": "MIT OpenCourseWare",
+    "authors": "Anant Agarwal",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "MIT OpenCourseWare 公开讲义页面的自撰摘要；未复制课程正文。",
+    "metadata": {
+      "kind": "university-lecture-note",
+      "topic": "thevenin-norton-superposition",
+      "authorityTier": "A+",
+      "comparison": "与通用电路博客相比，MIT 讲义直接把线性、齐次性、叠加和两种等效联系起来，作为基础推导优先。"
+    },
+    "content": "# 线性网络等效\n对线性电路，可用叠加分别计算独立源贡献，也可将端口化简为戴维南等效电压源串联电阻或诺顿等效电流源并联电阻。求等效电阻时，独立电压源置零为短路，独立电流源置零为开路；受控源不能直接删除，应保留并用测试源求端口阻抗。\n工程边界：等效只对指定端口和线性工作区成立；二极管、晶体管大信号切换、磁芯饱和或限流保护介入后必须重新分段建模。"
+  },
+  {
+    "title": "TI ADC12_A：高分辨率 ADC 的接地与噪声控制",
+    "url": "https://www.ti.com/lit/ug/slau406f/slau406f.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "TI 公开用户指南的自撰摘要；数值和图表版权归 Texas Instruments。",
+    "metadata": {
+      "kind": "official-user-guide",
+      "topic": "adc-grounding-noise",
+      "deviceFamily": "MSP430 ADC12_A",
+      "authorityTier": "A+",
+      "comparison": "相比通用的‘模拟地/数字地分开’经验，该资料给出单点连接和去耦组织的明确器件语境；跨型号必须回到目标 ADC 手册。"
+    },
+    "content": "# ADC 接地与噪声\nTI ADC12_A 用户指南指出，高分辨率 ADC 的 PCB 布局和接地需要抑制地环路、寄生耦合与电源噪声；模拟与数字电源应分别去耦，模拟地和数字地在单点连接，避免回流电流与其他电路共用阻抗。数字切换或开关电源产生的纹波尖峰会直接污染转换结果。\n工程边界：单点连接并不是所有系统的固定拓扑。实际方案应结合 ADC 的 AVSS/DVSS、参考源、采样时钟、层叠和回流路径；本资料中的去耦数值不得无条件移植到其他型号。"
+  },
+  {
+    "title": "TI ADS1261-Q1：高精度 ADC 的布局、参考与回流",
+    "url": "https://www.ti.com/cn/lit/gpn/ADS1261-Q1",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "TI 官方数据手册的自撰摘要；具体引脚和推荐值仅适用于 ADS1260/ADS1261-Q1。",
+    "metadata": {
+      "kind": "official-datasheet",
+      "topic": "precision-adc-layout",
+      "device": "ADS1261-Q1",
+      "authorityTier": "A+",
+      "comparison": "当通用布局文章与数据手册冲突时，以目标器件数据手册为准；本条优先级高于泛化的 ADC 经验。"
+    },
+    "content": "# 精密 ADC 布局要点\nADS1261-Q1 数据手册建议优先使用完整地平面；如果必须分割地平面，应在 ADC 处直接连接，避免多点连接形成地环路。数字线应远离 CAPP/CAPN、REFOUT 和模拟输入；长 DOUT/DRDY 线可能因电容增大噪声，必要时使用串联电阻或缓冲。模拟输入和 CAPP/CAPN 可选 C0G，电源去耦可选 X7R，电容应靠近引脚并使用低阻地回路。\n工程边界：这里的 C0G、X7R、10 µF 等建议属于该器件和数据手册版本；换用其他 ADC 时必须核对参考、裸露焊盘、输入 RC、时钟和电源时序。"
+  },
+  {
+    "title": "TI TPS62933：峰值电流模式 Buck 的稳定性分析",
+    "url": "https://www.ti.com/lit/an/sluaag4/sluaag4.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "TI 官方应用报告的自撰摘要；模型和器件参数版权归 Texas Instruments。",
+    "metadata": {
+      "kind": "official-application-report",
+      "topic": "buck-loop-stability",
+      "device": "TPS62933",
+      "authorityTier": "A+",
+      "comparison": "比只用 D≈Vout/Vin 的理想 Buck 公式更深入，纳入输出电容、ESR、误差放大器极点/零点和交越频率；器件内部补偿仍以目标芯片手册为准。"
+    },
+    "content": "# Buck 环路稳定性\nTI 对 TPS62933 的分析把峰值电流模式 Buck 的环路拆成功率级、输出电容/ESR、误差放大器和补偿网络，并用 Bode 图观察交越频率与相位裕度。输出电容的容量、ESR 和直流偏置会改变极点/零点位置；内部补偿芯片也有允许的电感和电容范围。\n工程边界：不能用单一经验值替代环路分析。输入范围、负载范围、开关频率、布局寄生和器件容差都应纳入仿真或频响测量；文章只对所述控制架构提供方法参考。"
+  },
+  {
+    "title": "Analog Devices：容性负载下的运放相位裕度",
+    "url": "https://www.analog.com/en/resources/analog-dialogue/articles/ask-the-applications-engineer-25.html",
+    "publisher": "Analog Devices",
+    "authors": "Grayson King",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "Analog Devices Analog Dialogue 公开文章的自撰摘要；未复制文章正文。",
+    "metadata": {
+      "kind": "vendor-application-article",
+      "topic": "opamp-capacitive-load-stability",
+      "authorityTier": "A",
+      "comparison": "相比只核对闭环增益和 GBW 的运放入门条目，该文章明确把噪声增益、负载极点和相位裕度联系起来；具体器件能力仍以数据手册曲线为最高依据。"
+    },
+    "content": "# 运放容性负载稳定性\nAnalog Devices 说明，电压反馈运放的闭环带宽近似为 GBP/闭环增益；容性负载会在输出阻抗上形成附加极点，降低相位裕度。相位裕度接近零时会振荡，低于约 45° 常见过冲、峰化或振铃风险。可用噪声增益调整、输出串联隔离电阻或其他补偿方法改善，但每种方法都有噪声、输出阻抗或带宽代价。\n工程边界：稳定性必须使用目标运放的开环增益/相位曲线、负载电容、反馈寄生和阶跃响应验证；没有这些信息时应标记为 unknown。"
+  },
+  {
+    "title": "Analog Devices：跨阻放大器的反馈补偿与相位裕度",
+    "url": "https://www.analog.com/en/resources/technical-articles/stabilize-transimpedance-amplifier-circuit-design.html",
+    "publisher": "Analog Devices",
+    "authors": "Analog Devices",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "Analog Devices 公开技术文章的自撰摘要；示例参数不代表所有光电二极管。",
+    "metadata": {
+      "kind": "vendor-technical-article",
+      "topic": "tia-compensation",
+      "authorityTier": "A",
+      "comparison": "跨阻放大器的反馈电阻与输入电容构成专属反馈极点，不能直接套用普通电压放大器的电阻比规则；以该拓扑专文和目标运放数据手册为准。"
+    },
+    "content": "# TIA 反馈电容设计\n跨阻放大器的反馈网络由 Rf 与光电二极管结电容、运放输入电容及寄生电容共同决定。开环增益曲线与 1/β 曲线的交汇处决定稳定性；曲线以约 40 dB/dec 闭合时可能不稳定。并联反馈电容 Cf 可引入零点、改善相位裕度，但过度补偿会牺牲带宽。设计目标通常是约 45° 相位裕度，并为运放 GBWP、Cf 容差和工艺变化留出裕量。\n工程边界：Cf 不能脱离实际光电二极管电容、Rf、运放 GBWP 和目标噪声带宽独立决定，最终需用 SPICE 和实测阶跃响应复核。"
+  },
+  {
+    "title": "Analog Devices：ADC 驱动器的采样瞬态与串联电阻",
+    "url": "https://www.analog.com/en/resources/analog-dialogue/articles/application-example-adc-driver.html",
+    "publisher": "Analog Devices",
+    "authors": "Steve Ruscak",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "Analog Devices Analog Dialogue 公开文章的自撰摘要；AD8011/AD876 参数仅作案例。",
+    "metadata": {
+      "kind": "vendor-application-article",
+      "topic": "adc-driver-settling",
+      "authorityTier": "A",
+      "comparison": "比只看运放静态输入阻抗更接近 SAR/采样 ADC 实际：采样电容的瞬态充电和建立时间是独立约束；器件级数值必须回到 ADC 数据手册。"
+    },
+    "content": "# ADC 驱动与建立时间\n采样型 ADC 在每个采样周期为内部电容充电，会对驱动运放造成动态负载和电荷回灌。Analog Devices 的案例显示，运放输出与 ADC 输入之间加入小串联电阻可隔离容性负载、降低峰化并改善建立；但串联电阻、输入电容和采样时间共同决定噪声、带宽与失真。\n工程边界：驱动器的线性建立和压摆建立必须在 ADC 要求的 1/2 LSB 或目标位数精度内完成；不能只依据运放数据手册的 0.1%/0.01% 建立时间。"
+  },
+  {
+    "title": "Infineon：功率 MOSFET 栅极电阻与开关损耗",
+    "url": "https://www.infineon.com/assets/row/public/documents/24/42/infineon-designing-with-power-mosfets-applicationnotes-en.pdf?fileId=8ac78c8c7ddc01d7017e6c619a490f47",
+    "publisher": "Infineon Technologies",
+    "authors": "Infineon Technologies",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "Infineon 官方应用笔记的自撰摘要；器件曲线和公式版权归 Infineon Technologies。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "topic": "mosfet-switching-losses",
+      "authorityTier": "A+",
+      "comparison": "相比只按 RDS(on) 估算导通损耗，该应用笔记同时考虑栅极电阻、dv/dt、di/dt、体二极管反向恢复和 EMI；具体损耗必须使用目标 MOSFET 数据手册测试条件。"
+    },
+    "content": "# MOSFET 开关损耗与栅极驱动\nInfineon 指出，栅极电阻控制开通/关断速度，速度越快通常开关损耗越低但电压尖峰和 EMI 越高；速度过慢会增加交越损耗。半桥中关断电阻过大还可能因 Miller 电容的 dv/dt 耦合诱发另一只 MOSFET 误导通，产生直通电流。RC 吸收可以降低尖峰，但会增加额外损耗。\n工程边界：应按实际 VDS、ID、栅极驱动电压、Rg、结温和开关频率，从数据手册的 Eon/Eoff 曲线或双脉冲测试计算损耗，再校核热阻和 SOA。"
+  },
+  {
+    "title": "Microchip AVR186：晶体振荡器 PCB 布局",
+    "url": "https://www.microchip.com/en-us/application-notes/an8128",
+    "publisher": "Microchip Technology",
+    "authors": "Microchip Technology",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "Microchip 官方应用笔记索引的自撰摘要；未复制应用笔记正文。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "topic": "crystal-oscillator-layout",
+      "authorityTier": "A+",
+      "comparison": "相比通用‘晶振靠近 MCU’建议，该资料进一步约束寄生电容、回流路径和噪声隔离；目标 MCU 的器件手册优先于通用应用笔记。"
+    },
+    "content": "# 晶体振荡器布局\n晶体、负载电容和并联电阻应彼此靠近，晶振回路应远离 USB、电源和高速切换线；负载电容的地回路要短且不承载其他大电流回流。寄生电容会降低增益裕量，XTAL_IN 与 XTAL_OUT 之间应减少耦合；必要时在振荡器周围使用接地护环或局部地平面。\n工程边界：负载电容值由晶体 CL、MCU 内部电容、封装和 PCB 寄生共同决定，不能把某一 MCU 的典型值套到另一个器件。"
+  },
+  {
+    "title": "Keysight：用 TDR 识别高速互连与阻抗不连续",
+    "url": "https://go.keysight.com/us/en/assets/7018-01461/application-notes/5989-5763.pdf",
+    "publisher": "Keysight Technologies",
+    "authors": "Keysight Technologies",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "Keysight 官方应用笔记的自撰摘要；测试仪器和示例图版权归 Keysight Technologies。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "topic": "signal-integrity-tdr",
+      "authorityTier": "A+",
+      "comparison": "相比只按逻辑电平和静态时序审查数字线，Keysight 资料以边沿速度判断传输线效应，并给出 TDR/TDT 测量路径；高速接口优先采用实测而非目测走线。"
+    },
+    "content": "# 高速信号完整性与 TDR\n当上升时间进入纳秒量级，PCB 互连应按传输线处理。Keysight TDR/TDT 应用笔记介绍用时域反射测量特性阻抗、传播速度、时延、回波损耗、插入损耗和局部不连续，并可建立连接器、过孔、焊盘和终端的模型。数字信号本质上仍是模拟波形，噪声、串扰、损耗和反射会造成眼图闭合或误码。\n工程边界：终端电阻、线宽、介质叠层和长度匹配必须结合目标接口的边沿、阻抗和接收端规范；TDR 结果应与仿真和示波器眼图互相验证。"
+  },
+  {
+    "title": "NXP i.MX RT：EMC 设计中的分区、回流与去耦",
+    "url": "https://www.nxp.com/docs/en/application-note/AN13202.pdf",
+    "publisher": "NXP Semiconductors",
+    "authors": "NXP Semiconductors",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "NXP 官方应用笔记的自撰摘要；未复制 PDF 正文。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "topic": "pcb-emc-layout",
+      "authorityTier": "A+",
+      "comparison": "相较‘地平面越大越好’的泛化说法，NXP 资料同时强调功能分区、参考平面连续性和去耦回路；但仍需按板厂叠层和接口规范裁决。"
+    },
+    "content": "# PCB EMC 布局\nNXP 建议先按电源、模拟、数字和高速接口对功能电路分区，再从高压/高能量区域向低压/敏感区域组织器件。DC/DC 或 LDO 的去耦电容要靠近输入输出引脚；高速信号不要跨越参考平面的分割或缝隙，回流路径应保持低阻连续。模拟传感器、ADC/DAC 与高压、高速数字区保持距离以减少耦合。\n工程边界：分区不是任意切割地平面。层叠、连接器屏蔽、共模回流和安规间距需要与 EMC 预扫、接口规范和实际结构联合确认。"
+  },
+  {
+    "title": "Analog Devices：SAR ADC 输入建立与多通道切换",
+    "url": "https://www.analog.com/en/resources/analog-dialogue/articles/successive-approximation-adcs.html",
+    "publisher": "Analog Devices",
+    "authors": "Analog Devices",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "Analog Devices Analog Dialogue 公开文章的自撰摘要；文中器件示例不代表所有 SAR ADC。",
+    "metadata": {
+      "kind": "vendor-technical-article",
+      "topic": "sar-adc-settling",
+      "authorityTier": "A",
+      "comparison": "比只检查满量程输入范围更严格：多路复用 SAR ADC 还必须在采样电容和通道切换后达到目标位数建立精度；器件数据手册的 acquisition time 优先。"
+    },
+    "content": "# SAR ADC 建立时间\n多通道 SAR ADC 切换后，驱动器和 ADC 内部采样电容必须在 acquisition window 内从满量程阶跃建立到目标精度。Analog Devices 提醒，运放数据手册常给出 0.1% 或 0.01% 建立时间，而 16 位转换需要约 0.00076% 的误差级别，二者不能直接等同。输入源阻抗、RC 滤波、驱动器压摆率和多路复用器切换都会改变结果。\n工程边界：应按目标 ADC 的采样时间、分辨率、输入范围、共模要求和允许失真建立完整时序模型，并用阶跃仿真或实测确认首个有效转换。"
+  },
+  {
+    "title": "TI：直流电机驱动的续流与衰减模式",
+    "url": "https://www.ti.com/lit/pdf/slva321",
+    "publisher": "Texas Instruments",
+    "authors": "Murugavel Raju",
+    "accessedAt": "2026-09-01",
+    "rightsStatus": "unknown",
+    "rightsNote": "TI 官方应用报告的自撰摘要；模式和波形版权归 Texas Instruments。",
+    "metadata": {
+      "kind": "official-application-report",
+      "topic": "motor-current-recirculation",
+      "authorityTier": "A+",
+      "comparison": "相比把电机当作纯电阻负载的基础模型，该报告说明电感电流的续流路径和衰减模式决定纹波、噪声、制动和器件应力；具体桥式驱动时序仍以驱动器手册为准。"
+    },
+    "content": "# 电机电流续流与衰减\n直流电机绕组是电感负载，PWM 关断后电流必须通过体二极管、外部二极管或同步 MOSFET 续流。快衰减、慢衰减和混合衰减会改变电流纹波、转矩纹波、声噪声、制动行为以及功率器件损耗。设计时要沿每个开关状态画出实际回路，核对反向电压、电流峰值和死区时间。\n工程边界：续流策略受具体 H 桥拓扑、栅极驱动、PWM 频率和电机参数影响，不能只按逻辑真值表推断；必须以驱动器数据手册、热计算和示波器波形验证。"
+  },
+  {
+    "title": "TI SLVA689A — I2C Bus Pullup Resistor Calculation",
+    "url": "https://www.ti.com/lit/an/slva689/slva689.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "authorityTier": "A+",
+      "topic": "I²C 上拉与总线电容",
+      "section": "2–5",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# I²C 上拉与总线电容\n## I²C 上拉电阻的上下限\n开漏 I²C 上拉同时受灌电流和上升时间限制；Rp(min)=(VDD−VOL(max))/IOL，Rp(max)=tr(max)/(0.8473Cb)。\n0.8473 对应 30%–70% 上升时间。例：3.3 V、VOL=0.4 V、IOL=3 mA、Cb=200 pF、tr=300 ns，标称窗口约 967 Ω–1.77 kΩ。合并各模块并联上拉后再检查阻值容差、供电角和芯片灌电流，不能固定使用 4.7 kΩ。\n\n## I²C 总线电容与无解上拉窗口\n上拉窗口不存在时，继续减小电阻会超出器件灌电流能力；应减小电容、降低速率或按条件增加缓冲器。\nCb 包含芯片引脚、连接器、线缆、保护器件及测量探头。多板并联上拉还会使等效阻值下降；每侧有电平转换或缓冲器时，应按器件模型分别核对。边沿达标并不自动保证时钟低电平宽度、建立/保持时间达标。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "TI SCBA004E — Implications of Slow or Floating CMOS Inputs",
+    "url": "https://www.ti.com/lit/pdf/scba004",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "authorityTier": "A+",
+      "topic": "CMOS 默认状态与电平边界",
+      "section": "2–7",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# CMOS 默认状态与电平边界\n## 上拉、下拉与默认电平\n上拉/下拉电阻决定引脚在悬空、复位或线缆断开时的默认电平，是安全默认状态和总线空闲电平的基础。\n阻值取舍：太小增加静态电流和驱动负担，太大电平建立时间变长且易受漏电流影响。I2C 上拉按总线电容和目标速率计算；使能/驱动输入的下拉要保证 MCU 复位期间负载默认关断；不要依赖未定义的内部弱上拉承担安全功能。\n\n## 数字逻辑电平兼容与悬空输入\n数字电平兼容需满足 VOH(min)≥VIH(min)、VOL(max)≤VIL(max)，并核对电压、驱动电流和输入边沿限制。\n3.3 V 与 5 V 的名称不能决定兼容性；过压耐受与输入门限是两项条件。浮空或过慢边沿可导致不确定翻转和额外供电电流；用合适上/下拉或施密特输入处理，未用输出不可直接短接到电源或地。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "TI xx555 Precision Timers — NE555 数据手册",
+    "url": "https://www.ti.com/lit/ds/symlink/ne555.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-datasheet",
+      "authorityTier": "A+",
+      "topic": "555 时序与容差",
+      "section": "无稳态应用与电气特性",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# 555 时序与容差\n## 555 无稳态振荡器\n经典无稳态连接中，电容在 1/3VCC 与 2/3VCC 之间充放电，频率近似 f=1.44/((RA+2RB)C)。\n电阻电容容差直接影响频率。若要求精确 50% 占空比、低漂移或高频，应考虑分离充放电路径、晶体振荡器或 MCU 定时器。\n\n## 555 振荡精度与替代方案\n555 频率误差由器件阈值、R/C 容差、漏电与温度共同决定，没有适用于所有 555 的“典型 ±5% 以上”结论。\n标准两电阻无稳态接法近似 f=1/[ln(2)(RA+2RB)C]、Dhigh=(RA+RB)/(RA+2RB)，正电阻条件下高电平占空比大于 50%。≤50% 需改变拓扑，例如另设充放电路径或采用数字时钟；改动后必须重算，不能继续套标准式。电阻上下限、输出能力和供电范围按具体双极型/CMOS 型号检查。\n\n## 555 标称频率与 R/C 容差范围\n标准 555 无稳态 f 与 (RA+2RB)C 成反比；标称值对了不代表容差角达标。\n若两电阻各 ±1%、电容 ±5%，仅 R/C 造成的频率范围为标称的约 0.943–1.063 倍，尚未包含芯片阈值、漏电、温漂和供电影响。精密时基应按误差预算选晶振、MCU 定时器或专用器件。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "TI SLVA115A — ESR, Stability, and the LDO Regulator",
+    "url": "https://www.ti.com/lit/an/slva115a/slva115a.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "authorityTier": "A+",
+      "topic": "LDO 输出电容与稳定性",
+      "section": "1–6",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# LDO 输出电容与稳定性\n## LDO 稳定性与热设计\nLDO 可用于线性稳压，噪声与 PSRR 必须逐型号核对；功耗近似 (Vin−Vout)Iout+Vin×Iq。\n校核 dropout、有效输出容值及 ESR 稳定窗口。热阻与板面积、铜层和气流有关，手册 θJA 不能当作封装恒定属性；温升计算和实测均需覆盖高输入满载角。\n\n## LDO 稳定性与热门禁\nLDO 首版必须同时过三道门：压差余量（dropout）、损耗与结温、输出电容的 ESR/容值稳定区；低噪声场景还要看 PSRR 与噪声指标。\n稳定性按目标 LDO 的有效输出容值和 ESR 窗口检查；陶瓷兼容器件不能照搬老式 LDO 的最小 ESR 要求。损耗初估 Pd≈(Vin−Vout)Iout+Vin×Iq，结温估算必须采用适合实际板和气流的热参数；低输入角核对 dropout，高输入满载角核对热和瞬态。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "TI SLVA139 — Reverse Current/Battery Protection Circuits",
+    "url": "https://www.ti.com/lit/an/slva139/slva139.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "authorityTier": "A+",
+      "topic": "电池反接与反向路径",
+      "section": "1–2",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# 电池反接与反向路径\n## 输入反接与倒灌保护\n反接保护按电流与压降预算选择：串联二极管简单但损失压降，P-MOS/理想二极管低损但要注意栅极保护与瞬态；多电源系统还要防倒灌。\n串联二极管的损耗约为 I×VF，MOSFET 导通损耗约为 I²RDS(on)，后者还需限制 VGS。单管防反接不等于能阻断输出向输入倒灌：导通沟道可双向传导，体二极管方向也必须核对。需要防倒灌时选有反向检测关断的器件；需要双向关断隔离时核对背靠背 MOSFET 结构与控制条件。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "TI LM66100 — Ideal Diode With Input Polarity Protection",
+    "url": "https://www.ti.com/lit/ds/symlink/lm66100.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-datasheet",
+      "authorityTier": "A+",
+      "topic": "电源 OR-ing 与防倒灌",
+      "section": "工作模式与应用章节",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# 电源 OR-ing 与防倒灌\n## 多电源 OR-ing 与断电倒灌\n多路电源并用需要核对反向电流阻断；理想二极管行为取决于比较器关断、体二极管与使能状态。\n分析输入掉电而输出由另一路保持的条件；不能把普通导通 MOSFET 当成单向器件。LM66100 是具体低压器件示例，不能把其限制推广到任意电源轨；高压、大电流、关断隔离或均流需求须重新选器件和拓扑。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "TI SPRA953D — Semiconductor and IC Package Thermal Metrics",
+    "url": "https://www.ti.com/lit/an/spra953d/spra953d.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "authorityTier": "A+",
+      "topic": "封装热参数的使用限制",
+      "section": "1–10",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# 封装热参数的使用限制\n## θJA、θJC 与 ΨJT 的使用边界\nθJA 是给定板、气流与环境下的系统结果；不能把数据手册测试板的 θJA 当作任意 PCB 的固定热阻。\nTj≈Ta+Pd×θJA 只在条件匹配时用于估算。ΨJT 是热表征参数，可结合壳顶温度及功耗估计结温，不能当作严格热阻与 θJC 任意串并联。具体封装的散热焊盘连接和绝缘要求必须查手册。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "TI SLLA272D — The RS-485 Design Guide",
+    "url": "https://www.ti.com/lit/an/slla272d/slla272d.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "authorityTier": "A+",
+      "topic": "RS-485 终端与失效安全",
+      "section": "1–7",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# RS-485 终端与失效安全\n## RS-485 总线终端与参考电位\nRS-485 常以双绞线干线连接节点，在干线两端按电缆特性阻抗终端；常见值为 120 Ω。\n不应在每个节点都加 120 Ω；应缩短支线并按边沿和传播延时校核反射。差分传输仍有接收器共模范围，地电位差超限需合适隔离或参考连接；A/B 标注跨厂商可能不一致，要按真值表核对。\n\n## RS-485 空闲失效安全与总线负载\n总线空闲、短路、开路是否输出确定电平取决于接收器失效安全设计；需要外部偏置时同时计算终端负载。\n两端 120 Ω 对直流呈约 60 Ω 差分负载。外加偏置须与接收器门限、噪声裕量和驱动器负载能力协调，不能在每节点重复偏置。单元负载数量、线长和数据率是不同约束；普通 RS-485 共模范围也不是任意地电位差。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "TI TIDU020A — Comparator with Hysteresis Reference Design",
+    "url": "https://www.ti.com/lit/ug/tidu020a/tidu020a.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "authorityTier": "A+",
+      "topic": "比较器迟滞设计",
+      "section": "4–10",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# 比较器迟滞设计\n## 比较器迟滞与开漏输出\n正反馈为比较器建立上、下两个阈值，以减小慢变输入附近的噪声抖动；开漏输出需要上拉。\n门限须用实际 VOH/VOL 和源阻抗计算；开漏上拉与反馈电阻相互加载，不能把输出高电平无条件当成电源电压。迟滞不能替代共模范围、失调、传播延迟及上电行为检查。\n\n## 比较器迟滞门限的节点方程\n反相比较器若 V+ 经 Rref 接理想 Vref、经 Rfb 接输出，则门限 Vth=(Vref/Rref+Vout/Rfb)/(1/Rref+1/Rfb)。\n输入接 V−，分别代入 VOH、VOL 得上下阈值。例：Vref=1.65 V、Rref=10 kΩ、Rfb=100 kΩ、VOH=3.3 V、VOL=0，阈值为 1.8 V 与 1.5 V。此例按理想推挽输出；开漏必须连同上拉解节点，实际再加偏置电流、失调和电阻容差。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "Analog Devices MT-002 — What the Nyquist Criterion Means to Your Sampled Data System Design",
+    "url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-002.pdf",
+    "publisher": "Analog Devices",
+    "authors": "Analog Devices",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "authorityTier": "A+",
+      "topic": "采样与抗混叠",
+      "section": "1–8",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# 采样与抗混叠\n## 采样、混叠与抗混叠滤波\n对基带限带信号，无混叠采样要求 fs>2B；实际还需为模拟滤波器过渡带和带外干扰留空间。\n已经折叠入目标频带的混叠无法靠采样后数字低通消除。例：fs=10 kS/s 时 9 kHz 干扰可折叠到 1 kHz。带通欠采样须另验证频谱不重叠、模拟输入带宽和时钟质量，不能简单套基带规则。\n\n## 抗混叠滤波器的阻带预算\n先列出会折叠入目标频带的干扰，再确定模拟滤波器在对应频率需要的衰减；不能只指定 fc=fs/2。\n若某带外干扰幅值 1 V、允许折叠后残留 1 mV，需要至少 60 dB 衰减。模拟滤波器还须兼顾通带误差、过渡带、驱动稳定性和采集建立时间；这些条件决定一阶 RC 是否足够。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "Analog Devices MT-001 — SNR = 6.02N + 1.76dB",
+    "url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-001.pdf",
+    "publisher": "Analog Devices",
+    "authors": "Analog Devices",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "authorityTier": "A+",
+      "topic": "量化与过采样",
+      "section": "1–4",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# 量化与过采样\n## ADC 码宽、分辨率与准确度\n理想 N 位 ADC 的码宽 q=输入满量程跨度/2^N；分辨率不等于整体测量准确度。\n例：0–3.3 V 的 12 位理想 ADC，1 LSB≈0.806 mV。实际还包含参考误差、偏移、增益误差、INL 和噪声。满量程跨度与单端/差分编码须查手册；不得把 2^N−1 的显示端点缩放当作量化码宽定义。\n\n## ADC 量化噪声与过采样增益\n理想满幅正弦、量化误差近似不相关时，全奈奎斯特带内 SNR≈6.02N+1.76 dB；不代表实际 ADC 准确度。\n带宽缩小后的处理增益约为 10log10(fs/(2B)) dB。约四倍过采样配合适当低通和抽取可改善约 6 dB，但前提是相关噪声模型成立；重复同一码、参考漂移、INL 和混叠不会因此自动消失。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "TI INAx180 — Low- and High-Side Current-Sense Amplifiers",
+    "url": "https://www.ti.com/lit/ds/symlink/ina180.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-datasheet",
+      "authorityTier": "A+",
+      "topic": "分流测流与 Kelvin 布线",
+      "section": "应用与 Layout Guidelines",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# 分流测流与 Kelvin 布线\n## 分流电阻测流与 Kelvin 取样\n分流测量 Vshunt=IRshunt，电阻损耗 P=I²R；取样线应从电阻有效端点独立引出。\n例：5 A 经 10 mΩ 分流器产生 50 mV、0.25 W。选择功率时还需温度降额与脉冲能力；共用功率铜线的压降会被误测成电流。高边测量必须满足放大器输入共模范围，毫伏差分电压不代表共模电压低。\n\n## 电流检测的失调、热漂移与布线误差\n分流测量低电流误差常由输入失调主导：等效电流误差约 Vos/Rshunt；大电流时须计入电阻自热和增益误差。\n例：100 µV 输入失调、10 mΩ 分流器对应约 10 mA 电流偏差。加上分流器容差/TCR、放大器增益误差、ADC/参考误差；PWM 共模阶跃还会造成动态误差。不能只检查静态共模范围就判定瞬态采样准确。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "TI SWPA222A — Power Delivery Network Analysis",
+    "url": "https://www.ti.com/lit/pdf/swpa222",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "authorityTier": "A+",
+      "topic": "PDN 目标阻抗与反谐振",
+      "section": "8–13",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# PDN 目标阻抗与反谐振\n## 电源分配网络与去耦组合\nPDN 目标阻抗 Ztarget=ΔVallow/ΔIstep，单位为 Ω；允许电压波动除以负载电流变化，不能写反。\n例：允许波动 30 mV、负载阶跃 1.5 A，目标阻抗为 20 mΩ。ΔV 必须先扣除直流误差等预算；电流幅值定义须一致，不能把特定应用报告的 0.5 系数当成通式。电容有效容值、ESR、ESL、安装回路和反谐振共同决定有效频带，应进行阻抗扫描与负载阶跃验证，不能只靠固定电容组合。\n\n## PDN 反谐振与电容安装电感\n不同容值的电容并联不保证所有频率阻抗都下降；安装电感和 ESR 会形成或移动阻抗峰。\n用实际偏压下的电容模型与布局寄生评估目标频带，优先缩小电源-电容-地回路，再选择容值和阻尼。过多理想低 ESR 电容模型可能掩盖实际反谐振；通过阻抗扫描与负载阶跃交叉验证。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "TI TUSB321 — USB Type-C Configuration Channel Logic and Port Control",
+    "url": "https://www.ti.com/lit/ds/symlink/tusb321.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-datasheet",
+      "authorityTier": "A+",
+      "topic": "USB-C CC 连接检测",
+      "section": "CC 电气特性与 UFP 模式",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# USB-C CC 连接检测\n## USB-C 取电的 CC 检测与电流边界\nUSB-C 受电端要有正确 CC 终端与连接检测；连接器外形不保证任意电压或任意电流。\n以受电插座为例，CC1、CC2 分别提供 Rd（常见标称 5.1 kΩ），或使用集成 Rd 的 CC 控制器，不能把两脚短接共用一个电阻。电流不得超过源端公布能力；高于默认 5 V 的供电需对应协议协商，单靠 Rd 不能得到 9 V/12 V。集成控制器按其手册连接，避免重复加 Rd。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "TI SBOA160D — In-Line Motor Current Measurements With PWM Rejection",
+    "url": "https://www.ti.com/lit/an/sboa160/sboa160.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "authorityTier": "A+",
+      "topic": "PWM 噪声与动态测流",
+      "section": "1–2",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# PWM 噪声与动态测流\n## PWM 频率选择的工程权衡\nPWM 频率在电流纹波、开关损耗、定时分辨率和声学噪声之间折中；16 kHz 仍可能处于可听范围，不能把 16–20 kHz 宣称为避开可听域。\n电机常把高于约 20 kHz 作为减小基波可听噪声的起点，但机械共振、次谐波与调制仍需实测。开关频率升高增加单位时间切换次数及损耗，不必然使单个边沿的 dv/dt、di/dt 变大。还应检查最小脉宽、死区、电流采样建立时间和驱动器额定工作频率。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "TI SLVA477 — Basic Calculation of a Buck Converter's Power Stage",
+    "url": "https://www.ti.com/lit/an/slva477b/slva477b.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "authorityTier": "A+",
+      "topic": "Buck 连续导通功率级",
+      "section": "1–5；旧版本 URL 当前返回 Rev. C",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# Buck 连续导通功率级\n## Buck 降压转换器基础\nBuck 将较高直流电压降到较低电压。理想连续导通状态下 D≈Vout/Vin；器件选择需校核开关峰值电流、纹波、环路和热性能。\n关键 PCB 环路是输入旁路电容、高边/低边开关和功率地构成的高 di/dt 回路。输入电容应紧贴功率引脚，SW 节点应短小并远离反馈取样。\n\n## Buck 功率级最坏工况门禁\nBuck 定型需要输入电压范围、输出电压、最大负载电流和具体控制器数据；电感、电流限制与输出电容必须在最坏工作角复核。\n先在 Vin(max)、fs(min)、L(min) 等组合下计算纹波和峰值电流，再与芯片电流限制最小值、电感饱和/有效电流和热条件比较。输出电容同时考虑容性纹波、ESR、直流偏压后的有效容值和瞬态。\n\n## Buck CCM 纹波与峰值电流算例\n理想连续导通 Buck：D=Vout/Vin，ΔIL=(Vin−Vout)D/(Lfs)，ILpeak=Iout+ΔIL/2。\n12 V→5 V、1 A、22 µH、500 kHz 时，ΔIL≈0.265 A，峰值≈1.133 A。电容纹波初估 ΔVC≈ΔIL/(8fsC)，ESR 项≈ΔIL×ESR；瞬态、电容降容及实测尖峰需单独检查，公式不可直接外推到 DCM/跳脉冲。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "TI SLVA372D — Basic Calculation of a Boost Converter's Power Stage",
+    "url": "https://www.ti.com/lit/an/slva372d/slva372d.pdf",
+    "publisher": "Texas Instruments",
+    "authors": "Texas Instruments",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "authorityTier": "A+",
+      "topic": "Boost 功率级与输入电流",
+      "section": "1–7",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# Boost 功率级与输入电流\n## Boost 升压转换器基础\n普通 Boost 在理想连续导通稳态下 D≈1−Vin/Vout；输入最低电压通常对应较大输入与开关电流。\n先由能量预算算 Iin≈Vout×Iout/(ηVin)，再核算纹波峰值和额定值。连续导通模式的环路还受右半平面零点限制；断续或跳脉冲模式不能直接套用相同小信号模型。普通 Boost 关断时通常仍存在 VIN 到 VOUT 的路径。\n\n## Boost 峰值电流、关断直通与输出保护\nBoost 的输入最低电压通常对应最大占空比和电感/开关压力；普通 Boost 还存在 VIN 经电感和二极管通向 VOUT 的关断直通路径。\n占空比应包含效率估计并在 Vin(min) 角计算输入与峰值电流。二极管或同步管需校核反压、浪涌、热和反向恢复；需要真正关断或输出短路隔离时，必须增加断路器件或改用支持隔离的拓扑。\n\n## Boost 输出电流与输入峰值的区别\nBoost 输入电流约 Iin=Vout×Iout/(ηVin)，电感平均电流约等于输入电流，不能用输出电流直接选电感或限流值。\n例：3.3 V→12 V、输出 0.3 A、假设效率 85%，平均输入电流约 1.283 A，峰值还需加纹波的一半。效率是假设，随输入、负载与温度变化；需在最低输入角核算，并核对启动、限流与输出短路路径。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  },
+  {
+    "title": "ST AN2586 — Getting started with STM32F10xxx hardware development",
+    "url": "https://www.st.com/resource/en/application_note/cd00164185-getting-started-with-stm32f10xxx-hardware-development-stmicroelectronics.pdf",
+    "publisher": "STMicroelectronics",
+    "authors": "STMicroelectronics",
+    "accessedAt": "2026-10-19",
+    "rightsStatus": "unknown",
+    "rightsNote": "官方公开资料的自撰归纳与自算示例；原文版权归权利人，不复制原图、正文或表格。",
+    "metadata": {
+      "kind": "vendor-application-note",
+      "authorityTier": "A+",
+      "topic": "MCU 电源、复位与启动边界",
+      "section": "电源、复位、启动及调试章节",
+      "comparison": "此来源支撑所述原理或对应器件示例；具体型号的工作范围和版本优先，不将通用知识或样例额定值推广到其他器件。",
+      "verifiedAt": "2026-10-19",
+      "verificationMethod": "人工打开官方页面/文档核对标题与相关章节；计算例为独立整理。"
+    },
+    "content": "# MCU 电源、复位与启动边界\n## MCU 电源域、去耦与接口引出\nMCU 最小系统的可靠性来自电源域划分：每个 VDD 引脚就近去耦、模拟电源按数据手册滤波、复位与调试接口完整引出。\n每个电源域的电容、VDDA/VREF 连接和时序按目标 MCU 手册确定；100 nF 加储能电容仅是常见起点。未用数字输入不能默认悬空，应按手册配置模拟模式、内部上/下拉或明确电平；输出、NC、保留脚、启动和调试脚分别处理。外设有电而 MCU 断电时核对引脚注入电流及倒灌。\n\n适用边界：摘要为自撰学习说明及标称算例；器件额定值与引脚连接须按目标型号及版本核对，不能作为已完成的硬件验证。"
+  }
+]

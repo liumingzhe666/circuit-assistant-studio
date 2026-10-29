@@ -1,0 +1,473 @@
+TAP version 13
+# Subtest: Agent 运行互斥，步骤完成后才允许完成任务
+ok 1 - Agent 运行互斥，步骤完成后才允许完成任务
+  ---
+  duration_ms: 5.3767
+  type: 'test'
+  ...
+# Subtest: 失败记录保留已完成步骤，标记失败和未执行步骤，并允许重试
+ok 2 - 失败记录保留已完成步骤，标记失败和未执行步骤，并允许重试
+  ---
+  duration_ms: 0.8304
+  type: 'test'
+  ...
+# Subtest: 降级不冒充模型成功，历史最多保留8项且快照独立
+ok 3 - 降级不冒充模型成功，历史最多保留8项且快照独立
+  ---
+  duration_ms: 0.4922
+  type: 'test'
+  ...
+# Subtest: 完成任务保存独立结果快照，序列化结果也不共享引用
+ok 4 - 完成任务保存独立结果快照，序列化结果也不共享引用
+  ---
+  duration_ms: 0.3384
+  type: 'test'
+  ...
+# Subtest: 恢复跨重启运行时标记中断，历史去重并限制为8项
+ok 5 - 恢复跨重启运行时标记中断，历史去重并限制为8项
+  ---
+  duration_ms: 0.7452
+  type: 'test'
+  ...
+# Subtest: 选择历史记录产生独立活动快照，清空会通知观察者
+ok 6 - 选择历史记录产生独立活动快照，清空会通知观察者
+  ---
+  duration_ms: 0.2609
+  type: 'test'
+  ...
+# Subtest: 恢复畸形会话时安全回退而不抛错
+ok 7 - 恢复畸形会话时安全回退而不抛错
+  ---
+  duration_ms: 0.4038
+  type: 'test'
+  ...
+# Subtest: Agent界面具有可访问的任务入口，保留工程边界与减少动画支持
+ok 8 - Agent界面具有可访问的任务入口，保留工程边界与减少动画支持
+  ---
+  duration_ms: 1.2658
+  type: 'test'
+  ...
+# Subtest: 完整解题链路保留 M/m/k/meg 及中文欧姆前缀
+ok 9 - 完整解题链路保留 M/m/k/meg 及中文欧姆前缀
+  ---
+  duration_ms: 1.714
+  type: 'test'
+  ...
+# Subtest: 端点判定覆盖 IPv4 回环、IPv6 回环、远程和伪装主机
+ok 10 - 端点判定覆盖 IPv4 回环、IPv6 回环、远程和伪装主机
+  ---
+  duration_ms: 0.6302
+  type: 'test'
+  ...
+# Subtest: 本地知识默认按选中供应商的实际端点判断，缺失端点拒绝附带
+ok 11 - 本地知识默认按选中供应商的实际端点判断，缺失端点拒绝附带
+  ---
+  duration_ms: 0.1419
+  type: 'test'
+  ...
+# Subtest: 真实请求构造在远程 Ollama/兼容接口中不含片段，所有请求禁止重定向（fetch mock）
+ok 12 - 真实请求构造在远程 Ollama/兼容接口中不含片段，所有请求禁止重定向（fetch mock）
+  ---
+  duration_ms: 2.9458
+  type: 'test'
+  ...
+# Subtest: 重定向错误向上传播，且不执行第二次请求（fetch mock）
+ok 13 - 重定向错误向上传播，且不执行第二次请求（fetch mock）
+  ---
+  duration_ms: 0.3997
+  type: 'test'
+  ...
+# Subtest: 解析降压电源的电压与电流
+ok 14 - 解析降压电源的电压与电流
+  ---
+  duration_ms: 1.7177
+  type: 'test'
+  ...
+# Subtest: 生成 Buck 草案包含可绘制原理图和 BOM
+ok 15 - 生成 Buck 草案包含可绘制原理图和 BOM
+  ---
+  duration_ms: 3.7537
+  type: 'test'
+  ...
+# Subtest: 监督智能体阻断错误的 Buck 拓扑
+ok 16 - 监督智能体阻断错误的 Buck 拓扑
+  ---
+  duration_ms: 1.1541
+  type: 'test'
+  ...
+# Subtest: 监督智能体阻断高风险直投
+ok 17 - 监督智能体阻断高风险直投
+  ---
+  duration_ms: 0.4912
+  type: 'test'
+  ...
+# Subtest: 运放增益生成正确的反馈比
+ok 18 - 运放增益生成正确的反馈比
+  ---
+  duration_ms: 0.4602
+  type: 'test'
+  ...
+# Subtest: 知识智能体可检索并摄取本地文本
+ok 19 - 知识智能体可检索并摄取本地文本
+  ---
+  duration_ms: 0.3761
+  type: 'test'
+  ...
+# Subtest: 导出 BOM 与 PCB 交接包
+ok 20 - 导出 BOM 与 PCB 交接包
+  ---
+  duration_ms: 1.4538
+  type: 'test'
+  ...
+# Subtest: AI JSON 解析兼容代码围栏
+ok 21 - AI JSON 解析兼容代码围栏
+  ---
+  duration_ms: 1.063
+  type: 'test'
+  ...
+# Subtest: AI 接口只允许 HTTPS 或本机 HTTP
+ok 22 - AI 接口只允许 HTTPS 或本机 HTTP
+  ---
+  duration_ms: 0.5769
+  type: 'test'
+  ...
+# Subtest: 本地书籍片段只会交给本机模型接口
+ok 23 - 本地书籍片段只会交给本机模型接口
+  ---
+  duration_ms: 0.2845
+  type: 'test'
+  ...
+# Subtest: 物品栏提供可用于构图的基础元件
+ok 24 - 物品栏提供可用于构图的基础元件
+  ---
+  duration_ms: 0.1233
+  type: 'test'
+  ...
+# Subtest: 物品栏覆盖常用分立、控制、电源与执行器件
+ok 25 - 物品栏覆盖常用分立、控制、电源与执行器件
+  ---
+  duration_ms: 0.124
+  type: 'test'
+  ...
+# Subtest: 题目助手求解串联与分压题
+ok 26 - 题目助手求解串联与分压题
+  ---
+  duration_ms: 1.0819
+  type: 'test'
+  ...
+# Subtest: 题目助手求解 RC 截止频率
+ok 27 - 题目助手求解 RC 截止频率
+  ---
+  duration_ms: 0.1564
+  type: 'test'
+  ...
+# Subtest: 优化智能体发现缺少参考地、连线和退耦
+ok 28 - 优化智能体发现缺少参考地、连线和退耦
+  ---
+  duration_ms: 0.3631
+  type: 'test'
+  ...
+# Subtest: 自然语言“点亮灯泡”生成器件齐全的低压 LED 第一版
+ok 29 - 自然语言“点亮灯泡”生成器件齐全的低压 LED 第一版
+  ---
+  duration_ms: 0.7645
+  type: 'test'
+  ...
+# Subtest: 用户可基于第一版修改供电、LED颜色和开关
+ok 30 - 用户可基于第一版修改供电、LED颜色和开关
+  ---
+  duration_ms: 1.1561
+  type: 'test'
+  ...
+# Subtest: 监督智能体检查 LED 首版的具体器件与完整性
+ok 31 - 监督智能体检查 LED 首版的具体器件与完整性
+  ---
+  duration_ms: 0.3325
+  type: 'test'
+  ...
+# Subtest: 自然语言“驱动小车”生成双 H 桥而不是通用方框图
+ok 32 - 自然语言“驱动小车”生成双 H 桥而不是通用方框图
+  ---
+  duration_ms: 1.2725
+  type: 'test'
+  ...
+# Subtest: 每次生成和修订小车电路都会通过关键引脚连通校验
+ok 33 - 每次生成和修订小车电路都会通过关键引脚连通校验
+  ---
+  duration_ms: 6.9363
+  type: 'test'
+  ...
+# Subtest: 所有内置原理图模板都没有悬空端点或断线段
+ok 34 - 所有内置原理图模板都没有悬空端点或断线段
+  ---
+  duration_ms: 19.8553
+  type: 'test'
+  ...
+# Subtest: 多引脚模板使用监管指定的真实端点坐标
+ok 35 - 多引脚模板使用监管指定的真实端点坐标
+  ---
+  duration_ms: 3.5934
+  type: 'test'
+  ...
+# Subtest: 小车需求会按语义区分电机电压和 MCU 电平
+ok 36 - 小车需求会按语义区分电机电压和 MCU 电平
+  ---
+  duration_ms: 0.1735
+  type: 'test'
+  ...
+# Subtest: 小车参数修订不会误切换为低边驱动或 MCU 供电
+ok 37 - 小车参数修订不会误切换为低边驱动或 MCU 供电
+  ---
+  duration_ms: 1.4589
+  type: 'test'
+  ...
+# Subtest: 生成链路会应用带来源的结构化知识规则
+ok 38 - 生成链路会应用带来源的结构化知识规则
+  ---
+  duration_ms: 1.1286
+  type: 'test'
+  ...
+# Subtest: 中文整句知识检索可匹配小车 H 桥专题
+ok 39 - 中文整句知识检索可匹配小车 H 桥专题
+  ---
+  duration_ms: 0.1009
+  type: 'test'
+  ...
+# Subtest: 工程校验把缺失堵转电流标记为未决参数
+ok 40 - 工程校验把缺失堵转电流标记为未决参数
+  ---
+  duration_ms: 0.5682
+  type: 'test'
+  ...
+# Subtest: Agent界面不虚构训练或智能体编队，保留工程校验
+ok 41 - Agent界面不虚构训练或智能体编队，保留工程校验
+  ---
+  duration_ms: 0.5427
+  type: 'test'
+  ...
+# Subtest: 元件拖动期间连续跟手并在松开时吸附网格
+ok 42 - 元件拖动期间连续跟手并在松开时吸附网格
+  ---
+  duration_ms: 0.1604
+  type: 'test'
+  ...
+# Subtest: 元件拖动计算器仍可按调用方指定边界约束
+ok 43 - 元件拖动计算器仍可按调用方指定边界约束
+  ---
+  duration_ms: 0.3287
+  type: 'test'
+  ...
+# Subtest: 工作室使用可无限平移的网格和无边界元件坐标
+ok 44 - 工作室使用可无限平移的网格和无边界元件坐标
+  ---
+  duration_ms: 1.0296
+  type: 'test'
+  ...
+# Subtest: 工作室连线提供拖拽、点击和端点磁性吸附
+ok 45 - 工作室连线提供拖拽、点击和端点磁性吸附
+  ---
+  duration_ms: 1.3149
+  type: 'test'
+  ...
+# Subtest: 主进程忽略已关闭诊断管道的 EPIPE
+ok 46 - 主进程忽略已关闭诊断管道的 EPIPE
+  ---
+  duration_ms: 0.332
+  type: 'test'
+  ...
+# Subtest: 中文检索词会生成适合 SQLite FTS5 的双字词
+ok 47 - 中文检索词会生成适合 SQLite FTS5 的双字词
+  ---
+  duration_ms: 0.682
+  type: 'test'
+  ...
+# Subtest: 长页面会切块并保留重叠与页码
+ok 48 - 长页面会切块并保留重叠与页码
+  ---
+  duration_ms: 0.4614
+  type: 'test'
+  ...
+# Subtest: 资料导入 SQLite 后可检索、去重并追溯出版社
+ok 49 - 资料导入 SQLite 后可检索、去重并追溯出版社
+  ---
+  duration_ms: 50.2667
+  type: 'test'
+  ...
+# Subtest: 公开网页摘要会保存 URL、版权备注并进入全文检索
+ok 50 - 公开网页摘要会保存 URL、版权备注并进入全文检索
+  ---
+  duration_ms: 36.3392
+  type: 'test'
+  ...
+# Subtest: 工作室只在元件真实端点提供连接点
+ok 51 - 工作室只在元件真实端点提供连接点
+  ---
+  duration_ms: 1.187
+  type: 'test'
+  ...
+# Subtest: 新增常用器件提供与符号匹配的真实引脚
+ok 52 - 新增常用器件提供与符号匹配的真实引脚
+  ---
+  duration_ms: 0.2526
+  type: 'test'
+  ...
+# Subtest: 普通绑定不接受旧外壳锚点，迁移器只迁移明确旧数据
+ok 53 - 普通绑定不接受旧外壳锚点，迁移器只迁移明确旧数据
+  ---
+  duration_ms: 2.3124
+  type: 'test'
+  ...
+# Subtest: 无坐标旧 pin 只有显式迁移后才能路由和通过审计
+ok 54 - 无坐标旧 pin 只有显式迁移后才能路由和通过审计
+  ---
+  duration_ms: 1.971
+  type: 'test'
+  ...
+# Subtest: 跨元件连接校验拒绝同一元件的不同引脚
+ok 55 - 跨元件连接校验拒绝同一元件的不同引脚
+  ---
+  duration_ms: 0.1129
+  type: 'test'
+  ...
+# Subtest: 排版智能体将小车驱动图变为正交简洁布局
+ok 56 - 排版智能体将小车驱动图变为正交简洁布局
+  ---
+  duration_ms: 2.515
+  type: 'test'
+  ...
+# Subtest: 排版策略可追溯到公开官方资料
+ok 57 - 排版策略可追溯到公开官方资料
+  ---
+  duration_ms: 0.1692
+  type: 'test'
+  ...
+# Subtest: 连通审计能发现未落在器件引脚或网络上的断点
+ok 58 - 连通审计能发现未落在器件引脚或网络上的断点
+  ---
+  duration_ms: 0.128
+  type: 'test'
+  ...
+# Subtest: 工作室导线绑定具体引脚并在元件移动后保持连续
+ok 59 - 工作室导线绑定具体引脚并在元件移动后保持连续
+  ---
+  duration_ms: 0.5415
+  type: 'test'
+  ...
+# Subtest: 移动已连线运放时导线会绕开符号本体
+ok 60 - 移动已连线运放时导线会绕开符号本体
+  ---
+  duration_ms: 0.291
+  type: 'test'
+  ...
+# Subtest: 生成的小车原理图导入工作室后移动驱动器不会拉断网络
+ok 61 - 生成的小车原理图导入工作室后移动驱动器不会拉断网络
+  ---
+  duration_ms: 2.991
+  type: 'test'
+  ...
+# Subtest: 并发保存全部保留；保存/删除共用 FIFO 读改写队列
+ok 62 - 并发保存全部保留；保存/删除共用 FIFO 读改写队列
+  ---
+  duration_ms: 253.7525
+  type: 'test'
+  ...
+# Subtest: 无 id 并发新建不会因同毫秒时间戳覆盖
+ok 63 - 无 id 并发新建不会因同毫秒时间戳覆盖
+  ---
+  duration_ms: 147.976
+  type: 'test'
+  ...
+# Subtest: 损坏 JSON/非法项目结构报错且原样保留，队列失败后仍可继续
+ok 64 - 损坏 JSON/非法项目结构报错且原样保留，队列失败后仍可继续
+  ---
+  duration_ms: 26.3027
+  type: 'test'
+  ...
+# Subtest: 权限读取错误不可当成空项目覆盖
+ok 65 - 权限读取错误不可当成空项目覆盖
+  ---
+  duration_ms: 3.8645
+  type: 'test'
+  ...
+# Subtest: 原子替换前旧文件完整可读；临时文件同目录且 rename 失败不破坏原件
+ok 66 - 原子替换前旧文件完整可读；临时文件同目录且 rename 失败不破坏原件
+  ---
+  duration_ms: 32.8778
+  type: 'test'
+  ...
+# Subtest: 设置/知识保存兼容旧配置，损坏 JSON 同样禁止覆盖
+ok 67 - 设置/知识保存兼容旧配置，损坏 JSON 同样禁止覆盖
+  ---
+  duration_ms: 21.8248
+  type: 'test'
+  ...
+# Subtest: Agent 会话缺省值稳定，保存后可完整往返 JSON 结果快照
+ok 68 - Agent 会话缺省值稳定，保存后可完整往返 JSON 结果快照
+  ---
+  duration_ms: 10.3441
+  type: 'test'
+  ...
+# Subtest: Agent 会话清理未知字段并截断历史、阶段和长字符串
+ok 69 - Agent 会话清理未知字段并截断历史、阶段和长字符串
+  ---
+  duration_ms: 15.213
+  type: 'test'
+  ...
+# Subtest: Agent 会话拒绝超大输入和非 JSON-safe 结果
+ok 70 - Agent 会话拒绝超大输入和非 JSON-safe 结果
+  ---
+  duration_ms: 8.7001
+  type: 'test'
+  ...
+# Subtest: Agent 会话损坏或结构非法时保留原文件并拒绝覆盖
+ok 71 - Agent 会话损坏或结构非法时保留原文件并拒绝覆盖
+  ---
+  duration_ms: 14.34
+  type: 'test'
+  ...
+# Subtest: Agent 会话并发保存复用 FIFO 队列，最终文件保持完整有效
+ok 72 - Agent 会话并发保存复用 FIFO 队列，最终文件保持完整有效
+  ---
+  duration_ms: 161.5565
+  type: 'test'
+  ...
+# Subtest: Agent 会话 IPC 与 preload 桥接名称保持一致
+ok 73 - Agent 会话 IPC 与 preload 桥接名称保持一致
+  ---
+  duration_ms: 0.6933
+  type: 'test'
+  ...
+# Subtest: 0.8.7 版本标识、构建目录和项目导出版本保持一致
+ok 74 - 0.8.7 版本标识、构建目录和项目导出版本保持一致
+  ---
+  duration_ms: 0.6666
+  type: 'test'
+  ...
+# Subtest: Agent 工作台使用本机历史、独立结果快照与紧凑首屏
+ok 75 - Agent 工作台使用本机历史、独立结果快照与紧凑首屏
+  ---
+  duration_ms: 0.3734
+  type: 'test'
+  ...
+# Subtest: 工作室补齐键盘添加、项目名同步和窄屏抽屉保护
+ok 76 - 工作室补齐键盘添加、项目名同步和窄屏抽屉保护
+  ---
+  duration_ms: 0.1695
+  type: 'test'
+  ...
+# Subtest: Electron smoke 覆盖会话重载、最小窗口高度和窄屏面板
+ok 77 - Electron smoke 覆盖会话重载、最小窗口高度和窄屏面板
+  ---
+  duration_ms: 0.0814
+  type: 'test'
+  ...
+1..77
+# tests 77
+# suites 0
+# pass 77
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 812.4295
+

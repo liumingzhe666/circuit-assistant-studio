@@ -1,0 +1,187 @@
+{
+  "testedAt": "2026-09-14T14:26:52.812Z",
+  "mode": "isolated Electron, local rules only",
+  "checks": [
+    {
+      "name": "默认打开 Agent 工作台",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "空需求不启动任务",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "重复快捷键只生成一次",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "本地模式如实跳过模型",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "生成不覆盖工作室",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "运行记录写入本机",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "重载后恢复运行记录",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "结果入口打开真实原理图",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "发送方案到工作室",
+      "passed": true,
+      "detail": {
+        "components": 8
+      }
+    },
+    {
+      "name": "元件物品栏支持点击添加",
+      "passed": true,
+      "detail": {
+        "before": 8,
+        "after": 9
+      }
+    },
+    {
+      "name": "其他页面 Delete 不删除画布元件",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "审查画布产生真实报告",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "修订复用工作流并生成新版",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "旧记录恢复自己的结果快照",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "界面求解兆欧单位正确",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1440x920 窗口尺寸已生效",
+      "passed": true,
+      "detail": {
+        "width": 1441,
+        "height": 921
+      }
+    },
+    {
+      "name": "1440px 工作台无横向溢出",
+      "passed": true,
+      "detail": {
+        "scroll": 1203,
+        "client": 1203,
+        "body": 1426,
+        "viewport": 1426,
+        "height": 884,
+        "historyTop": 645.6309204101562,
+        "window": {
+          "width": 1441,
+          "height": 921
+        }
+      }
+    },
+    {
+      "name": "1440x920 首屏可见最近运行入口",
+      "passed": true,
+      "detail": {
+        "scroll": 1203,
+        "client": 1203,
+        "body": 1426,
+        "viewport": 1426,
+        "height": 884,
+        "historyTop": 645.6309204101562,
+        "window": {
+          "width": 1441,
+          "height": 921
+        }
+      }
+    },
+    {
+      "name": "1120x720 窗口尺寸已生效",
+      "passed": true,
+      "detail": {
+        "width": 1121,
+        "height": 722
+      }
+    },
+    {
+      "name": "1120px 工作台无横向溢出",
+      "passed": true,
+      "detail": {
+        "scroll": 909,
+        "client": 909,
+        "body": 1106,
+        "viewport": 1106,
+        "height": 684,
+        "historyTop": 643.3958740234375,
+        "window": {
+          "width": 1121,
+          "height": 722
+        }
+      }
+    },
+    {
+      "name": "1120x720 首屏可见最近运行入口",
+      "passed": true,
+      "detail": {
+        "scroll": 909,
+        "client": 909,
+        "body": 1106,
+        "viewport": 1106,
+        "height": 684,
+        "historyTop": 643.3958740234375,
+        "window": {
+          "width": 1121,
+          "height": 722
+        }
+      }
+    },
+    {
+      "name": "窄屏默认收起属性面板",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "窄屏属性面板可以重新展开",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "点击画布收起窄屏属性面板",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "交互期间无未捕获异常",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "passed": true
+}

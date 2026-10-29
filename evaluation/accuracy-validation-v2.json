@@ -1,0 +1,1267 @@
+{
+  "format": "circuit-accuracy-validation-v2",
+  "description": "Fixed additional parameter combinations and boundary cases, kept separate from the 132-case repair regression set. Frozen before first execution; diagnostic validation, not a random real-world sample.",
+  "cases": [
+    {
+      "id": "V001",
+      "category": "requirement",
+      "action": "parse",
+      "input": "输出2.5V，输入16V，负载0.12A的buck",
+      "expected": {
+        "inputVoltage": 16,
+        "outputVoltage": 2.5,
+        "current": 0.12,
+        "kind": "buck"
+      }
+    },
+    {
+      "id": "V002",
+      "category": "requirement",
+      "action": "parse",
+      "input": "VIN=16V，VOUT=2.5V，负载120mA的buck",
+      "expected": {
+        "inputVoltage": 16,
+        "outputVoltage": 2.5,
+        "current": 0.12,
+        "kind": "buck"
+      }
+    },
+    {
+      "id": "V003",
+      "category": "requirement",
+      "action": "parse",
+      "input": "16伏输入，2.5伏输出，电流120毫安的buck",
+      "expected": {
+        "inputVoltage": 16,
+        "outputVoltage": 2.5,
+        "current": 0.12,
+        "kind": "buck"
+      }
+    },
+    {
+      "id": "V004",
+      "category": "requirement",
+      "action": "parse",
+      "input": "输出7V，输入28V，负载0.65A的buck",
+      "expected": {
+        "inputVoltage": 28,
+        "outputVoltage": 7,
+        "current": 0.65,
+        "kind": "buck"
+      }
+    },
+    {
+      "id": "V005",
+      "category": "requirement",
+      "action": "parse",
+      "input": "VIN=28V，VOUT=7V，负载650mA的buck",
+      "expected": {
+        "inputVoltage": 28,
+        "outputVoltage": 7,
+        "current": 0.65,
+        "kind": "buck"
+      }
+    },
+    {
+      "id": "V006",
+      "category": "requirement",
+      "action": "parse",
+      "input": "28伏输入，7伏输出，电流650毫安的buck",
+      "expected": {
+        "inputVoltage": 28,
+        "outputVoltage": 7,
+        "current": 0.65,
+        "kind": "buck"
+      }
+    },
+    {
+      "id": "V007",
+      "category": "requirement",
+      "action": "parse",
+      "input": "输出15V，输入4.5V，负载0.18A的boost",
+      "expected": {
+        "inputVoltage": 4.5,
+        "outputVoltage": 15,
+        "current": 0.18,
+        "kind": "boost"
+      }
+    },
+    {
+      "id": "V008",
+      "category": "requirement",
+      "action": "parse",
+      "input": "VIN=4.5V，VOUT=15V，负载180mA的boost",
+      "expected": {
+        "inputVoltage": 4.5,
+        "outputVoltage": 15,
+        "current": 0.18,
+        "kind": "boost"
+      }
+    },
+    {
+      "id": "V009",
+      "category": "requirement",
+      "action": "parse",
+      "input": "4.5伏输入，15伏输出，电流180毫安的boost",
+      "expected": {
+        "inputVoltage": 4.5,
+        "outputVoltage": 15,
+        "current": 0.18,
+        "kind": "boost"
+      }
+    },
+    {
+      "id": "V010",
+      "category": "requirement",
+      "action": "parse",
+      "input": "输出22V，输入7.5V，负载0.3A的boost",
+      "expected": {
+        "inputVoltage": 7.5,
+        "outputVoltage": 22,
+        "current": 0.3,
+        "kind": "boost"
+      }
+    },
+    {
+      "id": "V011",
+      "category": "requirement",
+      "action": "parse",
+      "input": "VIN=7.5V，VOUT=22V，负载300mA的boost",
+      "expected": {
+        "inputVoltage": 7.5,
+        "outputVoltage": 22,
+        "current": 0.3,
+        "kind": "boost"
+      }
+    },
+    {
+      "id": "V012",
+      "category": "requirement",
+      "action": "parse",
+      "input": "7.5伏输入，22伏输出，电流300毫安的boost",
+      "expected": {
+        "inputVoltage": 7.5,
+        "outputVoltage": 22,
+        "current": 0.3,
+        "kind": "boost"
+      }
+    },
+    {
+      "id": "V013",
+      "category": "requirement",
+      "action": "parse",
+      "input": "输出1.8V，输入6V，负载0.04A的ldo",
+      "expected": {
+        "inputVoltage": 6,
+        "outputVoltage": 1.8,
+        "current": 0.04,
+        "kind": "ldo"
+      }
+    },
+    {
+      "id": "V014",
+      "category": "requirement",
+      "action": "parse",
+      "input": "VIN=6V，VOUT=1.8V，负载40mA的ldo",
+      "expected": {
+        "inputVoltage": 6,
+        "outputVoltage": 1.8,
+        "current": 0.04,
+        "kind": "ldo"
+      }
+    },
+    {
+      "id": "V015",
+      "category": "requirement",
+      "action": "parse",
+      "input": "6伏输入，1.8伏输出，电流40毫安的ldo",
+      "expected": {
+        "inputVoltage": 6,
+        "outputVoltage": 1.8,
+        "current": 0.04,
+        "kind": "ldo"
+      }
+    },
+    {
+      "id": "V016",
+      "category": "requirement",
+      "action": "parse",
+      "input": "输出9V，输入15V，负载0.09A的ldo",
+      "expected": {
+        "inputVoltage": 15,
+        "outputVoltage": 9,
+        "current": 0.09,
+        "kind": "ldo"
+      }
+    },
+    {
+      "id": "V017",
+      "category": "requirement",
+      "action": "parse",
+      "input": "VIN=15V，VOUT=9V，负载90mA的ldo",
+      "expected": {
+        "inputVoltage": 15,
+        "outputVoltage": 9,
+        "current": 0.09,
+        "kind": "ldo"
+      }
+    },
+    {
+      "id": "V018",
+      "category": "requirement",
+      "action": "parse",
+      "input": "15伏输入，9伏输出，电流90毫安的ldo",
+      "expected": {
+        "inputVoltage": 15,
+        "outputVoltage": 9,
+        "current": 0.09,
+        "kind": "ldo"
+      }
+    },
+    {
+      "id": "V019",
+      "category": "risk",
+      "action": "risk",
+      "input": "输入59999mV输出5V持续9.999A Buck",
+      "expected": {
+        "highRisk": false
+      }
+    },
+    {
+      "id": "V020",
+      "category": "risk",
+      "action": "risk",
+      "input": "输入6e4mV输出5V持续1A Buck",
+      "expected": {
+        "highRisk": true
+      }
+    },
+    {
+      "id": "V021",
+      "category": "risk",
+      "action": "risk",
+      "input": "输入0.075kV输出9V持续1A Buck",
+      "expected": {
+        "highRisk": true
+      }
+    },
+    {
+      "id": "V022",
+      "category": "risk",
+      "action": "risk",
+      "input": "输入24V输出9V持续1e4mA Buck",
+      "expected": {
+        "highRisk": true
+      }
+    },
+    {
+      "id": "V023",
+      "category": "risk",
+      "action": "risk",
+      "input": "输入24V输出9V持续9999mA Buck",
+      "expected": {
+        "highRisk": false
+      }
+    },
+    {
+      "id": "V024",
+      "category": "risk",
+      "action": "risk",
+      "input": "120VAC输入整流，输出9V0.2A",
+      "expected": {
+        "highRisk": true
+      }
+    },
+    {
+      "id": "V025",
+      "category": "risk",
+      "action": "risk",
+      "input": "输入75毫伏输出25毫伏电流20毫安 LDO",
+      "expected": {
+        "highRisk": false
+      }
+    },
+    {
+      "id": "V026",
+      "category": "risk",
+      "action": "risk",
+      "input": "输入6e1V输出9V电流0.2A Buck",
+      "expected": {
+        "highRisk": true
+      }
+    },
+    {
+      "id": "V027",
+      "category": "risk",
+      "action": "risk",
+      "input": "输入24V输出9V电流1.0001e1A Buck",
+      "expected": {
+        "highRisk": true
+      }
+    },
+    {
+      "id": "V028",
+      "category": "risk",
+      "action": "risk",
+      "input": "输入240VAC整流输出12V",
+      "expected": {
+        "highRisk": true
+      }
+    },
+    {
+      "id": "V029",
+      "category": "risk",
+      "action": "risk",
+      "input": "输入48V输出9V电流9.9999A Buck",
+      "expected": {
+        "highRisk": false
+      }
+    },
+    {
+      "id": "V030",
+      "category": "risk",
+      "action": "risk",
+      "input": "输入60伏输出9伏电流1安 Buck",
+      "expected": {
+        "highRisk": true
+      }
+    },
+    {
+      "id": "V031",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "13Hz RC低通滤波器",
+      "expected": {
+        "metric": "rc",
+        "value": 13,
+        "relativeTolerance": 0.05
+      }
+    },
+    {
+      "id": "V032",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "85Hz RC低通滤波器",
+      "expected": {
+        "metric": "rc",
+        "value": 85,
+        "relativeTolerance": 0.05
+      }
+    },
+    {
+      "id": "V033",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "680Hz RC低通滤波器",
+      "expected": {
+        "metric": "rc",
+        "value": 680,
+        "relativeTolerance": 0.05
+      }
+    },
+    {
+      "id": "V034",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "2700Hz RC低通滤波器",
+      "expected": {
+        "metric": "rc",
+        "value": 2700,
+        "relativeTolerance": 0.05
+      }
+    },
+    {
+      "id": "V035",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "44000Hz RC低通滤波器",
+      "expected": {
+        "metric": "rc",
+        "value": 44000,
+        "relativeTolerance": 0.05
+      }
+    },
+    {
+      "id": "V036",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "98000Hz RC低通滤波器",
+      "expected": {
+        "metric": "rc",
+        "value": 98000,
+        "relativeTolerance": 0.05
+      }
+    },
+    {
+      "id": "V037",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "11Hz 555无稳态方波",
+      "expected": {
+        "metric": "555",
+        "value": 11,
+        "relativeTolerance": 0.05
+      }
+    },
+    {
+      "id": "V038",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "45Hz 555无稳态方波",
+      "expected": {
+        "metric": "555",
+        "value": 45,
+        "relativeTolerance": 0.05
+      }
+    },
+    {
+      "id": "V039",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "680Hz 555无稳态方波",
+      "expected": {
+        "metric": "555",
+        "value": 680,
+        "relativeTolerance": 0.05
+      }
+    },
+    {
+      "id": "V040",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "2700Hz 555无稳态方波",
+      "expected": {
+        "metric": "555",
+        "value": 2700,
+        "relativeTolerance": 0.05
+      }
+    },
+    {
+      "id": "V041",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "62000Hz 555无稳态方波",
+      "expected": {
+        "metric": "555",
+        "value": 62000,
+        "relativeTolerance": 0.05
+      }
+    },
+    {
+      "id": "V042",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "180000Hz 555无稳态方波",
+      "expected": {
+        "metric": "555",
+        "value": 180000,
+        "relativeTolerance": 0.05
+      }
+    },
+    {
+      "id": "V043",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "7.5V红色LED指示灯，目标电流8mA",
+      "expected": {
+        "metric": "led",
+        "voltage": 7.5,
+        "current": 0.008,
+        "vf": 2,
+        "drop": 0.3,
+        "utilizationLimit": 0.5
+      }
+    },
+    {
+      "id": "V044",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "7.5V红色LED指示灯，目标电流18mA",
+      "expected": {
+        "metric": "led",
+        "voltage": 7.5,
+        "current": 0.018,
+        "vf": 2,
+        "drop": 0.3,
+        "utilizationLimit": 0.5
+      }
+    },
+    {
+      "id": "V045",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "15V红色LED指示灯，目标电流8mA",
+      "expected": {
+        "metric": "led",
+        "voltage": 15,
+        "current": 0.008,
+        "vf": 2,
+        "drop": 0.3,
+        "utilizationLimit": 0.5
+      }
+    },
+    {
+      "id": "V046",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "15V红色LED指示灯，目标电流18mA",
+      "expected": {
+        "metric": "led",
+        "voltage": 15,
+        "current": 0.018,
+        "vf": 2,
+        "drop": 0.3,
+        "utilizationLimit": 0.5
+      }
+    },
+    {
+      "id": "V047",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "30V红色LED指示灯，目标电流8mA",
+      "expected": {
+        "metric": "led",
+        "voltage": 30,
+        "current": 0.008,
+        "vf": 2,
+        "drop": 0.3,
+        "utilizationLimit": 0.5
+      }
+    },
+    {
+      "id": "V048",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "30V红色LED指示灯，目标电流18mA",
+      "expected": {
+        "metric": "led",
+        "voltage": 30,
+        "current": 0.018,
+        "vf": 2,
+        "drop": 0.3,
+        "utilizationLimit": 0.5
+      }
+    },
+    {
+      "id": "V049",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "同相运放增益1倍，供电9V",
+      "expected": {
+        "metric": "gain",
+        "value": 1,
+        "relativeTolerance": 0.01
+      }
+    },
+    {
+      "id": "V050",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "同相运放增益1.02倍，供电9V",
+      "expected": {
+        "metric": "gain",
+        "value": 1.02,
+        "relativeTolerance": 0.01
+      }
+    },
+    {
+      "id": "V051",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "同相运放增益1.25倍，供电9V",
+      "expected": {
+        "metric": "gain",
+        "value": 1.25,
+        "relativeTolerance": 0.01
+      }
+    },
+    {
+      "id": "V052",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "同相运放增益6倍，供电9V",
+      "expected": {
+        "metric": "gain",
+        "value": 6,
+        "relativeTolerance": 0.01
+      }
+    },
+    {
+      "id": "V053",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "同相运放增益23倍，供电9V",
+      "expected": {
+        "metric": "gain",
+        "value": 23,
+        "relativeTolerance": 0.01
+      }
+    },
+    {
+      "id": "V054",
+      "category": "design-numeric",
+      "action": "generate",
+      "input": "同相运放增益250倍，供电9V",
+      "expected": {
+        "metric": "gain",
+        "value": 250,
+        "relativeTolerance": 0.01
+      }
+    },
+    {
+      "id": "V055",
+      "category": "solver",
+      "action": "solve",
+      "input": "R1=150Ω，R2=300Ω串联，求等效电阻",
+      "expected": {
+        "value": 450,
+        "unit": "Ω",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "R1+R2"
+    },
+    {
+      "id": "V056",
+      "category": "solver",
+      "action": "solve",
+      "input": "R1=150Ω，R2=300Ω并联，求等效电阻",
+      "expected": {
+        "value": 100.0,
+        "unit": "Ω",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "1/(1/R1+1/R2)"
+    },
+    {
+      "id": "V057",
+      "category": "solver",
+      "action": "solve",
+      "input": "分压下臂R2=300Ω，上臂R1=150Ω，Vin=7.5V，求输出电压",
+      "expected": {
+        "value": 5.0,
+        "unit": "V",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "Vin*R2/(R1+R2)"
+    },
+    {
+      "id": "V058",
+      "category": "solver",
+      "action": "solve",
+      "input": "R1=150Ω，R2=300Ω先并联，然后串联R3=470Ω，求等效电阻",
+      "expected": {
+        "value": 570.0,
+        "unit": "Ω",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "(R1||R2)+R3"
+    },
+    {
+      "id": "V059",
+      "category": "solver",
+      "action": "solve",
+      "input": "R1=150Ω，R2=300Ω串联，再与R3=470Ω并联，求等效电阻",
+      "expected": {
+        "value": 229.8913043478261,
+        "unit": "Ω",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "(R1+R2)||R3"
+    },
+    {
+      "id": "V060",
+      "category": "solver",
+      "action": "solve",
+      "input": "V=7.5V，I=8.0mA，求电阻",
+      "expected": {
+        "value": 937.5,
+        "unit": "Ω",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "V/I"
+    },
+    {
+      "id": "V061",
+      "category": "solver",
+      "action": "solve",
+      "input": "V=7.5V，R=150Ω，求功率",
+      "expected": {
+        "value": 0.375,
+        "unit": "W",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "V^2/R"
+    },
+    {
+      "id": "V062",
+      "category": "solver",
+      "action": "solve",
+      "input": "I=8.0mA，R=150Ω，求功率",
+      "expected": {
+        "value": 0.0096,
+        "unit": "W",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "I^2*R"
+    },
+    {
+      "id": "V063",
+      "category": "solver",
+      "action": "solve",
+      "input": "R=150Ω，C=68nF，求时间常数",
+      "expected": {
+        "value": 1.02e-05,
+        "unit": "s",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "R*C"
+    },
+    {
+      "id": "V064",
+      "category": "solver",
+      "action": "solve",
+      "input": "同相运放Rf=300Ω，Rg=150Ω，求增益",
+      "expected": {
+        "value": 3.0,
+        "unit": "倍",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "1+Rf/Rg"
+    },
+    {
+      "id": "V065",
+      "category": "solver",
+      "action": "solve",
+      "input": "R1=150Ω，R2=300Ω并联，Vin=7.5V，求R2的支路电流",
+      "expected": {
+        "value": 0.025,
+        "unit": "A",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "V/R2"
+    },
+    {
+      "id": "V066",
+      "category": "solver",
+      "action": "solve",
+      "input": "LED电源7.5V，正向压降2.5V，目标电流8.0mA，求限流电阻",
+      "expected": {
+        "value": 625.0,
+        "unit": "Ω",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "(Vs-Vf)/I"
+    },
+    {
+      "id": "V067",
+      "category": "solver",
+      "action": "solve",
+      "input": "R1=1500Ω，R2=3300Ω串联，求等效电阻",
+      "expected": {
+        "value": 4800,
+        "unit": "Ω",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "R1+R2"
+    },
+    {
+      "id": "V068",
+      "category": "solver",
+      "action": "solve",
+      "input": "R1=1500Ω，R2=3300Ω并联，求等效电阻",
+      "expected": {
+        "value": 1031.25,
+        "unit": "Ω",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "1/(1/R1+1/R2)"
+    },
+    {
+      "id": "V069",
+      "category": "solver",
+      "action": "solve",
+      "input": "分压下臂R2=3300Ω，上臂R1=1500Ω，Vin=15V，求输出电压",
+      "expected": {
+        "value": 10.3125,
+        "unit": "V",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "Vin*R2/(R1+R2)"
+    },
+    {
+      "id": "V070",
+      "category": "solver",
+      "action": "solve",
+      "input": "R1=1500Ω，R2=3300Ω先并联，然后串联R3=8200Ω，求等效电阻",
+      "expected": {
+        "value": 9231.25,
+        "unit": "Ω",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "(R1||R2)+R3"
+    },
+    {
+      "id": "V071",
+      "category": "solver",
+      "action": "solve",
+      "input": "R1=1500Ω，R2=3300Ω串联，再与R3=8200Ω并联，求等效电阻",
+      "expected": {
+        "value": 3027.692307692307,
+        "unit": "Ω",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "(R1+R2)||R3"
+    },
+    {
+      "id": "V072",
+      "category": "solver",
+      "action": "solve",
+      "input": "V=15V，I=12.0mA，求电阻",
+      "expected": {
+        "value": 1250.0,
+        "unit": "Ω",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "V/I"
+    },
+    {
+      "id": "V073",
+      "category": "solver",
+      "action": "solve",
+      "input": "V=15V，R=1500Ω，求功率",
+      "expected": {
+        "value": 0.15,
+        "unit": "W",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "V^2/R"
+    },
+    {
+      "id": "V074",
+      "category": "solver",
+      "action": "solve",
+      "input": "I=12.0mA，R=1500Ω，求功率",
+      "expected": {
+        "value": 0.216,
+        "unit": "W",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "I^2*R"
+    },
+    {
+      "id": "V075",
+      "category": "solver",
+      "action": "solve",
+      "input": "R=1500Ω，C=330nF，求时间常数",
+      "expected": {
+        "value": 0.000495,
+        "unit": "s",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "R*C"
+    },
+    {
+      "id": "V076",
+      "category": "solver",
+      "action": "solve",
+      "input": "同相运放Rf=3300Ω，Rg=1500Ω，求增益",
+      "expected": {
+        "value": 3.2,
+        "unit": "倍",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "1+Rf/Rg"
+    },
+    {
+      "id": "V077",
+      "category": "solver",
+      "action": "solve",
+      "input": "R1=1500Ω，R2=3300Ω并联，Vin=15V，求R2的支路电流",
+      "expected": {
+        "value": 0.004545454545454545,
+        "unit": "A",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "V/R2"
+    },
+    {
+      "id": "V078",
+      "category": "solver",
+      "action": "solve",
+      "input": "LED电源15V，正向压降2.5V，目标电流12.0mA，求限流电阻",
+      "expected": {
+        "value": 1041.6666666666667,
+        "unit": "Ω",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      },
+      "oracle": "(Vs-Vf)/I"
+    },
+    {
+      "id": "V079",
+      "category": "solver-expression",
+      "action": "solve",
+      "input": "电压为7.5V，电阻为3千欧姆，求电流",
+      "expected": {
+        "value": 0.0025,
+        "unit": "A",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      }
+    },
+    {
+      "id": "V080",
+      "category": "solver-expression",
+      "action": "solve",
+      "input": "V=7.5V，I=250微安，求电阻",
+      "expected": {
+        "value": 30000,
+        "unit": "Ω",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      }
+    },
+    {
+      "id": "V081",
+      "category": "solver-expression",
+      "action": "solve",
+      "input": "R1=3.3MEGohm，R2=6.8MΩ串联，求电阻",
+      "expected": {
+        "value": 10100000.0,
+        "unit": "Ω",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      }
+    },
+    {
+      "id": "V082",
+      "category": "solver-expression",
+      "action": "solve",
+      "input": "V=12毫伏，R=3毫欧姆，求电流",
+      "expected": {
+        "value": 4,
+        "unit": "A",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      }
+    },
+    {
+      "id": "V083",
+      "category": "solver-expression",
+      "action": "solve",
+      "input": "反相运放Rf=75kΩ，Rin=15kΩ，求增益",
+      "expected": {
+        "value": -5,
+        "unit": "倍",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      }
+    },
+    {
+      "id": "V084",
+      "category": "solver-expression",
+      "action": "solve",
+      "input": "555电路RA=15kΩ，RB=33kΩ，C=68nF，求频率",
+      "expected": {
+        "value": 261.437908496732,
+        "unit": "Hz",
+        "relativeTolerance": 0.001,
+        "absoluteTolerance": 1e-09
+      }
+    },
+    {
+      "id": "V085",
+      "category": "revision",
+      "action": "revise",
+      "input": "16V输入7V输出0.3A Buck",
+      "expected": {
+        "kind": "buck",
+        "inputVoltage": 28,
+        "outputVoltage": 2.5
+      },
+      "request": "输出改为2.5V，输入改为28V"
+    },
+    {
+      "id": "V086",
+      "category": "revision",
+      "action": "revise",
+      "input": "4.5V输入15V输出0.2A Boost",
+      "expected": {
+        "kind": "boost",
+        "inputVoltage": 7.5,
+        "outputVoltage": 22
+      },
+      "request": "输入改为7.5V，输出改为22V"
+    },
+    {
+      "id": "V087",
+      "category": "revision",
+      "action": "revise",
+      "input": "6V输入1.8V输出0.08A LDO",
+      "expected": {
+        "kind": "ldo",
+        "inputVoltage": 7.5,
+        "outputVoltage": 2.5
+      },
+      "request": "输出改为2.5V，输入改为7.5V"
+    },
+    {
+      "id": "V088",
+      "category": "revision",
+      "action": "revise",
+      "input": "7.5V红色LED电流8mA",
+      "expected": {
+        "kind": "led-driver",
+        "inputVoltage": 15,
+        "targetCurrent": 0.012,
+        "includeSwitch": false
+      },
+      "request": "改为15V，电流改为12mA，去掉开关"
+    },
+    {
+      "id": "V089",
+      "category": "revision",
+      "action": "revise",
+      "input": "同相运放增益6倍，供电9V",
+      "expected": {
+        "kind": "opamp",
+        "gain": 23
+      },
+      "request": "增益改为23倍"
+    },
+    {
+      "id": "V090",
+      "category": "revision",
+      "action": "revise",
+      "input": "680Hz RC低通滤波器",
+      "expected": {
+        "kind": "rc-filter",
+        "frequency": 2700
+      },
+      "request": "截止频率改为2700Hz"
+    },
+    {
+      "id": "V091",
+      "category": "missing-or-invalid",
+      "action": "decline",
+      "input": "V=9V，I=0A，求电阻",
+      "expected": {
+        "kind": "needs-ai"
+      }
+    },
+    {
+      "id": "V092",
+      "category": "missing-or-invalid",
+      "action": "decline",
+      "input": "R=-3kΩ，V=9V，求电流",
+      "expected": {
+        "kind": "needs-ai"
+      }
+    },
+    {
+      "id": "V093",
+      "category": "missing-or-invalid",
+      "action": "decline",
+      "input": "R=3kΩ，R=5kΩ，V=9V，求电流",
+      "expected": {
+        "kind": "needs-ai"
+      }
+    },
+    {
+      "id": "V094",
+      "category": "missing-or-invalid",
+      "action": "decline",
+      "input": "只知道输出3V，求R1和R2阻值",
+      "expected": {
+        "kind": "needs-ai"
+      }
+    },
+    {
+      "id": "V095",
+      "category": "missing-or-invalid",
+      "action": "decline",
+      "input": "R1=1kΩ，R2=2kΩ，R3=3kΩ混联，求等效电阻",
+      "expected": {
+        "kind": "needs-ai"
+      }
+    },
+    {
+      "id": "V096",
+      "category": "missing-or-invalid",
+      "action": "decline",
+      "input": "LED电源9V，工作电流8mA，求限流电阻",
+      "expected": {
+        "kind": "needs-ai"
+      }
+    },
+    {
+      "id": "V097",
+      "category": "missing-or-invalid",
+      "action": "decline",
+      "input": "555电路RA=15kΩ，C=68nF，求频率",
+      "expected": {
+        "kind": "needs-ai"
+      }
+    },
+    {
+      "id": "V098",
+      "category": "missing-or-invalid",
+      "action": "decline",
+      "input": "R=3kΩ，求这个器件的温度",
+      "expected": {
+        "kind": "needs-ai"
+      }
+    },
+    {
+      "id": "V099",
+      "category": "independent-review",
+      "action": "review",
+      "input": "15V红色LED电流18mA",
+      "expected": {
+        "decision": "阻断投板",
+        "failingTitle": "限流电阻额定功率"
+      },
+      "mutation": {
+        "ref": "R1",
+        "value": "1kΩ / 0.01W"
+      }
+    },
+    {
+      "id": "V100",
+      "category": "independent-review",
+      "action": "review",
+      "input": "30V红色LED电流18mA",
+      "expected": {
+        "decision": "阻断投板",
+        "failingTitle": "限流电阻额定功率"
+      },
+      "mutation": {
+        "ref": "R1",
+        "value": "1kΩ / 0.1W"
+      }
+    },
+    {
+      "id": "V101",
+      "category": "independent-review",
+      "action": "review",
+      "input": "2700Hz RC低通滤波器",
+      "expected": {
+        "decision": "阻断投板",
+        "failingTitle": "标称频率独立复算"
+      },
+      "mutation": {
+        "ref": "R1",
+        "value": "1Ω"
+      }
+    },
+    {
+      "id": "V102",
+      "category": "independent-review",
+      "action": "review",
+      "input": "62000Hz 555方波",
+      "expected": {
+        "decision": "阻断投板",
+        "failingTitle": "标称频率独立复算"
+      },
+      "mutation": {
+        "ref": "RA",
+        "value": "1MΩ"
+      }
+    },
+    {
+      "id": "V103",
+      "category": "independent-review",
+      "action": "review",
+      "input": "同相运放增益23倍，供电9V",
+      "expected": {
+        "decision": "阻断投板",
+        "failingTitle": "闭环增益独立复算"
+      },
+      "mutation": {
+        "ref": "R2",
+        "value": "1kΩ"
+      }
+    },
+    {
+      "id": "V104",
+      "category": "independent-review",
+      "action": "review",
+      "input": "反相运放增益7倍，供电9V",
+      "expected": {
+        "decision": "阻断投板",
+        "failingTitle": "闭环增益独立复算"
+      },
+      "mutation": {
+        "ref": "R2",
+        "value": "1kΩ"
+      }
+    },
+    {
+      "id": "V105",
+      "category": "topology",
+      "action": "generate",
+      "input": "2700Hz RC高通滤波器",
+      "expected": {
+        "metric": "highpass",
+        "value": 2700,
+        "relativeTolerance": 0.05
+      }
+    },
+    {
+      "id": "V106",
+      "category": "topology",
+      "action": "generate",
+      "input": "44000Hz RC高通滤波器",
+      "expected": {
+        "metric": "highpass",
+        "value": 44000,
+        "relativeTolerance": 0.05
+      }
+    },
+    {
+      "id": "V107",
+      "category": "topology",
+      "action": "generate",
+      "input": "反相运放增益7倍，供电9V",
+      "expected": {
+        "metric": "inverse",
+        "value": -7,
+        "relativeTolerance": 0.01
+      }
+    },
+    {
+      "id": "V108",
+      "category": "topology",
+      "action": "generate",
+      "input": "反相运放增益23倍，供电9V",
+      "expected": {
+        "metric": "inverse",
+        "value": -23,
+        "relativeTolerance": 0.01
+      }
+    }
+  ]
+}

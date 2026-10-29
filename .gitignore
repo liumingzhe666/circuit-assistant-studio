@@ -1,0 +1,44 @@
+# Dependencies and generated application packages.
+node_modules/
+/release/
+/release-*/
+/dist/
+/coverage/
+
+# Keep project-written scripts and source snapshots, not generated evidence or profiles.
+/artifacts/**
+!/artifacts/**/
+!/artifacts/**/*.mjs
+!/artifacts/**/*.cjs
+!/artifacts/**/*.js
+!/artifacts/**/*.ts
+!/artifacts/**/*.py
+!/artifacts/**/*.css
+!/artifacts/**/*.sql
+!/artifacts/**/before/**
+/artifacts/**/build/
+/artifacts/**/node_modules/
+/artifacts/*profile*/
+
+# Downloaded third-party simulator; keep our simulation models and smoke circuit.
+/tools/ngspice/Spice64/
+/tools/ngspice/*.7z
+
+# Local credentials, runtime databases, and machine-specific files.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+.DS_Store
+Thumbs.db
+*.log
+

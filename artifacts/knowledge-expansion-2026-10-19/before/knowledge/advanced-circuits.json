@@ -1,0 +1,626 @@
+[
+  {
+    "id": "adv-thevenin-norton",
+    "title": "戴维南与诺顿等效",
+    "category": "电路分析",
+    "level": "进阶",
+    "tags": ["戴维南", "诺顿", "等效源", "网络分析"],
+    "summary": "任意线性双端网络可在端口处等效为电压源串联电阻，或电流源并联电阻；两者通过源变换对应。",
+    "content": "求等效电阻时需要正确处理独立源与受控源。含受控源的网络通常要施加测试源，由端口电压/电流比求等效阻抗。",
+    "source": { "title": "MIT OpenCourseWare 6.002 — Circuits and Electronics", "url": "https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/" },
+    "verified": true
+  },
+  {
+    "id": "adv-superposition",
+    "title": "叠加定理与线性边界",
+    "category": "电路分析",
+    "level": "进阶",
+    "tags": ["叠加", "线性", "受控源", "网络分析"],
+    "summary": "线性网络中多个独立源的响应可分别计算后代数相加；受控源不能关闭，功率也不能直接叠加。",
+    "content": "关闭独立电压源等效为短路，关闭独立电流源等效为开路。非线性器件只有在线性化的小信号模型范围内才能使用叠加。",
+    "source": { "title": "MIT OpenCourseWare 6.002 Syllabus and Learning Outcomes", "url": "https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/pages/syllabus/" },
+    "verified": true
+  },
+  {
+    "id": "adv-first-order",
+    "title": "一阶 RC/RL 瞬态",
+    "category": "电路分析",
+    "level": "进阶",
+    "tags": ["RC", "RL", "时间常数", "瞬态"],
+    "summary": "一阶网络的完整响应由初值、终值和时间常数决定；RC 的 τ=ReqC，RL 的 τ=L/Req。",
+    "content": "电容电压和电感电流不能瞬间跃变。求等效电阻时从储能元件端口向外看，并正确处理独立源和受控源。",
+    "source": { "title": "MIT OpenCourseWare 6.002 — Circuits and Electronics", "url": "https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/" },
+    "verified": true
+  },
+  {
+    "id": "adv-rlc-response",
+    "title": "二阶 RLC、阻尼与谐振",
+    "category": "电路分析",
+    "level": "进阶",
+    "tags": ["RLC", "阻尼", "谐振", "二阶系统"],
+    "summary": "二阶网络由固有频率和阻尼比决定欠阻尼、临界阻尼或过阻尼响应；谐振处能量在 L 与 C 间交换。",
+    "content": "实际 Q 值受到元件 ESR、源阻抗和负载影响。高 Q 节点可能出现远高于输入的电压或电流，应校核额定值。",
+    "source": { "title": "MIT OpenCourseWare 6.002 Learning Outcomes", "url": "https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/pages/syllabus/" },
+    "verified": true
+  },
+  {
+    "id": "adv-complex-impedance",
+    "title": "相量、复阻抗与频率响应",
+    "category": "电路分析",
+    "level": "进阶",
+    "tags": ["相量", "复阻抗", "波特图", "频率响应"],
+    "summary": "正弦稳态下可用 ZR=R、ZL=jωL、ZC=1/(jωC) 把微分方程转换为复数代数。",
+    "content": "相量只描述同一频率的稳态分量；启动瞬态、非周期信号和非线性失真仍需时域或频谱方法。",
+    "source": { "title": "MIT OpenCourseWare 6.002 — Frequency-domain analysis", "url": "https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/" },
+    "verified": true
+  },
+  {
+    "id": "adv-mosfet-small-signal",
+    "title": "MOSFET 工作区与小信号模型",
+    "category": "半导体",
+    "level": "进阶",
+    "tags": ["MOSFET", "小信号", "跨导", "放大器"],
+    "summary": "模拟放大中 MOSFET 常在线性化偏置点附近用 gm、ro 和寄生电容建模；开关应用则关注导通、关断和过渡损耗。",
+    "content": "小信号参数依赖偏置点，不能把某一工作点的模型外推到大幅信号。功率 MOSFET 还要核对 SOA、Qg、雪崩与热阻。",
+    "source": { "title": "MIT OpenCourseWare 6.002 — MOS transistor models", "url": "https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/pages/syllabus/" },
+    "verified": true
+  },
+  {
+    "id": "adv-opamp-stability",
+    "title": "运放环路稳定性与相位裕度",
+    "category": "模拟",
+    "level": "进阶",
+    "tags": ["运放", "环路增益", "相位裕度", "稳定性"],
+    "summary": "闭环稳定性取决于环路增益交越处的相位裕度；噪声增益、容性负载、反馈寄生和输出隔离都会改变交越。",
+    "content": "观察过冲只能作为线索，设计应结合开环模型、噪声增益和 AC 环路分析。模型需要与器件和工作条件匹配。",
+    "source": { "title": "TI Precision Labs — Op Amp Stability", "url": "https://www.ti.com/video/series/precision-labs/ti-precision-labs-op-amps.html" },
+    "verified": true
+  },
+  {
+    "id": "adv-active-filter",
+    "title": "有源滤波器阶数、响应与动态范围",
+    "category": "模拟",
+    "level": "进阶",
+    "tags": ["有源滤波", "Butterworth", "Bessel", "Q值"],
+    "summary": "滤波器设计先确定频域/时域指标和响应族，再选择阶数、拓扑、Q 值与器件；高 Q 节点可能内部过载。",
+    "content": "标准元件值和容差会偏移中心频率与 Q。多级滤波器常把低 Q 级放前，以降低后续高 Q 级的动态范围压力。",
+    "source": { "title": "Analog Devices AN-649 — Active Filter Design", "url": "https://www.analog.com/en/resources/app-notes/an-649.html" },
+    "verified": true
+  },
+  {
+    "id": "adv-adc-driving",
+    "title": "高速 ADC 驱动与电荷回踢",
+    "category": "混合信号",
+    "level": "进阶",
+    "tags": ["ADC", "采样", "驱动", "电荷回踢"],
+    "summary": "采样电容周期性连接会向前级回踢电荷；驱动器和接口滤波器必须同时满足噪声、建立时间和失真要求。",
+    "content": "ADC 希望看到低阻抗，驱动器却不一定适合直接承受大电容。RC/差分滤波必须结合采样周期、共模和实验数据验证。",
+    "source": { "title": "Analog Devices DN1031 — Interfacing to High Performance Pipeline ADCs", "url": "https://www.analog.com/en/resources/design-notes/interfacing-to-high-performance-pipeline-adcs.html" },
+    "verified": true
+  },
+  {
+    "id": "adv-buck-loop",
+    "title": "Buck 小信号模型与环路补偿",
+    "category": "电源",
+    "level": "进阶",
+    "tags": ["buck", "环路补偿", "波特图", "相位裕度"],
+    "summary": "电源环路需要在全输入、负载和元件容差范围内满足带宽与相位裕度；电感、电容、ESR 和控制方式共同塑造极零点。",
+    "content": "平均模型和控制到输出传递函数可用于补偿设计，但最终要用器件模型、Bode 测量和负载阶跃交叉验证。",
+    "source": { "title": "TI SLVA510 — TPS65270 Loop Compensation Design", "url": "https://www.ti.com/lit/pdf/slva510" },
+    "verified": true
+  },
+  {
+    "id": "adv-smps-emi",
+    "title": "开关电源 EMI 与热环路",
+    "category": "电源",
+    "level": "进阶",
+    "tags": ["EMI", "热环路", "开关电源", "滤波"],
+    "summary": "高 di/dt 和高 dv/dt 节点通过传导、寄生电容与辐射耦合噪声；最有效的起点是缩小关键换流回路。",
+    "content": "输入滤波器不能替代正确布局。开关频率及谐波、封装引脚、SW 铜皮、共模/差模路径和线缆共同决定发射。",
+    "source": { "title": "TI SNVA780 — Designing High-Performance, Low-EMI Automotive Power Supplies", "url": "https://www.ti.com/lit/an/snva780/snva780.pdf" },
+    "verified": true
+  },
+  {
+    "id": "adv-high-speed-layout",
+    "title": "高速模拟布局与寄生参数",
+    "category": "PCB",
+    "level": "进阶",
+    "tags": ["高速", "寄生", "ADC", "反馈"],
+    "summary": "长走线、焊盘和参考平面形成寄生电感/电容；反馈求和节点附近的寄生电容尤其容易引入极点和不稳定。",
+    "content": "走线应短、参考平面连续、旁路回路紧凑。差分结构还要保持元件值和几何对称，并控制共模回流。",
+    "source": { "title": "Analog Devices AN-1026 — High Speed Differential ADC Driver Design", "url": "https://www.analog.com/en/resources/app-notes/an-1026.html" },
+    "verified": true
+  },
+  {
+    "id": "adv-rf-mixed-layout",
+    "title": "RF 与混合信号参考平面",
+    "category": "PCB",
+    "level": "进阶",
+    "tags": ["RF", "混合信号", "地平面", "串扰"],
+    "summary": "传输线下方不应随意切割参考平面；回流中断会增大环路、模式转换和辐射，并使阻抗难以控制。",
+    "content": "数字与模拟区域可按电流路径规划，但地平面分割不是默认答案。跨层过孔附近应提供回流路径，敏感区可用地过孔栅栏降低耦合。",
+    "source": { "title": "Analog Devices — PCB Layout Guidelines for RF & Mixed-Signal", "url": "https://www.analog.com/en/resources/technical-articles/pcbs-layout-guidelines-for-rf--mixedsignal.html" },
+    "verified": true
+  },
+  {
+    "id": "adv-thermal",
+    "title": "结温、热阻与 PCB 散热",
+    "category": "可靠性",
+    "level": "进阶",
+    "tags": ["热设计", "结温", "热阻", "降额"],
+    "summary": "器件可靠性与结温相关；结温由功耗、封装热阻、PCB、散热接口和环境共同决定，不能只按室温额定值判断。",
+    "content": "θJA 强烈依赖测试板和铜面积。工程设计应建立功耗上下限、环境温度、气流和热路径模型，并用热像或结温指示量验证。",
+    "source": { "title": "Analog Devices AN-1179 — Junction Temperature Calculation", "url": "https://www.analog.com/en/resources/app-notes/an-1179.html" },
+    "verified": true
+  },
+  {
+    "id": "adv-mosfet-drive",
+    "title": "MOSFET 栅极驱动需求",
+    "category": "驱动",
+    "level": "进阶",
+    "tags": ["MOSFET", "栅极驱动", "电机", "开关损耗"],
+    "summary": "栅极驱动器要在目标开关时间内搬运栅极电荷，同时控制 dv/dt、振铃、交叉导通和驱动回路寄生。",
+    "content": "峰值驱动电流、驱动电压、传播延迟、共模瞬态和死区都与拓扑相关。电机启动/堵转状态还会显著提高功率级压力。",
+    "source": { "title": "Microchip AN898 — Determining MOSFET Driver Needs", "url": "https://www.microchip.com/en-us/application-notes/an898" },
+    "verified": true
+  },
+  {
+    "id": "adv-spice-model",
+    "title": "SPICE 模型、工作点与分析类型",
+    "category": "仿真",
+    "level": "进阶",
+    "tags": ["SPICE", "工作点", "AC", "瞬态"],
+    "summary": "DC 工作点、AC 小信号、瞬态和参数扫描回答不同问题；符号必须绑定正确的模型和节点顺序。",
+    "content": "模型不是器件本体。应核对模型版本、温度范围和未建模效应，并通过数据手册曲线或实测验证关键结果。",
+    "source": { "title": "KiCad 9 Introduction — Integrated ngspice Simulation", "url": "https://docs.kicad.org/9.0/en/introduction/introduction.html" },
+    "verified": true
+  },
+  {
+    "id": "adv-erc-drc",
+    "title": "ERC、DRC 与原理图/PCB 一致性",
+    "category": "PCB",
+    "level": "进阶",
+    "tags": ["ERC", "DRC", "一致性", "制造"],
+    "summary": "ERC 检查电气连接语义，DRC 检查物理规则；现代 KiCad 还可检查 PCB 与原理图之间的不一致。",
+    "content": "规则检查只能验证已定义的约束。未设置的爬电、线宽、差分间距和长度规则不会自动出现，因此规则集本身也需要审查。",
+    "source": { "title": "KiCad 9 PCB Editor — Design Rules Checking", "url": "https://docs.kicad.org/9.0/ca/pcbnew/pcbnew.html" },
+    "verified": true
+  },
+  {
+    "id": "adv-differential-pair",
+    "title": "差分对耦合、间距与偏斜",
+    "category": "PCB",
+    "level": "进阶",
+    "tags": ["差分对", "阻抗", "偏斜", "长度匹配"],
+    "summary": "差分性能由线宽、间距、参考平面、耦合长度和不对称共同决定；长度匹配不是唯一指标。",
+    "content": "应根据叠层场求解目标阻抗，并为 gap、skew、uncoupled length 和过孔数建立 DRC 约束，而不是只靠目测。",
+    "source": { "title": "KiCad 9 PCB Editor — Differential Pair Constraints", "url": "https://docs.kicad.org/9.0/ca/pcbnew/pcbnew.html" },
+    "verified": true
+  },
+  {
+    "id": "adv-pcb-workflow",
+    "title": "从原理图到制造文件的完整闭环",
+    "category": "PCB",
+    "level": "进阶",
+    "tags": ["KiCad", "BOM", "Gerber", "封装"],
+    "summary": "现代 EDA 工作流把原理图、封装、PCB 和制造输出集成管理；网表只是连接关系的一种表示，不能替代器件与规则信息。",
+    "content": "交付应包括版本化原理图、PCB、符号/封装库、BOM、装配坐标、Gerber/钻孔和检查报告，并能追溯到设计规则与器件资料。",
+    "source": { "title": "KiCad 9 — Getting Started", "url": "https://docs.kicad.org/9.0/en/getting_started_in_kicad/getting_started_in_kicad.html" },
+    "verified": true
+  },
+  {
+    "id": "expert-buck-worst-case",
+    "title": "Buck 功率级最坏工况门禁",
+    "category": "电源",
+    "level": "进阶",
+    "tags": ["buck", "降压", "电感纹波", "峰值电流", "最坏工况"],
+    "summary": "Buck 定型需要输入电压范围、输出电压、最大负载电流和具体控制器数据；电感、电流限制与输出电容必须在最坏工作角复核。",
+    "content": "先在 Vin(max)、fs(min)、L(min) 等组合下计算纹波和峰值电流，再与芯片电流限制最小值、电感饱和/有效电流和热条件比较。输出电容同时考虑容性纹波、ESR、直流偏压后的有效容值和瞬态。",
+    "source": { "title": "TI SLVA477B — Basic Calculation of a Buck Converter's Power Stage", "url": "https://www.ti.com/lit/an/slva477b/slva477b.pdf" },
+    "verified": true,
+    "verifiedAt": "2026-08-08",
+    "rules": {
+      "appliesTo": ["buck"],
+      "requiredChecks": [
+        "使用 Vin(max)、开关频率最小值和电感最小值计算 ΔIL 与 Ipeak，并确认 Ipeak 小于芯片限流最小值",
+        "电感 Isat、Irms、DCR 铜损和温升必须覆盖纹波峰值与环境温度",
+        "输出纹波同时核算电容项与 ESR 项；MLCC 使用直流偏压、温度和容差后的有效容值",
+        "内部补偿器件必须遵守数据手册允许的 L/C 范围；外部补偿需复核环路与负载阶跃"
+      ],
+      "pcb": ["输入陶瓷电容与高、低侧开关构成的高 di/dt 回路必须最小；SW 铜皮短小，FB Kelvin 取样远离 SW"],
+      "verification": ["在输入最大/最小、空载/满载、元件容差和温度角执行环路/瞬态仿真与负载阶跃实测"]
+    }
+  },
+  {
+    "id": "expert-boost-power-stage",
+    "title": "Boost 峰值电流、关断直通与输出保护",
+    "category": "电源",
+    "level": "进阶",
+    "tags": ["boost", "升压", "峰值电流", "二极管", "关断直通"],
+    "summary": "Boost 的输入最低电压通常对应最大占空比和电感/开关压力；普通 Boost 还存在 VIN 经电感和二极管通向 VOUT 的关断直通路径。",
+    "content": "占空比应包含效率估计并在 Vin(min) 角计算输入与峰值电流。二极管或同步管需校核反压、浪涌、热和反向恢复；需要真正关断或输出短路隔离时，必须增加断路器件或改用支持隔离的拓扑。",
+    "source": { "title": "TI SLVA372D — Basic Calculation of a Boost Converter's Power Stage", "url": "https://www.ti.com/lit/an/slva372d/slva372d.pdf" },
+    "verified": true,
+    "verifiedAt": "2026-08-08",
+    "rules": {
+      "appliesTo": ["boost"],
+      "requiredChecks": [
+        "在 Vin(min) 与效率下计算最大占空比、平均输入电流、纹波和峰值电流",
+        "校核电感饱和/有效电流、开关限流、二极管反压/浪涌/热和输出电容纹波",
+        "明确普通 Boost 的 VIN→VOUT 关断直通路径；若要求真正关断或短路隔离，增加断路器件或选择合适拓扑"
+      ],
+      "verification": ["覆盖输入最低电压、输出短路、启动、关断和负载阶跃测试"]
+    }
+  },
+  {
+    "id": "expert-opamp-selection-budget",
+    "title": "运放动态、输入输出范围与误差预算",
+    "category": "模拟",
+    "level": "进阶",
+    "tags": ["运放", "GBW", "压摆率", "共模", "输出摆幅", "误差预算"],
+    "summary": "电阻比只决定理想闭环增益；可实现性还取决于输入共模、输出摆幅/电流、最小稳定噪声增益、GBW、压摆率、噪声和直流误差。",
+    "content": "至少用 SR≥2πfVpk 检查大信号速度，并把偏置电流、失调、漂移、宽带/1/f 噪声和电阻误差纳入预算。所有范围都必须按实际供电、负载和温度读取具体数据手册。",
+    "source": { "title": "TI SLOA011B — Understanding Operational Amplifier Specifications", "url": "https://www.ti.com/lit/an/sloa011b/sloa011b.pdf" },
+    "verified": true,
+    "verifiedAt": "2026-08-08",
+    "rules": {
+      "appliesTo": ["opamp", "rc-filter"],
+      "requiredChecks": [
+        "输入共模范围和输出摆幅/输出电流在实际供电、负载与温度下均需满足",
+        "噪声增益不得低于器件最小稳定增益；结合 GBW/环路增益检查带宽与稳定性",
+        "大信号压摆率至少满足 SR≥2πfVpk，并建立偏置、失调、漂移、噪声和电阻容差误差预算"
+      ],
+      "verification": ["运行 DC 工作点、AC/相位裕度、瞬态/压摆率和输入输出极限仿真，并在容性负载下实测振铃"]
+    }
+  },
+  {
+    "id": "expert-sar-adc-front-end",
+    "title": "SAR ADC 前端建立时间与电荷回踢",
+    "category": "混合信号",
+    "level": "进阶",
+    "tags": ["ADC", "SAR", "采样", "建立时间", "电荷回踢", "抗混叠"],
+    "summary": "SAR ADC 的采样电容会给前级施加动态负载；RC 与驱动器必须同时满足采集窗内建立、噪声、抗混叠、失真和容性负载稳定性。",
+    "content": "参数化初检可用 tacq≥Rtot×Ctot×ln(ΔV/Eallow)，但 R/C、采样开关、驱动器输出阻抗和多路最坏跳变必须取自实际器件模型与数据手册。",
+    "source": { "title": "Analog Devices — Front-End Amplifier and RC Filter Design for a Precision SAR ADC", "url": "https://www.analog.com/en/resources/analog-dialogue/articles/front-end-amp-and-rc-filter-design.html" },
+    "verified": true,
+    "verifiedAt": "2026-08-08",
+    "rules": {
+      "appliesTo": ["rc-filter", "opamp"],
+      "requiredChecks": [
+        "按 tacq≥Rtot×Ctot×ln(ΔV/Eallow) 检查最坏输入跳变在采集窗内的建立误差",
+        "检查驱动器对 ADC 输入电容和外部 RC 的稳定性、输出电流、钳位电流和参考源瞬态",
+        "抗混叠衰减应在所有会折叠进目标带宽的频点验证，而不是只报告 -3 dB 截止频率"
+      ],
+      "pcb": ["ADC 输入 RC、参考去耦和驱动器靠近转换器；差分路径保持器件与几何对称并提供连续回流"],
+      "verification": ["用满量程多路跳变、最高采样率和最差信号源阻抗验证建立时间、噪声与失真"]
+    }
+  },
+  {
+    "id": "expert-motor-hbridge-gate-drive",
+    "title": "小车 H 桥、堵转电流与栅极驱动",
+    "category": "驱动",
+    "level": "进阶",
+    "tags": ["小车", "电机", "H桥", "堵转", "PWM", "栅极驱动", "死区"],
+    "summary": "小车正反转和制动需要 H 桥；额定值由电池满充/低压、堵转电流、回生能量、PWM、散热和故障策略共同决定。",
+    "content": "MOSFET 需核算导通、开关、栅极、体二极管/反向恢复与 Coss 损耗，并检查 SOA。栅极驱动由 Qg/Qgd、驱动电压、目标开关时间和回路寄生决定；死区必须覆盖传播延迟离散、偏斜与温度，不能固定套用。",
+    "source": { "title": "Infineon — Using Monolithic High Voltage Gate Drivers", "url": "https://www.infineon.com/assets/row/public/documents/60/42/infineon-using-monolithic-high-voltage-gate-drivers-applicationnotes-en.pdf" },
+    "verified": true,
+    "verifiedAt": "2026-08-08",
+    "rules": {
+      "appliesTo": ["motor-driver", "low-side-driver"],
+      "requiredChecks": [
+        "用电机堵转/启动电流而非空载电流校核 H 桥峰值、限流、SOA、保险、铜箔、连接器和电池能力",
+        "核算 MOSFET 的 Pcond、Psw、Pgate、体二极管/Qrr、Coss 损耗和最坏结温",
+        "依据 Qg/Qgd、驱动强度、Rg 和寄生参数校核开关时间、振铃与 Miller 误导通",
+        "死区需覆盖传播延迟最小/最大值、通道偏斜和温度；同时验证 UVLO、OCP、OTP 与直通保护"
+      ],
+      "pcb": ["栅极驱动回路与 H 桥换流回路最小化；功率地回流不得穿过 MCU、ADC 或传感器参考地"],
+      "verification": ["覆盖堵转、同时启动、快速换向、制动回生、最低/最高电池电压和最高温度"]
+    }
+  },
+  {
+    "id": "expert-tvs-interface-protection",
+    "title": "TVS 工作电压、钳位与温度协调",
+    "category": "可靠性",
+    "level": "进阶",
+    "tags": ["TVS", "浪涌", "ESD", "钳位", "反接", "接口保护"],
+    "summary": "TVS 不能只按标称电压选：VRWM 应高于最高正常电压，实际浪涌电流和温度下的钳位加布局过冲仍需低于下游绝对最大值。",
+    "content": "还要校核脉冲波形、能量、重复率、结温、失效模式和回流路径。需要阻断反向电流时，单个 MOSFET 可能不够，应评估背靠背 FET 或 eFuse。",
+    "source": { "title": "TI SLVA930 — TVS Surge Protection in High-Temperature Environments", "url": "https://www.ti.com/lit/an/slva930/slva930.pdf" },
+    "verified": true,
+    "verifiedAt": "2026-08-08",
+    "rules": {
+      "appliesTo": ["motor-driver", "low-side-driver", "buck", "boost", "rectifier", "mcu-power"],
+      "requiredChecks": [
+        "TVS 的 VRWM 必须高于最高正常工作电压；Vclamp@实际电流/温度加布局过冲必须低于下游绝对最大值",
+        "按目标浪涌波形校核峰值功率、能量、重复率和结温，不能用固定 1.2 倍经验值代替",
+        "若系统要求反向电流阻断，评估背靠背 MOSFET 或 eFuse，而不是默认单管保护"
+      ],
+      "pcb": ["TVS 靠近接口入口，受保护线到 TVS 再到系统；浪涌回流路径短、宽且不穿过敏感地"],
+      "verification": ["用目标接口浪涌/ESD 波形和最坏温度验证钳位波形、下游应力与保护器件温升"]
+    }
+  },
+  {
+    "id": "expert-pcb-current-thermal",
+    "title": "PCB 载流能力需要叠层与温升输入",
+    "category": "PCB",
+    "level": "进阶",
+    "tags": ["PCB", "载流", "铜厚", "温升", "IPC-2152", "过孔"],
+    "summary": "PCB 载流能力受内外层、铜厚、线宽、邻近铜、板材、环境和允许温升影响，不能用单一 mil/A 经验值替代。",
+    "content": "应把持续/峰值电流、允许温升、铜厚、层位置、走线长度、并行铜面、热过孔和连接器纳入计算，并通过样板温升或热仿真验证。",
+    "source": { "title": "IPC-2152 — Standard for Determining Current-Carrying Capacity in Printed Board Design", "url": "https://www.ipc.org/TOC/IPC-2152.pdf" },
+    "verified": true,
+    "verifiedAt": "2026-08-08",
+    "rules": {
+      "appliesTo": ["motor-driver", "low-side-driver", "buck", "boost", "rectifier"],
+      "requiredChecks": [
+        "提供持续/峰值电流、允许温升、铜厚、内外层、线长、环境与邻近铜后再确定线宽和过孔数量",
+        "连接器、焊盘颈缩、过孔阵列和保险器件也必须逐项覆盖相同电流与温升目标"
+      ],
+      "verification": ["在最大持续负载和最高环境温度下测量关键铜箔、过孔、连接器与器件焊盘温升"]
+    }
+  },
+  {
+    "id": "expert-ldo-stability-thermal",
+    "title": "LDO 稳定性与热门禁",
+    "category": "电源",
+    "level": "进阶",
+    "tags": ["ldo", "线性稳压", "dropout", "热设计", "esr", "psrr"],
+    "summary": "LDO 首版必须同时过三道门：压差余量（dropout）、损耗与结温、输出电容的 ESR/容值稳定区；低噪声场景还要看 PSRR 与噪声指标。",
+    "content": "用最高环境温度核算 Pd=(Vin−Vout)×I 与 θJA 得到的结温，而不是室温空板额定值；输入最低电压时仍要满足 dropout+裕量；输出电容按器件数据手册的稳定区选择（部分 LDO 要求最小 ESR）；后级有数字负载脉冲时核对瞬态响应与负载调整率。",
+    "source": { "title": "TI SLOA011B — Understanding Operational Amplifier Specifications 及 LDO 布局通用实践", "url": "https://www.ti.com/lit/an/sloa011b/sloa011b.pdf" },
+    "verified": true,
+    "rules": {
+      "appliesTo": ["ldo", "mcu-power"],
+      "requiredChecks": [
+        "按最高环境温度和持续电流核算损耗与结温，留出降额裕量",
+        "输入最低电压下仍满足 dropout 加裕量；输入输出电容在器件稳定区范围内",
+        "给波动负载核对瞬态响应与最小负载电流要求"
+      ],
+      "pcb": ["输入输出电容紧贴引脚；裸露焊盘接完整地铜与热过孔"],
+      "verification": ["满载与最高温度下测量输出纹波、温升和欠压行为"]
+    }
+  },
+  {
+    "id": "expert-led-constant-current",
+    "title": "LED 恒流驱动与最坏电流核算",
+    "category": "驱动",
+    "level": "进阶",
+    "tags": ["led", "恒流", "限流", "正向压降", "亮度一致性"],
+    "summary": "电阻限流的 LED 电路必须在最低 Vf、最高 Vs 角核对峰值电流；亮度一致性、调光或大功率场景改恒流源或恒流驱动器。",
+    "content": "电阻限流要同时看两个最坏角：Vf 最小 + Vs 最大 → 电流峰值；Vf 最大 + Vs 最小 → 亮度下限。并联 LED 不能共用一个限流器件而不加均流措施。照明/背光用恒流拓扑并核算电感/开关应力与热。",
+    "source": { "title": "电路助手工程规则整理（LED 驱动）", "url": "" },
+    "verified": true,
+    "rules": {
+      "appliesTo": ["led-driver"],
+      "requiredChecks": [
+        "按 Vf(min) 与 Vs(max) 复算最大 LED 电流并对照额定值与寿命降额",
+        "多颗并联时逐路限流或使用均流措施，不能只靠一条公共限流",
+        "大电流或亮度敏感场景改恒流方案，并核对散热与结温"
+      ],
+      "verification": ["最高/最低供电下测量 LED 电流与亮度，核对温升"]
+    }
+  },
+  {
+    "id": "expert-555-precision",
+    "title": "555 振荡精度与替代方案",
+    "category": "时序",
+    "level": "进阶",
+    "tags": ["555", "振荡", "占空比", "容差", "精度"],
+    "summary": "555 无稳态频率受 R/C 容差、阈值离散与温度漂移影响，典型精度在 ±5% 以上；精确时钟应改晶振或 MCU 定时器。",
+    "content": "占空比小于 50% 需要二极管分离充放电路径；RA/RB 过小会增大放电管电流，过大则阈值电流误差占比上升；C1 选择兼顾漏电流与稳定性。用于 PWM 时核对输出边沿与驱动能力。",
+    "source": { "title": "电路助手工程规则整理（555 定时）", "url": "" },
+    "verified": true,
+    "rules": {
+      "appliesTo": ["timer555"],
+      "requiredChecks": [
+        "按电阻电容最坏容差与阈值离散计算频率/占空比范围，而不是只报标称值",
+        "核对 RA/RB 取值范围与放电电流、输入偏置的匹配",
+        "需要精确频率时改用晶振、MCU 定时器或专用振荡器"
+      ],
+      "verification": ["实测不同温度与批次下的频率漂移"]
+    }
+  },
+  {
+    "id": "expert-rectifier-ripple-thermal",
+    "title": "整流滤波的纹波、浪涌与耐压核算",
+    "category": "电源",
+    "level": "进阶",
+    "tags": ["整流", "桥堆", "纹波", "浪涌", "储能电容"],
+    "summary": "桥式整流的储能电容按负载电流和允许纹波计算；上电浪涌由电容直充引起，桥堆与保险必须覆盖；电容耐压按空载峰值留裕量。",
+    "content": "纹波估算 ΔV≈I/(2fC) 只适用于连续负载；还要核对电容纹波电流额定值、ESR 温升与寿命。上电浪涌电流可能数倍于稳态，需要 NTC/串阻或浪涌抑制器配合保险的 I²t 能力。输出空载电压接近 Vac×√2，电容与后级耐压按此选取。",
+    "source": { "title": "电路助手工程规则整理（整流滤波）", "url": "" },
+    "verified": true,
+    "rules": {
+      "appliesTo": ["rectifier"],
+      "requiredChecks": [
+        "按负载电流与允许纹波计算储能电容，并核对纹波电流/ESR/寿命",
+        "上电浪涌电流与保险 I²t、桥堆浪涌额定值协调",
+        "电容与后级耐压按空载峰值电压留 20% 以上裕量；市电输入必须走隔离与安规设计"
+      ],
+      "pcb": ["整流大电流回路短宽；电解电容远离热源；交流与直流区域保持间距"],
+      "verification": ["最高/最低电网电压（或输入范围）下测量纹波、浪涌与温升"]
+    }
+  },
+  {
+    "id": "expert-mcu-power-domain",
+    "title": "MCU 电源域、去耦与接口引出",
+    "category": "数字",
+    "level": "进阶",
+    "tags": ["mcu", "电源域", "退耦", "复位", "调试接口", "esd"],
+    "summary": "MCU 最小系统的可靠性来自电源域划分：每个 VDD 引脚就近去耦、模拟电源按数据手册滤波、复位与调试接口完整引出。",
+    "content": "多电源域芯片要核对上电顺序与域间倒灌；VDDA/VREF 按手册经磁珠或 RC 滤波；每个 VDD/VSS 对 100 nF，整体再加 4.7–10 µF；未用引脚按手册处理（多数悬空或下拉）；SWD/JTAG 与复位预留测试点；对外接口统一 ESD 防护。",
+    "source": { "title": "电路助手工程规则整理（MCU 供电）", "url": "" },
+    "verified": true,
+    "rules": {
+      "appliesTo": ["mcu-power"],
+      "requiredChecks": [
+        "核对所有电源域、上电顺序与域间倒灌路径",
+        "每个电源引脚的去耦与整体储能齐备；模拟电源按手册滤波",
+        "复位、启动/Boot、调试接口与关键未用引脚处理完整"
+      ],
+      "pcb": ["去耦电容与引脚最小回路；晶振贴近并隔离；完整地平面"],
+      "verification": ["上电时序测量、掉电/复位行为、接口 ESD 试验"]
+    }
+  },
+  {
+    "id": "expert-opamp-single-supply",
+    "title": "单电源运放的偏置与输入输出范围",
+    "category": "模拟",
+    "level": "进阶",
+    "tags": ["运放", "单电源", "偏置", "共模", "轨到轨"],
+    "summary": "单电源运放电路必须把输入偏置到器件共模范围内，并核对输出摆幅接近轨时的行为；“轨到轨”也要分输入轨到轨还是输出轨到轨。",
+    "content": "交流耦合信号需要直流偏置网络（分压+耦合电容），偏置点阻抗影响增益精度；输入低于负轨时多数运放输出翻转或不确定；输出接近地/正轨时线性度下降，需要按数据手册的摆幅曲线核对。比较器与运放不能随便互换：比较器要求快边沿与开漏/推挽输出，且通常不稳定于线性反馈。",
+    "source": { "title": "TI SLOA011B — Understanding Operational Amplifier Specifications", "url": "https://www.ti.com/lit/an/sloa011b/sloa011b.pdf" },
+    "verified": true,
+    "rules": {
+      "appliesTo": ["opamp", "rc-filter"],
+      "requiredChecks": [
+        "输入偏置点在器件共模范围内；交流耦合时核对偏置网络与低频截止",
+        "输出摆幅按实际负载与温度核对；接近轨时的线性度",
+        "比较器与运放按用途区分，不能互换使用"
+      ],
+      "verification": ["满幅输入/输出的线性度测量与共模扫动测试"]
+    }
+  },
+  {
+    "id": "expert-reverse-polarity",
+    "title": "输入反接与倒灌保护",
+    "category": "可靠性",
+    "level": "进阶",
+    "tags": ["反接", "防反", "理想二极管", "倒灌", "pmos"],
+    "summary": "反接保护按电流与压降预算选择：串联二极管简单但损失压降，P-MOS/理想二极管低损但要注意栅极保护与瞬态；多电源系统还要防倒灌。",
+    "content": "大电流用 P-MOS 高边防反（栅压按 Vgs(max) 限制）或专用理想二极管控制器；小电流可用肖特基。倒灌场景（输出电压高于输入，如关机时）要在 LDO/充电路径上核对反向电流路径。TVS 与防反管的协调：TVS 钳位时防反管要能承受反向应力。",
+    "source": { "title": "TI SLVA930 — TVS Surge Protection in High-Temperature Environments", "url": "https://www.ti.com/lit/an/slva930/slva930.pdf" },
+    "verified": true,
+    "rules": {
+      "appliesTo": ["*"],
+      "requiredChecks": [
+        "按最大输入电流核算防反器件的导通损耗与栅极保护",
+        "核对倒灌路径：输出端有源时输入关断，反向电流不损坏前级",
+        "防反器件与 TVS/浪涌器件的应力协调"
+      ],
+      "verification": ["反接上电试验（限流）与关机倒灌测量"]
+    }
+  },
+  {
+    "id": "expert-esd-surge-interface",
+    "title": "接口 ESD 与浪涌的分级防护",
+    "category": "可靠性",
+    "level": "进阶",
+    "tags": ["esd", "浪涌", "接口", "tvs", "分级防护", "ipc"],
+    "summary": "接口防护按暴露等级分级：户内手插、线缆外露、工业现场的目标波形与能量差异很大；防护器件的位置、回流路径和钳位协调决定实际效果。",
+    "content": "先定义接口的暴露等级与目标波形（如 IEC 61000-4-2 空气/接触放电、ISO 10605 车载），再选择 TVS/ESD 管、串阻/PTC 与滤波；TVS 靠近入口、地回流独立短宽；高速口注意 TVS 电容对信号完整性的影响；防护后仍要核对残余钳位是否低于芯片引脚耐受。",
+    "source": { "title": "TI SLVA930 — TVS Surge Protection in High-Temperature Environments", "url": "https://www.ti.com/lit/an/slva930/slva930.pdf" },
+    "verified": true,
+    "rules": {
+      "appliesTo": ["*"],
+      "requiredChecks": [
+        "明确每个对外接口的暴露等级与目标试验波形",
+        "TVS 的 VRWM、电容与钳位值匹配信号速率与被保护芯片",
+        "防护器件回流路径短宽，不与敏感地共用长走线"
+      ],
+      "verification": ["按目标波形做 ESD/浪涌试验并复核残余电压波形"]
+    }
+  },
+  {
+    "id": "expert-grounding-partition",
+    "title": "地平面、分区与回流策略",
+    "category": "PCB",
+    "level": "进阶",
+    "tags": ["接地", "地平面", "回流", "混合信号", "分区"],
+    "summary": "完整的参考地平面优于按功能切缝；混合信号布局按电流路径分区，让大电流与敏感回流的走线互不交叉，而不是机械地割地。",
+    "content": "策略：先画出大电流回流（电机、开关电源、继电器）与敏感回流（ADC、基准、天线）的路径；用地平面保持两者各自最短回流；必要时用单点连接（跨缝的桥）控制交汇位置；数字走线不跨越模拟区分割；屏蔽与机壳地的连接方式按 EMC 目标决定。",
+    "source": { "title": "Analog Devices — PCB Layout Guidelines for RF & Mixed-Signal", "url": "https://www.analog.com/en/resources/technical-articles/pcbs-layout-guidelines-for-rf--mixedsignal.html" },
+    "verified": true,
+    "rules": {
+      "appliesTo": ["*"],
+      "requiredChecks": [
+        "为最坏的大电流回流和最敏感的信号回流分别规划路径",
+        "地平面完整；跨缝走线消除或安排回流桥",
+        "屏蔽/机壳/安全地的连接方式与 EMC 目标一致"
+      ],
+      "verification": ["地弹与共阻抗耦合测量；EMC 预扫描"]
+    }
+  },
+  {
+    "id": "expert-decoupling-network",
+    "title": "电源分配网络与去耦组合",
+    "category": "PCB",
+    "level": "进阶",
+    "tags": ["退耦", "pdn", "去耦", "阻抗", "目标阻抗"],
+    "summary": "去耦设计以目标阻抗为纲：用“最大瞬态电流/允许电压波动”得到目标阻抗，再用电容组合与安装电感把阻抗曲线压到目标以下。",
+    "content": "组合层次：板级大电容供低频储能，本地中容量（1–10 µF）覆盖中频，逐引脚 100 nF 覆盖高频；高频效果取决于安装电感（焊盘、走线、过孔）。开关电源输入端的陶瓷电容还要承担降压换流，位置比容量更重要。验证用 PDN 阻抗仿真或网络分析仪。",
+    "source": { "title": "电路助手工程规则整理（电源分配网络）", "url": "" },
+    "verified": true,
+    "rules": {
+      "appliesTo": ["mcu-power", "opamp", "buck", "boost", "motor-driver", "ldo"],
+      "requiredChecks": [
+        "按最大瞬态电流与允许波动估算目标阻抗并分解到电容层次",
+        "每个有源器件的逐引脚去耦齐备；开关电源输入电容位置优先",
+        "大电流地回流与高频回流不穿过敏感区域"
+      ],
+      "verification": ["电源纹波与地弹测量；必要时 PDN 阻抗扫描"]
+    }
+  },
+  {
+    "id": "expert-pwm-frequency-choice",
+    "title": "PWM 频率选择的工程权衡",
+    "category": "驱动",
+    "level": "进阶",
+    "tags": ["pwm", "频率", "噪声", "开关损耗", "电机"],
+    "summary": "PWM 频率要平衡开关损耗、可听噪声、控制分辨率与 EMI：电机常用 16–20 kHz 避开可听域，LED 调光关注闪烁，电源关注纹波与损耗。",
+    "content": "频率升高的代价是开关损耗与 dv/dt/di/dt 干扰上升；降低则进入可听噪声或增加纹波。电机驱动还要考虑电流环采样与死区占比；LED 调光要高于闪烁感知阈值或配合滤波。设定后用示波器核对边沿振铃与 EMI 预估。",
+    "source": { "title": "Infineon — Using Monolithic High Voltage Gate Drivers", "url": "https://www.infineon.com/assets/row/public/documents/60/42/infineon-using-monolithic-high-voltage-gate-drivers-applicationnotes-en.pdf" },
+    "verified": true,
+    "rules": {
+      "appliesTo": ["motor-driver", "low-side-driver"],
+      "requiredChecks": [
+        "按负载类型选择 PWM 频率并核算开关损耗增量",
+        "频率与死区、最小导通宽度的关系覆盖调速范围",
+        "EMI 与可听噪声按实测确认"
+      ],
+      "verification": ["不同频率下的效率、噪声与温升对比"]
+    }
+  },
+  {
+    "id": "expert-relay-inductive-drive",
+    "title": "继电器/电磁阀驱动的完整应力",
+    "category": "驱动",
+    "level": "进阶",
+    "tags": ["继电器", "电磁阀", "续流", "触点保护", "感性负载"],
+    "summary": "继电器驱动不只是吸合：线圈侧要处理关断过压与驱动管 SOA，触点侧要按负载类型（阻性/感性/容性）选择保护与额定值。",
+    "content": "线圈关断的过压可能击穿驱动管，续流二极管（或双向钳位）必须靠近线圈；带二极管的慢释放是否影响动作频率要评估。触点侧：感性负载的触点电弧需要 RC/压敏保护，堵转负载按启动电流选触点额定值；频繁动作场景核对机械/电气寿命。",
+    "source": { "title": "电路助手工程规则整理（继电器驱动）", "url": "" },
+    "verified": true,
+    "rules": {
+      "appliesTo": ["low-side-driver"],
+      "requiredChecks": [
+        "线圈电流、吸合/保持电压与驱动管的 SOA/温度核算",
+        "关断过压钳位器件存在且位置正确",
+        "触点额定值覆盖负载启动电流与寿命要求；感性/容性负载加触点保护"
+      ],
+      "verification": ["满负载动作寿命试验与触点温升测量"]
+    }
+  },
+  {
+    "id": "expert-li-ion-battery-safety",
+    "title": "锂电池系统的安全边界",
+    "category": "安全",
+    "level": "进阶",
+    "tags": ["锂电池", "bms", "过充", "过放", "安全"],
+    "summary": "锂电池组必须由匹配的 BMS 覆盖过充、过放、过流、短路、温度与均衡；充电器、电芯串数与保护器件额定值一致；自动生成方案不得替代 BMS 设计。",
+    "content": "设计边界：电芯规格（充电截止、放电截止、温度窗口）决定 BMS 阈值；充电路径要有独立的充电管理与二次保护；放电路径覆盖短路分断能力；多串组核对均衡策略；结构上考虑绝缘、固定与散热。涉及电池的自动草案必须标注“不包含电池管理”。",
+    "source": { "title": "电路助手安全策略", "url": "" },
+    "verified": true,
+    "rules": {
+      "appliesTo": ["*"],
+      "requiredChecks": [
+        "BMS 覆盖过充/过放/过流/短路/温度/均衡，且阈值与电芯规格一致",
+        "充放电通路、连接器与保险的额定值覆盖最坏电流",
+        "结构、绝缘与散热满足电池安全要求"
+      ],
+      "verification": ["BMS 全功能试验、短路试验（受控条件）与温控试验"]
+    }
+  }
+]

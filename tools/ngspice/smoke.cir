@@ -1,0 +1,10 @@
+ngspice installation check
+V1 in 0 10
+R1 in out 1000
+R2 out 0 1000
+.control
+op
+print v(out)
+quit
+.endc
+.end
