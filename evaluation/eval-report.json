@@ -1,7 +1,7 @@
 {
   "format": "circuit-assistant-eval-report-v1",
   "dataset": "circuit-assistant-eval-v1",
-  "generatedAt": "2026-10-19T13:39:41.507Z",
+  "generatedAt": "2026-10-29T12:57:15.438Z",
   "total": 54,
   "passed": 54,
   "failed": 0,
